@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRACK19기 정민상 영화 리뷰</title>
+	<link href="main.css" rel="stylesheet">
+	
+
+
+</head>
+<body>
+    <div class="user-wrap">
+		<div class="user-image">
+			<img src="images/1.jpg" alt="영화 리뷰 사이트" class="main-image">
+		</div>	
+		<div class="user-text">
+			<p><i class="fa-solid fa-play"></i>THE MOVIE INDEX</p>
+		</div>	
+		<div class="user-text2">
+			<p>국내 최대 규모 영화 리뷰 사이트</p>
+		</div>	
+		<div class="user-text3">
+			<p><i class="fa-solid fa-minus"></i>지금까지 개봉된 약 23,000편의 영화 중에서 보고 싶은 영화를 찾아보세요!<i class="fa-solid fa-minus"></i></p>
+		</div>	
+		<div class="user-text4">
+			<p>영화정보·감상·평가는 The Movie Index</p>
+		</div>
+	</div>		
+		
+	
+    <!-- 메인 이미지 
+    <img src="1.jpg" alt="영화 리뷰 사이트" class="main-image">
+	<div class="main-text">영화 리뷰 사이트</div>	
+	-->	
+	<script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
+	
+    <!-- 헤더 -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-play"></i>The Movie Index
+            <a href="#home">홈</a>
+            <a href="#movies">영화</a>
+        </div>
+        <div class="search-login"><i class="fas fa-search"></i>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="영화 검색...">
+            </div>
+            <div class="buttons">
+                <button id="login-btn">로그인</button>
+                <button id="signup-btn">회원가입</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 인기 영화 섹션 -->
+    <div class="section">
+        <div class="section-title"><i class="fa-solid fa-play"></i>&nbsp인기 영화 목록</div>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="slide('popular-slider', -1)">◀</button>
+            <div class="slider" id="popular-slider"></div>
+            <button class="slider-button right" onclick="slide('popular-slider', 1)">▶</button>
+        </div>
+    </div>
+
+	<!-- 개봉 예정 영화 섹션 -->
+    <div class="section">
+        <div class="section-title"><i class="fa-solid fa-play"></i>&nbsp개봉 예정 영화</div>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="slide('upcoming-slider', -1)">◀</button>
+            <div class="slider" id="upcoming-slider"></div>
+            <button class="slider-button right" onclick="slide('upcoming-slider', 1)">▶</button>
+        </div>
+    </div>
+
+    <!-- Top Rated 영화 섹션 -->
+    <div class="section">
+        <div class="section-title"><i class="fa-solid fa-play"></i>&nbsp평점 높은 영화</div>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="slide('top-rated-slider', -1)">◀</button>
+            <div class="slider" id="top-rated-slider"></div>
+            <button class="slider-button right" onclick="slide('top-rated-slider', 1)">▶</button>
+        </div>
+    </div>
+
+	<!-- 영화예매사이트가기 제목 추가 -->
+	<div class="section-title">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-link"></i>&nbsp예매사이트 및 영화관람추천App</div>
+
+	<!-- 영화예매사이트 이미지 링크 -->
+	<div class="cgv-link">
+		<a href="https://www.cgv.co.kr/" target="_blank">
+			<img src="images/cgv.jpg" alt="CGVv로 이동" class="cgv-image">
+		</a>
+		<a href="https://www.megabox.co.kr/" target="_blank">
+			<img src="images/megabox.jpg" alt="MEGABOX로 이동" class="cgv-image">
+		</a>
+		<a href="https://www.lottecinema.co.kr/NLCHS" target="_blank">
+			<img src="images/lotte.jpg" alt="LOTTECINEMA로 이동" class="cgv-image">
+		</a>
+		<a href="https://www.netflix.com/kr/" target="_blank">
+			<img src="images/netflix.png" alt="LOTTECINEMA로 이동" class="cgv-image">
+		</a>
+		<a href="https://watcha.com/browse/theater" target="_blank">
+			<img src="images/watcha.png" alt="LOTTECINEMA로 이동" class="cgv-image">
+		</a>
+		<a href="https://play.coupang.com/" target="_blank">
+			<img src="images/coupang.png" alt="LOTTECINEMA로 이동" class="cgv-image">
+		</a>
+		<a href="https://www.tving.com/onboarding?utm_source=google&utm_medium=searchad&utm_campaign=PM_google_sa_conv&utm_content=brand_non&utm_term=%ED%8B%B0%EB%B9%99&gad_source=1&gclid=Cj0KCQiAvP-6BhDyARIsAJ3uv7aAY9uVqEnJ9MKdZRZk9dUQCsu2VRTY8lfV0vHMB0NyP4w7C_PEtcAaAocIEALw_wcB" target="_blank">
+			<img src="images/tving.png" alt="LOTTECINEMA로 이동" class="cgv-image">
+		</a>
+		<a href="https://laftel.net/" target="_blank">
+			<img src="images/laftel.png" alt="LOTTECINEMA로 이동" class="cgv-image">
+		</a>
+	</div>
+	
+    <!-- 영화 예고편 섹션 -->
+    <div class="section">
+        <div class="section-title"><i class="fa-solid fa-link"></i>&nbsp볼만한 영화 예고편</div>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="slide('trailers-slider', -1)">◀</button>
+            <div class="slider" id="trailers-slider"></div>
+            <button class="slider-button right" onclick="slide('trailers-slider', 1)">▶</button>
+        </div>
+    </div>
+	
+	<div class="section-title"><i class="fa-solid fa-hashtag"></i>태그별 영화 분류</div>
+	<div class="filter-section">
+		<h2><i class="fa-solid fa-hashtag"></i>영화상</h2>
+		<div class="award-filter">
+			<button class="filter-btn">아카데미상</button>
+			<button class="filter-btn">칸 영화제</button>
+			<button class="filter-btn">베니스 영화제</button>
+			<button class="filter-btn">베를린 영화제</button>
+			<button class="filter-btn">골든 글로브</button>
+		</div>
+
+		<h2><i class="fa-solid fa-hashtag"></i>연도</h2>
+		<div class="year-filter">
+			<button class="filter-btn">2024</button>
+			<button class="filter-btn">2023</button>
+			<button class="filter-btn">2022</button>
+			<button class="filter-btn">2021</button>
+			<button class="filter-btn">2020</button>
+			<button class="filter-btn">2010년대</button>
+			<button class="filter-btn">2000년대</button>
+			<button class="filter-btn">1990년대</button>
+		</div>
+
+		<h2><i class="fa-solid fa-hashtag"></i>장르</h2>
+		<div class="tag-filter">
+			<button class="filter-btn">액션</button>
+			<button class="filter-btn">로맨스</button>
+			<button class="filter-btn">SF</button>
+			<button class="filter-btn">공포</button>
+			<button class="filter-btn">코미디</button>
+			<button class="filter-btn">드라마</button>
+			<button class="filter-btn">애니메이션</button>
+			<button class="filter-btn">다큐멘터리</button>
+		</div>
+		
+		<h2><i class="fa-solid fa-hashtag"></i>나라</h2>
+		<div class="world-filter">
+			<button class="filter-btn">한국</button>
+			<button class="filter-btn">일본</button>
+			<button class="filter-btn">미국</button>
+			<button class="filter-btn">프랑스</button>
+			<button class="filter-btn">인도</button>
+			<button class="filter-btn">중국</button>
+			<button class="filter-btn">이탈리아</button>
+			<button class="filter-btn">영국</button>
+		</div>
+		
+		<h2><i class="fa-solid fa-hashtag"></i>분위기</h2>
+		<div class="mood-filter">
+			<button class="filter-btn">감동적인</button>
+			<button class="filter-btn">웃긴</button>
+			<button class="filter-btn">무서운</button>
+			<button class="filter-btn">어두운</button>
+			<button class="filter-btn">행복한</button>
+			<button class="filter-btn">반전 있는</button>
+			<button class="filter-btn">여운 남는</button>
+			<button class="filter-btn">실화 기반</button>
+		</div>
+		
+		<h2><i class="fa-solid fa-hashtag"></i>관객</h2>
+		<div class="see-filter">
+			<button class="filter-btn">어린이 영화</button>
+			<button class="filter-btn">청소년 추천</button>
+			<button class="filter-btn">성인 영화</button>
+			<button class="filter-btn">가족과 함께</button>
+			<button class="filter-btn">연인과 함께</button>
+			<button class="filter-btn">여성 추천</button>
+			<button class="filter-btn">남성 추천</button>
+		</div>
+		
+		<h2><i class="fa-solid fa-hashtag"></i>시간대 </h2>
+		<div class="time-filter">
+			<button class="filter-btn">퇴근 후 가볍게</button>
+			<button class="filter-btn">주말 몰아보기</button>
+			<button class="filter-btn">휴가철 추천</button>
+			<button class="filter-btn">깊은 밤에 즐기기</button>
+			<button class="filter-btn">혼자 볼 때</button>
+			<button class="filter-btn">친구와 함께</button>
+		</div>
+		
+		<h2><i class="fa-solid fa-hashtag"></i>플랫폼</h2>
+		<div class="flatform-filter">
+			<button class="filter-btn">넷플릭스 독점</button>
+			<button class="filter-btn">디즈니+ 추천</button>
+			<button class="filter-btn">애플TV+</button>
+			<button class="filter-btn">아마존 프라임</button>
+			<button class="filter-btn">왓챠</button>
+			<button class="filter-btn">웨이브</button>
+		</div>
+		
+		<h2><i class="fa-solid fa-hashtag"></i>시리즈 </h2>
+		<div class="series-filter">
+			<button class="filter-btn">마블 시네마틱 유니버스(MCU)</button>
+			<button class="filter-btn">DC 유니버스</button>
+			<button class="filter-btn">해리포터</button>
+			<button class="filter-btn">스타워즈</button>
+			<button class="filter-btn">반지의 제왕/호빗</button>
+			<button class="filter-btn">미션 임파서블</button>
+		</div>
+		
+	</div>
+
+	
+	<footer class="footer">
+			<div class="footer-content">
+				<p>서비스 이용약관 | <a href="#">개인정보 처리방침</a> | <a href="#">회사 안내</a></p>
+				<p>고객센터: lgu33993388@gmail.com, 010-5566-3208</p>
+				<p>광고 문의: lgu33993388@gmail.com</p>
+				<p>제휴 및 대외 협력: <a href="http://jsllms.com/JSL">http://jsllms.com/JSL</a></p>
+				<p>© 2024 by JSL, Inc. All rights reserved.</p>
+				<p>주소: 대전광역시 중구 계룡로 825 (용두동, 희영빌딩 5·7층)</p>
+			</div>
+    </footer>
+    <script>
+        const API_KEY = '14268f35e4a6081c29de2405e84e82c2'; // TMDB API 키
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMAGE_URL = 'https://image.tmdb.org/t/p/w200';
+
+        async function fetchNowPlayingMovies() {
+			try {
+				const response = await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1`);
+				const data = await response.json();
+
+				const nowPlayingMovies = document.getElementById('popular-slider');
+				nowPlayingMovies.innerHTML = "";
+
+				// 개봉일 기준 최신순으로 정렬
+				const sortedMovies = data.results.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+
+				sortedMovies.forEach(movie => {
+					const movieElement = document.createElement('div');
+					movieElement.classList.add('movie');
+
+					movieElement.innerHTML = `
+						<img src="${IMAGE_URL}${movie.poster_path}" alt="${movie.title}">
+						<h2>${movie.title}</h2>
+						<p>개봉일: ${movie.release_date}</p>
+						<div class="rating"><span>★ ${movie.vote_average}</span></div>
+					`;
+					nowPlayingMovies.appendChild(movieElement);
+				});
+			} catch (error) {
+				console.error("현재 상영 중 영화 데이터를 가져오는 중 오류 발생:", error);
+			}
+		}
+
+        async function fetchTopRatedMovies() {
+            try {
+                const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=ko-KR&page=1`);
+                const data = await response.json();
+
+                const topRatedMovies = document.getElementById('top-rated-slider');
+                topRatedMovies.innerHTML = "";
+
+                data.results.forEach(movie => {
+                    const movieElement = document.createElement('div');
+                    movieElement.classList.add('movie');
+
+                    movieElement.innerHTML = `
+                        <img src="${IMAGE_URL}${movie.poster_path}" alt="${movie.title}">
+                        <h2>${movie.title}</h2>
+						<p>개봉일: ${movie.release_date}</p>
+                        <div class="rating"><span>★ ${movie.vote_average}</span></div>
+                    `;
+                    topRatedMovies.appendChild(movieElement);
+                });
+            } catch (error) {
+                console.error("Top Rated 영화 데이터를 가져오는 중 오류 발생:", error);
+            }
+        }
+
+        async function fetchUpcomingMovies() {
+            try {
+                const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=ko-KR&page=1`);
+                const data = await response.json();
+
+                const upcomingMovies = document.getElementById('upcoming-slider');
+                upcomingMovies.innerHTML = "";
+
+				const sortedMovies = data.results.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+
+                data.results.forEach(movie => {
+                    const movieElement = document.createElement('div');
+                    movieElement.classList.add('movie');
+
+                    movieElement.innerHTML = `
+                        <img src="${IMAGE_URL}${movie.poster_path}" alt="${movie.title}">
+                        <h2>${movie.title}</h2>
+						<p>개봉일: ${movie.release_date}</p>
+                        <div class="rating"><span>★ ${movie.vote_average}</span></div>
+                    `;
+                    upcomingMovies.appendChild(movieElement);
+                });
+            } catch (error) {
+                console.error("개봉 예정 영화 데이터를 가져오는 중 오류 발생:", error);
+            }
+        }
+
+        async function fetchMovieTrailers() {
+            try {
+                const movieIds = [299537, 399579, 299534, 385687, 324857]; // 예고편 영화 ID들
+                const slider = document.getElementById('trailers-slider');
+                slider.innerHTML = "";
+
+                for (const movieId of movieIds) {
+                    const response = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=ko-KR`);
+                    const data = await response.json();
+
+                    const trailer = data.results.find(video => video.type === 'Trailer'); // 예고편만 필터
+                    if (trailer) {
+                        const trailerElement = document.createElement('div');
+                        trailerElement.classList.add('movie');
+
+                        const thumbnailUrl = `https://img.youtube.com/vi/${trailer.key}/mqdefault.jpg`;
+
+                        trailerElement.innerHTML = `
+                            <img src="${thumbnailUrl}" alt="${trailer.name}">
+                            <h2>${trailer.name}</h2>
+                            <a href="https://www.youtube.com/watch?v=${trailer.key}" target="_blank">예고편 보기</a>
+                        `;
+                        slider.appendChild(trailerElement);
+                    }
+                }
+            } catch (error) {
+                console.error("영화 예고편 데이터를 가져오는 중 오류 발생:", error);
+            }
+        }
+
+        function slide(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const slideWidth = 240; // 영화 카드의 너비 + 여백
+            const visibleCount = 6; // 한 번에 보이는 영화 카드 수
+            const maxScroll = Math.max(slider.childElementCount - visibleCount, 0);
+
+            let currentIndex = slider.dataset.currentIndex ? parseInt(slider.dataset.currentIndex) : 0;
+
+            currentIndex += direction * visibleCount;
+
+            if (currentIndex > maxScroll) {
+                currentIndex = 0; // 처음으로 이동
+            } else if (currentIndex < 0) {
+                currentIndex = maxScroll; // 마지막으로 이동
+            }
+
+            slider.dataset.currentIndex = currentIndex;
+
+            const nextTransform = -(slideWidth * currentIndex);
+            slider.style.transform = `translateX(${nextTransform}px)`;
+        }
+		
+		async function addTrailerToMovies(movieId, movieElement) {
+    try {
+        const response = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=ko-KR`);
+        const data = await response.json();
+
+        const trailer = data.results.find(video => video.type === 'Trailer');
+        if (trailer) {
+            const videoElement = document.createElement('video');
+            videoElement.classList.add('trailer-video');
+            videoElement.muted = true;
+            videoElement.loop = true;
+
+            const sourceElement = document.createElement('source');
+            sourceElement.src = `https://www.youtube.com/watch?v=${trailer.key}`;
+            sourceElement.type = 'video/mp4';
+
+            videoElement.appendChild(sourceElement);
+            movieElement.appendChild(videoElement);
+
+            movieElement.addEventListener('mouseover', () => videoElement.play());
+            movieElement.addEventListener('mouseout', () => videoElement.pause());
+        }
+    } catch (error) {
+        console.error("트레일러를 추가하는 중 오류 발생:", error);
+    }
+}
+        // 초기 데이터 로드
+		fetchNowPlayingMovies();
+      //fetchPopularMovies();
+        fetchTopRatedMovies();
+        fetchUpcomingMovies();
+        fetchMovieTrailers();
+		
+		const popup = document.getElementById('trailer-popup');
+		const iframe = document.getElementById('trailer-iframe');
+		const closePopup = document.getElementById('close-popup');
+
+		// 팝업 열기
+		document.body.addEventListener('click', (e) => {
+			if (e.target.tagName === 'IMG' && e.target.dataset.trailer) {
+				popup.classList.remove('hidden');
+				iframe.src = e.target.dataset.trailer;
+			}
+		});
+
+		// 팝업 닫기
+		closePopup.addEventListener('click', () => {
+			popup.classList.add('hidden');
+			iframe.src = '';
+		});
+		
+    </script>
+	
+</body>
+</html>

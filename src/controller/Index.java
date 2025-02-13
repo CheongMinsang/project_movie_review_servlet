@@ -1,0 +1,242 @@
+package controller;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import command.member.MemberGoExit;
+import command.member.MemberJoin;
+import command.member.MemberList;
+import command.member.MemberLogin;
+import command.member.MemberLogout;
+import command.member.MemberMyinfo;
+import command.member.MemberMyinfoUpdate;
+import command.member.ReviewDelete;
+import command.member.ReviewSave;
+import command.member.ReviewUpdate;
+import command.member.goMemberInfo;
+import common.CommonExecute;
+
+/**
+ * Servlet implementation class Index
+ */
+@WebServlet("/Index")
+public class Index extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Index() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		String gubun = request.getParameter("t_gubun");
+		if(gubun == null) {
+			gubun="index";
+		}
+		String apiKey = "14268f35e4a6081c29de2405e84e82c2";
+		
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+	    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+	    response.setDateHeader("Expires", 0); 
+		
+		if(gubun.equals("register")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("login")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("domemberjoin")) {
+			CommonExecute mem = new MemberJoin();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("loginForm")) {
+			CommonExecute mem = new MemberLogin();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("logout")) {
+			CommonExecute mem = new MemberLogout();
+			mem.execute(request);
+			
+		    // 세션 상태 확인
+	        HttpSession session = request.getSession(false);
+	        if (session == null) {
+	            System.out.println("세션이 성공적으로 무효화되었습니다.");
+	        } else {
+	            System.out.println("세션 무효화에 실패하였습니다.");
+	        }
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("myinfo")) {
+			CommonExecute mem = new MemberMyinfo();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("myinfo.jsp");
+			dispatcher.forward(request, response); 
+		}else if(gubun.equals("goMemberExit")) {
+			CommonExecute mem = new MemberGoExit();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response); 
+		}else if(gubun.equals("myinfoupdate")) {
+			CommonExecute mem = new MemberMyinfoUpdate();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response); 
+		}else if(gubun.equals("reviewSave")) {
+			CommonExecute mem = new ReviewSave();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response);
+		}else if(gubun.equals("controlMenu")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("controlMenu.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("goMemberList")) {
+			CommonExecute mem = new MemberList();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("showMemberList.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("goMemberInfo")) {
+			CommonExecute mem = new goMemberInfo();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("showMemberInfo.jsp");
+		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("RatingDelete")) {
+			CommonExecute mem = new ReviewDelete();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response);
+		}else if(gubun.equals("ReviewUpdate")) {
+			CommonExecute mem = new ReviewUpdate();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		try { 
+			// 개봉 예정 영화 가져오기
+			String upcomingData = fetchMovies("https://api.themoviedb.org/3/movie/upcoming", apiKey);
+			JSONObject upcomingResponse = new JSONObject(upcomingData);
+			JSONArray upcomingMovies = upcomingResponse.getJSONArray("results");
+			
+			JSONArray sortedUpcomingMovies = sortMoviesByReleaseDate(upcomingMovies);
+			request.setAttribute("upcomingMovies", sortedUpcomingMovies);
+			
+			// 현재 상영 중 영화 가져오기
+		    String nowPlayingData = fetchMovies("https://api.themoviedb.org/3/movie/now_playing", apiKey);
+		    JSONObject nowPlayingResponse = new JSONObject(nowPlayingData);
+		    JSONArray nowPlayingMovies = nowPlayingResponse.getJSONArray("results");
+		    
+		    // 정렬 적용 (평점 기준)
+            JSONArray sortedNowPlayingMovies = sortMoviesByVoteAverage(nowPlayingMovies);
+            request.setAttribute("nowPlayingMovies", sortedNowPlayingMovies);
+		    
+		    // 평점 높은 영화 가져오기
+		    String topRatedData = fetchMovies("https://api.themoviedb.org/3/movie/top_rated", apiKey);
+		    JSONObject topRatedResponse = new JSONObject(topRatedData);
+		    request.setAttribute("topRatedMovies", topRatedResponse.getJSONArray("results"));
+		    
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		    dispatcher.forward(request, response); 
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "영화 데이터를 가져오는 중 오류 발생");
+		}
+}	
+		private String fetchMovies(String apiUrl, String apiKey) throws IOException {
+			URL url = new URL(apiUrl + "?api_key=" + apiKey + "&language=ko-KR&page=1"); 
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET"); 
+			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String inputLine;
+			StringBuilder responseStr = new StringBuilder();
+			while ((inputLine = in.readLine()) != null) { 
+				responseStr.append(inputLine);
+			} 
+			in.close();
+			return responseStr.toString();
+		}
+		// 개봉일 기준 정렬 함수
+	    private JSONArray sortMoviesByReleaseDate(JSONArray movies) {
+	        List<JSONObject> movieList = new ArrayList<>();
+	
+	        // JSONArray -> List<JSONObject> 변환
+	        for (int i = 0; i < movies.length(); i++) {
+	            try {
+					movieList.add(movies.getJSONObject(i));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        }
+	
+	        // 개봉일 기준 내림차순 정렬
+	        movieList.sort((movie1, movie2) -> {
+	            String date1 = movie1.optString("release_date", "1900-01-01");
+	            String date2 = movie2.optString("release_date", "1900-01-01");
+	            return date2.compareTo(date1); // 최신 개봉일이 먼저 오도록 정렬
+	        });
+	
+	        // List<JSONObject> -> JSONArray 변환
+	        return new JSONArray(movieList);
+	    }
+	    // 평점 기준 정렬 함수
+	    private JSONArray sortMoviesByVoteAverage(JSONArray movies) {
+	        List<JSONObject> movieList = new ArrayList<>();
+
+	        // JSONArray -> List<JSONObject> 변환
+	        for (int i = 0; i < movies.length(); i++) {
+	            try {
+					movieList.add(movies.getJSONObject(i));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        }
+
+	        // 평점 기준 내림차순 정렬
+	        movieList.sort((movie1, movie2) -> {
+	            double vote1 = movie1.optDouble("vote_average", 0.0);
+	            double vote2 = movie2.optDouble("vote_average", 0.0);
+	            return Double.compare(vote2, vote1); // 높은 평점이 먼저 오도록 정렬
+	        });
+
+	        // List<JSONObject> -> JSONArray 변환
+	        return new JSONArray(movieList);
+	    }
+	  
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

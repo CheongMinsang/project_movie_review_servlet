@@ -1,0 +1,124 @@
+        body {
+            background-image: url('images/loginBackGround.jpg');
+            background-color: #121212;
+            background-size: 100%;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(30, 30, 30, 0.9);
+            width: 100%;
+            max-width: 400px;
+            max-height: 600px;
+            overflow: auto;
+            position: relative;
+            border-radius: 20px;
+        }
+                /* 전체 스크롤 바 */
+        .container::-webkit-scrollbar {
+            width: 12px; /* 세로 스크롤 바 너비 */
+            height: 12px; /* 가로 스크롤 바 높이 */
+        }
+
+        /* 스크롤 바 트랙 */
+        .container::-webkit-scrollbar-track {
+            background: #2a2a2a; /* 트랙 배경 색상 */
+        }
+
+        /* 스크롤 바 핸들 */
+        .container::-webkit-scrollbar-thumb {
+            background: #ffa500; /* 핸들 배경 색상 */
+            border-radius: 10px; /* 핸들 둥근 모서리 */
+            height: 5px;
+        }
+
+        /* 스크롤 바 핸들 - 마우스 오버 상태 */
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #ff8c00; /* 오버 시 핸들 배경 색상 */
+        }
+        input[type="text"], input[type="password"], input[type="email"], .email-input {
+            width: 100%; /* input 요소의 너비 조정 */
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: 2px solid #FFFFFF;
+            background-color: #121212;
+            color: #FFFFFF;
+            font-size: 15px; /* 입력 필드의 글꼴 크기 조정 */
+            box-sizing: border-box; /* 입력 필드의 크기 통일 */
+            outline: none;
+    		transition: border-color 0.3s ease;
+    		border-radius: 20px;
+        }
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, .email-input:focus {
+        	border-color: #ffa500;
+        }
+        input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover, .email-input:hover {
+       		border-color: #ffa500;
+        }
+        .phone-input {
+            width: calc(33.3333% - 10px); /* 각 박스의 너비 조정 */
+            padding: 10px;
+            margin: 10px 5px;
+            border: 1px solid #FFFFFF;
+            background-color: #121212;
+            color: #FFFFFF;
+            display: inline-block; /* 한 줄로 나열하기 위한 설정 */
+        }
+        .email-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* 버튼과 인풋의 수직 정렬을 맞추기 위한 설정 */
+        }
+        .check-button{
+            flex: 0 0 auto; /* 버튼의 너비 고정 */
+            width: auto; /* 버튼의 너비를 자동으로 조정 */
+            padding: 10px;
+            border: none;
+            background-color: #ffa500; /* 버튼의 배경색 */
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0;
+            box-sizing: border-box; /* 크기를 인풋 필드와 맞춤 */
+            border-radius: 20px;
+        }
+        .submit-button {
+            margin-top: 20px; /* 여백을 추가하여 버튼과 전화번호 입력 상자 간의 간격을 벌림 */
+            width: 100%; /* 버튼의 너비를 100%로 설정 */
+            padding: 10px;
+            border: none;
+            background-color: #ffa500; /* 버튼의 배경색 */
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            box-sizing: border-box; /* 크기를 인풋 필드와 맞춤 */
+            border-radius: 20px;
+        }
+        .check-button:hover, .submit-button:hover {
+            background-color: #ff8c00; /* 버튼의 호버 배경색 */
+        }
+        .home-link {
+            position: absolute;
+            top: 10px; /* 로그인 글자와 같은 높이로 설정 */
+            left: 10px; /* 로그인 글자의 왼쪽 상단에 위치 */
+            font-size: 14px;
+            color: #ffa500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .home-link:hover {
+            color: #ff8c00;
+            transform: scale(1.2);
+        }
+        .home-link i {
+            margin-right: 5px; /* 아이콘과 텍스트 사이의 간격 조정 */
+        }

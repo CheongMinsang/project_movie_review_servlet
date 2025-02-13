@@ -1,0 +1,334 @@
+        body {
+            background-color: #121212;
+            background-size: cover;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #121212;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            /* color: #ffa500; */
+            font-size: 2.5em;
+   			margin-bottom: 60px;
+        }
+        .movie-details {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        .movie-poster {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 20px;
+        }
+        .movie-poster img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-info {
+            flex: 2;
+            text-align: left;
+            margin-top: -30px;
+        }
+        .movie-info h2 {
+            color: #ffa500;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .movie-info p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .movie-info .overview {
+            margin-top: 20px;
+            text-align: justify;
+        }
+        .movie-extra {
+            margin-top: 30px;
+        }
+        .movie-extra h3 {
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+        .movie-extra h2 {
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+        .trailer-link { 
+        	margin-top: 20px;
+       	} 
+       	.trailer {
+       		margin-top: 20px;
+       		height: 500px; /* 높이를 400px로 설정 */
+       	} 
+       	.trailer iframe { 
+       		width: 100%; 
+       		height: 100%; /* iframe의 높이도 100%로 설정 */ 
+       	}
+        a.button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #ffa500;
+            text-decoration: none;
+        }
+        a.button:hover {
+            background-color: #ff8c00;
+        }
+		        /* 링크 스타일 */
+		.home-link {
+		    position: absolute;
+		    top: -57px;
+		    left: -18px;
+		    /* left: 58px; */
+		    font-size: 30px;
+		    color: #ffa500;
+		    text-decoration: none;
+		    display: flex;
+		    align-items: center;
+		    z-index: 999; /* 링크가 다른 요소들 위에 나타나도록 설정 */
+		    transition: transform 0.3s ease;
+		}
+		.home-link:hover {
+		    transform: scale(1.3);
+		}
+		.home-link i {
+		    margin-right: 5px;
+		}
+        .movie-info p.vote-average {
+ 				color: #ffd700;
+		}
+		.user-wrap{
+			width: 100%;
+			margin: 10px; auto;
+			position: relative;
+		}	
+		.user-wrap img {
+			width: 100%;
+			vertical-align:middle;
+		}
+		.user-text{
+			position:absolute;
+			top:35%;
+			left:50%;
+			width:100%;
+			transform:translate(-50%,-50%);
+			font-size:40px;
+			font-family:'ypseo';
+			text-align:center;
+			 color: white;
+		    font-size: 7rem;
+		    font-weight: bold;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		    z-index: 1;
+		}	
+		.user-text2{
+			position:absolute;
+			top:55%;
+			left:50%;
+			width:100%;
+			transform:translate(-50%,-50%);
+			font-size:40px;
+			font-family:'ypseo';
+			text-align:center;
+			 color: white;
+		    font-size: 2.5rem;
+		    font-weight: bold;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		    z-index: 1;
+		}
+		.user-text3{
+			position:absolute;
+			top:65%;
+			left:50%;
+			width:100%;
+			transform:translate(-50%,-50%);
+			font-size:40px;
+			font-family:'ypseo';
+			text-align:center;
+			 color: white;
+		    font-size: 1rem;
+		    font-weight: bold;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		    z-index: 1;
+		}
+		.user-text4{
+			position:absolute;
+			top:90%;
+			left:50%;
+			width:100%;
+			transform:translate(-50%,-50%);
+			font-size:40px;
+			font-family:'ypseo';
+			text-align:center;
+			 color: white;
+		    font-size: 1rem;
+		    font-weight: bold;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		    z-index: 1;
+		}
+		.filter-btn2 {
+		    padding: 10px 15px;
+		    font-size: 1.5rem;
+		    border: none;
+		    background-color: #121212;
+		    color: white;
+		    cursor: pointer;
+		    transition: background-color 0.3s, transform 0.2s;
+		}
+		.filter-btn2:hover {
+		    background-color: #ff8c00;; /* 호버 시 강조 색상 */
+		    transform: scale(1.05); /* 살짝 확대 효과 */
+		}
+		 .movie-review {
+		      width: 80%;
+		      max-width: 800px;
+		      margin: 20px auto;
+		      background-color: #121212;
+		      padding: 20px;
+		      border-radius: 10px;
+		      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		      font-family: Arial, sans-serif;
+		    }
+		    .movie-review h2 {
+		      margin-top: 50px;
+		      text-align: center;
+		      margin-bottom: 20px;
+		      color: #ffa500;
+		    }
+		    /* 별점 영역 */
+		    .star-rating {
+		      display: flex;
+		      justify-content: center;
+		      margin-bottom: 10px;
+		      font-size: 2em;
+		      cursor: pointer;
+		    }
+		    .star-rating i {
+		      color: #ccc;
+		      transition: color 0.2s;
+		    }
+		    /* 리뷰 텍스트 영역 */
+		    .movie-review textarea {
+			   width: 100%;
+			   height: 160px;
+			   resize: none;
+			   padding: 12px 15px;
+			   border: 2px solid #2a2a2a;
+			   outline: none;
+			   border-radius: 15px;
+			   font-size: 1.5em;
+			   margin-bottom: 10px;
+			   background-color: #2a2a2a;
+			   transition: border-color 0.3s ease;
+			   color: white; /* 글자색을 흰색으로 설정 */
+        	   caret-color: white; /* 입력할 때 커서 색을 흰색으로 설정 */
+		    }
+		    .movie-review textarea:hover, .movie-review textarea:focus {
+		    	border: 2px solid #ffa500;
+		    }
+		    /* 등록 버튼 */
+		    .movie-review button {
+		      display: block;
+		      width: 100px;
+		      margin: 0 auto;
+		      padding: 10px 20px;
+		      font-size: 1.2em;
+		      background-color: #ffa500;
+		      color: white;
+		      border: none;
+		      border-radius: 25px;
+		      cursor: pointer;
+		    }
+		    .movie-review button:hover {
+		      background-color: #ff8c00;
+		    }
+		    .review-list {
+	            width: 80%;
+	            max-width: 800px;
+	            margin: 20px auto;
+	            font-family: Arial, sans-serif;
+	        }
+	        .review-list h2 {
+	        	margin-top: 100px;
+	        	color: #ffa500;
+	            text-align: center;
+	            margin-bottom: 20px;
+	            
+	        }
+	        .review-item {
+	            border-bottom: 1px solid #ccc;
+	            padding: 10px 0;
+	        }
+	        .review-header {
+	            display: flex;
+	            align-items: center;
+	            margin-bottom: 5px;
+	        }
+	        .review-stars {
+	            color: #FFD700; /* 골드색 */
+	            margin-right: 10px;
+	            font-size: 1.2em;
+	        }
+	        .review-nickname {
+	            font-weight: bold;
+	            margin-right: 10px;
+	        }
+	        .review-date {
+	            color: #888;
+	            font-size: 0.9em;
+	        }
+	        .review-content {
+	            margin-top: 5px;
+	            line-height: 1.5em;
+	        }
+	         /* h1 스타일 */
+        .movie-header-title {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+        /* 추천영화등록 버튼 스타일 */
+        .recommend-btn {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 8px 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #2a2a2a;
+            color: white;
+            margin-left: 25px;
+            border: 2px solid #2a2a2a;
+			outline: none;
+		    transition: border-color 0.3s ease;
+            border-radius: 20px;
+        }
+        .recommend-btn:hover {
+        	border: 2px solid #ffa500;
+        }
+        /* styles.css */
+		.review-link {
+		  color: white;
+		  text-decoration: none;
+		}
+		
+		.review-link i {
+		  margin-right: 5px;
+		}
+		.review-link:hover {
+			color: #ffa500;
+		}
+		
