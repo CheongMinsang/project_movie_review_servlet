@@ -174,6 +174,7 @@
                     int emptyStars = 5 - fullStars - halfStar;  // 나머지 빈 별
         %>
         <div class="review-item" <%
+        	 String sessionLevel = (String)session.getAttribute("sessionLevel");
 	         String sessionId = (String) session.getAttribute("sessionId");
 	         String writeId = dto.getWriteid();
 	         if (sessionId != null && sessionId.equals(writeId)) {
@@ -206,7 +207,11 @@
 	              	%>
 	              		<a href="javascript:goFix();" class="review-link"><i class="fa-solid fa-pen-to-square"></i>수정</a>&nbsp;
 	              		<a href="javascript:goDelete();" class="review-link"><i class="fa-regular fa-circle-xmark"></i>삭제</a>
-	              	<%       
+	              	<%
+	              	    } if (sessionLevel != null && sessionLevel.equals("top")) {
+	              	%>    	
+	              	    <a href="javascript:goDelete();" class="review-link"><i class="fa-regular fa-circle-xmark"></i>삭제</a>
+	              	<%    	
 	              	    }
                 	%>
                 </div>
@@ -233,7 +238,8 @@
 		    <!-- form 액션 및 메서드는 환경에 맞게 수정 -->
 			<form id="reviewForm" name="reviewForm" action="Index" method="post">
 			  <!-- 등록 시 기본값은 reviewSave -->
-			  <input type="hidden" name="t_gubun" value="reviewSave">
+			  <!-- 값을 비워두고 JavaScript에서 설정하도록 변경 -->
+			  <input type="hidden" name="t_gubun" id="t_gubun" value="">
 			  <input type="hidden" name="movieId" id="movieId" value="">
 			  <!-- 선택된 별점 값을 전송하기 위한 히든필드 -->
 			  <input type="hidden" id="ratingValue" name="ratingValue" value="0">
@@ -258,7 +264,6 @@
 	</footer>
 <script type="text/javascript">
 	var isUpdateMode = false; // false: 등록 모드, true: 수정 모드
-
 
 	const ids = ['reviewContent'];
 	
@@ -373,12 +378,10 @@
     	    }
     	    
     	    if (isUpdateMode) {
-    	         // 수정 모드: AJAX 중복 체크 건너뜀
-    	         // (숨은 필드 t_gubun는 이미 "ReviewUpdate"로 설정됨)
-    	         this.submit();
-    	         // 제출 후 수정 모드 초기화 (필요하다면)
-    	         isUpdateMode = false;
+    	        document.getElementById('t_gubun').value = "ReviewUpdate";
+    	        this.submit();
     	    } else {
+    	    	document.getElementById('t_gubun').value = "reviewSave";
     	         // 등록 모드: AJAX 호출로 중복 등록 여부 확인
     	         $.ajax({
     	             url: "CheckRatingMember",
@@ -393,7 +396,8 @@
     	                     alert("이미 리뷰를 작성하였습니다!");
     	                     return;
     	                 } else {
-    	                     document.getElementById('reviewForm').submit();
+	   	                	   document.getElementById('t_gubun').value = "reviewSave";
+	   	                       document.getElementById('reviewForm').submit();
     	                 }
     	             },
     	             error: function(xhr, status, error) {
@@ -417,21 +421,17 @@
     	    // 폼에 기존 데이터 채워넣기
     	    document.getElementById('ratingValue').value = rating;
     	    document.getElementById('reviewContent').value = content;
-    	    fixedRating = parseInt(rating); // 별점 UI와 연동
+    	    document.getElementById('t_gubun').value = "ReviewUpdate";  // ID를 사용하여 직접 접근
+    	    
+    	    fixedRating = parseInt(rating);
     	    updateStars(fixedRating);
     	    
-    	    // 수정 모드로 전환
     	    isUpdateMode = true;
-    	    
-    	    // 숨은 필드 t_gubun의 값을 "ReviewUpdate"로 강제로 업데이트  
-    	    var tGubunEl = document.querySelector('input[name="t_gubun"]');
-    	    tGubunEl.value = "ReviewUpdate";
-    	    tGubunEl.setAttribute("value", "ReviewUpdate");
     	    
     	    // 버튼 텍스트를 "수정"으로 변경
     	    document.querySelector('#reviewForm button[type="submit"]').textContent = "수정";
     	    
-    	    // 수정 폼 영역으로 스크롤 이동 (옵션)
+    	    // 수정 폼 영역으로 스크롤 이동
     	    document.getElementById('movie-review').scrollIntoView({ behavior: 'smooth' });
     	}
     
