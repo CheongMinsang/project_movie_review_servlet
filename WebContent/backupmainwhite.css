@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #121212;
+    background-color: white;
     color: white;
 }
 
@@ -503,7 +503,7 @@ footer a:hover {
 
 /* 기존 .movie 관련 스타일을 모두 아래 내용으로 교체해주세요 */
 .slider-container {
-    max-width: 2200px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -511,17 +511,14 @@ footer a:hover {
 .movie {
     position: relative;
     width: 280px;           /* 카드 너비 증가 */
-    border-radius: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    background-color: #1f1f1f;    /* 배경색 변경 */
+    background-color: white;    /* 배경색 변경 */
+    transition: transform 0.3s ease;
     text-align: center;           /* 내용 가운데 정렬 */
-    border: 2px solid #121212;
-    transition: border-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
-.movie:hover {
-	border: 2px solid #ffa500;
-}
+
 .movie img {
     width: 100%;
     height: auto;
@@ -531,19 +528,19 @@ footer a:hover {
 
 .movie-info {
     padding: 15px;
-    background-color: #1f1f1f;    /* 정보 영역 배경색도 변경 */
+    background-color: white;    /* 정보 영역 배경색도 변경 */
 }
 
 .movie h2 {
     font-size: 1.2em;
     margin: 0 0 10px 0;
-    color: white;              /* 제목 색상 흰색으로 */
+    color: black;              /* 제목 색상 흰색으로 */
     text-align: center;        /* 제목 가운데 정렬 */
 }
 
 .movie p {
     margin: 5px 0;
-    color: white;              /* 개봉일 텍스트 색상 흰색으로 */
+    color: black;              /* 개봉일 텍스트 색상 흰색으로 */
     text-align: center;        /* 개봉일 가운데 정렬 */
 }
 
@@ -562,6 +559,7 @@ footer a:hover {
 /* 슬라이더 관련 스타일도 수정 */
 .slider .movie {
     margin: 10px;
+    background-color: white;
     border-radius: 10px;
 }
 

@@ -123,7 +123,7 @@
                 <div class="movie-poster">
                     <img src="https://image.tmdb.org/t/p/w500<%= movieDetail.optString("poster_path", "") %>" alt="포스터">
                 </div>
-                <div class="movie-info">
+                <div class="movie-info" style="background-color: #121212;">
                     <h2>영화 정보</h2>
                     <p>개봉일: <%= movieDetail.optString("release_date", "N/A") %></p>
                     <p class="vote-average"><i class="fa-solid fa-star"></i> <%= String.format("%.1f", movieDetail.optDouble("vote_average", 0.0)) %></p>

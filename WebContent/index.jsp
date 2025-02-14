@@ -109,13 +109,16 @@
                             double voteAverage = movie.getDouble("vote_average");
                 %>
                 <div class="movie">
-                    <a href="MovieDetail?id=<%= movieId %>">
-                        <img src="https://image.tmdb.org/t/p/w200<%= movie.optString("poster_path", "") %>" alt="<%= title %>">
-                        <h2><%= title %></h2>
-                        <p>개봉일: <%= releaseDate %></p>
-                        <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></span></div>
-                    </a>
-                </div>
+				    <a href="MovieDetail?id=<%= movieId %>">
+				        <img src="https://image.tmdb.org/t/p/w500<%= movie.optString("poster_path", "") %>" 
+				             alt="<%= title %>">
+				        <div class="movie-info">
+				            <h2><%= title %></h2>
+				            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></div>
+				            <p>개봉일: <%= releaseDate %></p>
+				        </div>
+				    </a>
+				</div>
                 <%
                         }
                     }
@@ -141,14 +144,17 @@
                            String releaseDate = movie.getString("release_date");
                            double voteAverage = movie.getDouble("vote_average");
                 %>
-                    <div class="movie">
-                        <a href="MovieDetail?id=<%= movieId %>">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.optString("poster_path", "") %>" alt="<%= title %>">
-                            <h2><%= title %></h2>
-                            <p>개봉일: <%= releaseDate %></p>
-                            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></span></div>
-                        </a>
-                  </div>
+                <div class="movie">
+				    <a href="MovieDetail?id=<%= movieId %>">
+				        <img src="https://image.tmdb.org/t/p/w500<%= movie.optString("poster_path", "") %>" 
+				             alt="<%= title %>">
+				        <div class="movie-info">
+				            <h2><%= title %></h2>
+				            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></div>
+				            <p>개봉일: <%= releaseDate %></p>
+				        </div>
+				    </a>
+				</div>
                 <%    }
                    } else { %>
                     <p>영화 데이터를 불러오는 중 오류가 발생했습니다.</p>
@@ -174,14 +180,17 @@
                            String releaseDate = movie.getString("release_date");
                            double voteAverage = movie.getDouble("vote_average");
                 %>
-                    <div class="movie">
-                        <a href="MovieDetail?id=<%= movieId %>">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.optString("poster_path", "") %>" alt="<%= title %>">
-                            <h2><%= title %></h2>
-                            <p>개봉일: <%= releaseDate %></p>
-                            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></span></div>
-                        </a>
-                   </div>
+                <div class="movie">
+				    <a href="MovieDetail?id=<%= movieId %>">
+				        <img src="https://image.tmdb.org/t/p/w500<%= movie.optString("poster_path", "") %>" 
+				             alt="<%= title %>">
+				        <div class="movie-info">
+				            <h2><%= title %></h2>
+				            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></div>
+				            <p>개봉일: <%= releaseDate %></p>
+				        </div>
+				    </a>
+				</div>
                 <%    }
                    } else { %>
                     <p>영화 데이터를 불러오는 중 오류가 발생했습니다.</p>
