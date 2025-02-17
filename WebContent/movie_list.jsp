@@ -108,8 +108,8 @@
                 <a href="MovieDetail?id=<%= movieId %>">
                     <img src="https://image.tmdb.org/t/p/w200<%= movie.optString("poster_path", "") %>" alt="<%= title %>">
                     <h2><%= title %></h2>
-                    <p class="release-date">개봉일: <%= releaseDate %></p>
                     <p class="vote-average"><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></p>
+                    <p class="release-date">개봉일: <%= releaseDate %></p>
                 </a>
             </div>
             <% 
