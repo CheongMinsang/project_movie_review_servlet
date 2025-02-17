@@ -30,6 +30,7 @@ import command.member.MemberMyinfoUpdate;
 import command.member.ReviewDelete;
 import command.member.ReviewSave;
 import command.member.ReviewUpdate;
+import command.member.goDeleteRecommend;
 import command.member.goGetRecoList;
 import command.member.goMemberInfo;
 import command.member.goSaveRecommend;
@@ -144,17 +145,28 @@ public class Index extends HttpServlet {
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
-		}else if(gubun.equals("goRecoList")) {
-			CommonExecute mem = new goGetRecoList();
+		}else if(gubun.equals("goDeleteRecommend")) {
+			CommonExecute mem = new goDeleteRecommend();
 			mem.execute(request);
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("recommendMovie.jsp");
-			//dispatcher.forward(request, response);
-			
-		    // goGetRecoList에서 설정한 idString 값을 꺼냄
-		    String idString = (String) request.getAttribute("idString");
-		    
-		    // RecommendMovieServlet이 매핑된 URL로 redirect
-		    response.sendRedirect("recommend-movie?id=" + idString);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response);
+		}else if(gubun.equals("goRecoList")) {
+		    try {
+		        CommonExecute mem = new goGetRecoList();
+		        mem.execute(request);
+		        
+		        String idString = (String) request.getAttribute("id");
+		        
+		        // 응답을 커밋하기 전에 리다이렉트
+		        if (idString != null && !idString.isEmpty()) {
+		            response.setStatus(HttpServletResponse.SC_FOUND); // 302 상태 코드 설정
+		            response.setHeader("Location", "recommend-movie?id=" + idString);
+		            return; // 중요: 여기서 메소드 실행을 종료
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		    }
 		}
 		
 		try { 

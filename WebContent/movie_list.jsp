@@ -44,7 +44,7 @@
 			<a href="MovieList?t_gubun=top_rated&page=1">
 				<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 높은 평점 목록</button>
 			</a>	
-			<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 추천 영화 목록</button>
+			<button class="filter-btn2" onclick="goReco()"><i class="fa-solid fa-bars"></i> 추천 영화 목록</button>
 			<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 리뷰 많은 순</button>
 		</div>	
 	</div>
@@ -107,9 +107,11 @@
             <div class="movie-item">
                 <a href="MovieDetail?id=<%= movieId %>">
                     <img src="https://image.tmdb.org/t/p/w200<%= movie.optString("poster_path", "") %>" alt="<%= title %>">
-                    <h2><%= title %></h2>
-                    <p class="vote-average"><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></p>
-                    <p class="release-date">개봉일: <%= releaseDate %></p>
+                    <div class="movie-info">
+	                    <h2><%= title %></h2>
+	                    <p class="vote-average"><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></p>
+	                    <p class="release-date">개봉일: <%= releaseDate %></p>
+	                </div>    
                 </a>
             </div>
             <% 
@@ -195,6 +197,12 @@
 	        });
 	    }
 	});
+	function goReco(){
+		mem.t_gubun.value="goRecoList";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
 </script>    
 </body>
 </html>

@@ -11,6 +11,8 @@
 
 	MovieDao dao = new MovieDao();
 	ArrayList<MovieDto> dtos = dao.getRatingList(movieId);
+	
+	int count = dao.getRecommendList(movieId);
 %>
 
 <!DOCTYPE html>
@@ -64,7 +66,7 @@
 			<a href="MovieList?t_gubun=top_rated&page=1">
 				<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 높은 평점 목록</button>
 			</a>	
-			<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 추천 영화 목록</button>
+			<button class="filter-btn2" onclick="goReco()"><i class="fa-solid fa-bars"></i> 추천 영화 목록</button>
 			<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 리뷰 많은 순</button>
 		</div>	
 	</div>
@@ -119,9 +121,15 @@
 	            <c:if test="${sessionLevel eq 'top'}">
 	                <button type="button" class="recommend-btn">
 	                	<!-- <i class="fa-solid fa-circle-check"></i> 추천영화등록하기 --> 
+	                	<% if(count == 0){ %>
 	                	<a href="javascript:goRecommendSave()" style="text-decoration: none; color: inherit;">
 	                		<i class="fa-regular fa-circle-check"></i> 추천 영화 등록
 	                	</a>
+		               	<% } else if(count == 1){ %>	
+			                	<a href="javascript:goRecommendDelete()" style="text-decoration: none; color: inherit;">
+			                		<i class="fa-regular fa-circle-xmark"></i> 추천 영화 삭제
+			                	</a>
+		                <% } %>
 	                </button>
 	            </c:if>
 	        </div>
@@ -471,6 +479,25 @@
             return;
         }
     }
+    function goRecommendDelete() {
+    	const movieId = getIdFromUrl();
+        document.getElementById('movieId').value = movieId;
+
+        if (confirm("추천 영화 목록에서 삭제하시겠습니까?")) {
+            document.reco.t_gubun.value = "goDeleteRecommend";
+            document.reco.method = "post";
+            document.reco.action = "Index";
+            document.reco.submit();
+        } else {
+            return;
+        }
+    }
+	function goReco(){
+		mem.t_gubun.value="goRecoList";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
 </script>	
 </body>
 <style>

@@ -18,6 +18,28 @@ public class MovieDao {
 	PreparedStatement	ps  = null;
 	ResultSet 			rs  = null;
 	
+	// 추천영화목록에 들어가있는지 확인
+		public int getRecommendList(String id) {
+			int count=0;
+			String query="select count(*) as count\r\n" + 
+					"    from pjt_정민상_recommend \r\n" + 
+					"    where movieid ='"+id+"'";
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				rs  = ps.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt("count");
+				}
+			}catch(Exception e) {
+				System.out.println("getRecommendList() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return count;
+		}
+	
 	// 리뷰 목록 가져오기
 	public ArrayList<MovieDto> getRatingList(String id){
 		ArrayList<MovieDto> dtos = new ArrayList<>();
@@ -556,6 +578,24 @@ public class MovieDao {
 				result = ps.executeUpdate();
 			}catch(Exception e) {
 				System.out.println("goReviewDelete() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return result;
+		}
+		
+		// 추천영화 삭제
+		public int deleteReco(String movieId) {
+			int result=0;
+			String query="delete from pjt_정민상_recommend\r\n" + 
+					"where movieid ='"+movieId+"'";
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				result = ps.executeUpdate();
+			}catch(Exception e) {
+				System.out.println("deleteReco() 오류:"+query);
 				e.printStackTrace();
 			}finally {
 				DBConnection.closeDB(con, ps, rs);

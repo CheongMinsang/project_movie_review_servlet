@@ -22,9 +22,13 @@ public class RecommendMovieServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+    	 // request parameter 대신 attribute에서 값을 가져옴
+        String ids = request.getParameter("id");  // URL 파라미터로 온 경우
+        if (ids == null) {
+            ids = (String) request.getAttribute("movieIds");  // forward로 온 경우
+        }
         
-        // 추천 영화 ID 받기 (쉼표로 구분된 여러 ID 처리 가능)
-        String[] recommendedMovieIds = request.getParameter("id").split(",");
+        String[] recommendedMovieIds = ids.split(",");
         List<JSONObject> recommendedMovies = new ArrayList<>();
         
         for (String id : recommendedMovieIds) {

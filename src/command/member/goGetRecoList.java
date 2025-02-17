@@ -29,6 +29,6 @@ public class goGetRecoList implements CommonExecute {
         
         // 구성된 id 문자열을 request 속성에 저장
         // (혹은 바로 redirect URL에 사용할 수 있도록 값으로 전달)
-        request.setAttribute("idString", idBuilder.toString());
+        request.setAttribute("id", idBuilder.toString());
     }
 }

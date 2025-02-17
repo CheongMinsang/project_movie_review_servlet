@@ -516,11 +516,13 @@ footer a:hover {
     background-color: #1f1f1f;    /* 배경색 변경 */
     text-align: center;           /* 내용 가운데 정렬 */
     border: 2px solid #121212;
-    transition: border-color 0.3s ease;
+    /* transition: border-color 0.3s ease; */
+    transition: transform 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 .movie:hover {
-	border: 2px solid #ffa500;
+	/* border: 2px solid #ffa500; */
+	transform: translateY(-5px);
 }
 .movie img {
     width: 100%;
@@ -538,19 +540,19 @@ footer a:hover {
     font-size: 1.2em;
     margin: 0 0 10px 0;
     color: white;              /* 제목 색상 흰색으로 */
-    text-align: center;        /* 제목 가운데 정렬 */
+    text-align: left;
 }
 
 .movie p {
     margin: 5px 0;
     color: white;              /* 개봉일 텍스트 색상 흰색으로 */
-    text-align: center;        /* 개봉일 가운데 정렬 */
+    text-align: left;
 }
 
 .movie .rating {
     margin-top: 5px;
     color: gold;
-    text-align: center;        /* 평점 가운데 정렬 */
+    text-align: left;
 }
 
 .movie a {

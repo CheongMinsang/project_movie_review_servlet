@@ -21,8 +21,8 @@ body {
 
 .movie-item {
     position: relative;
-    width: 220px;
-    background-color: #2a2a2a;
+    width: 270px;
+    background-color: #1f1f1f;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -30,7 +30,8 @@ body {
 }
 
 .movie-item:hover {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+    transform: translateY(-5px);
 }
 
 .movie-item a {
@@ -54,18 +55,20 @@ body {
     font-size: 1.2em;
     margin: 0 0 10px 0;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 
 .movie-item p {
     margin: 5px 0;
     font-size: 14px;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 
 .movie-item p.vote-average {
+    margin-top: 5px;
     color: gold;
+    text-align: left;
 }
 
 .pagination {
@@ -92,6 +95,11 @@ body {
 
 .pagination a:hover {
     background-color: #333333;
+}
+
+.movie-info {
+    padding: 15px;
+    background-color: #1f1f1f;    /* 정보 영역 배경색도 변경 */
 }
 
 
