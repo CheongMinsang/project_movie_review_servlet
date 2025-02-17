@@ -30,7 +30,9 @@ import command.member.MemberMyinfoUpdate;
 import command.member.ReviewDelete;
 import command.member.ReviewSave;
 import command.member.ReviewUpdate;
+import command.member.goGetRecoList;
 import command.member.goMemberInfo;
+import command.member.goSaveRecommend;
 import common.CommonExecute;
 
 /**
@@ -137,6 +139,22 @@ public class Index extends HttpServlet {
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
+		}else if(gubun.equals("goSaveRecommend")) {
+			CommonExecute mem = new goSaveRecommend();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response);
+		}else if(gubun.equals("goRecoList")) {
+			CommonExecute mem = new goGetRecoList();
+			mem.execute(request);
+			//RequestDispatcher dispatcher = request.getRequestDispatcher("recommendMovie.jsp");
+			//dispatcher.forward(request, response);
+			
+		    // goGetRecoList에서 설정한 idString 값을 꺼냄
+		    String idString = (String) request.getAttribute("idString");
+		    
+		    // RecommendMovieServlet이 매핑된 URL로 redirect
+		    response.sendRedirect("recommend-movie?id=" + idString);
 		}
 		
 		try { 

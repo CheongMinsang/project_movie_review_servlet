@@ -27,6 +27,10 @@
 	<script src="js/jquery-1.8.1.min.js"></script>
 </head>
 <body>
+<form name="reco">
+	<input type="hidden" name="t_gubun" id="t_gubun" value="">
+	<input type="hidden" name="movieId" id="movieId" value="">
+</form>
 	<div class="user-wrap">
         <div class="user-image">
             <img src="images/1.jpg" alt="영화 리뷰 사이트" class="main-image">
@@ -115,7 +119,9 @@
 	            <c:if test="${sessionLevel eq 'top'}">
 	                <button type="button" class="recommend-btn">
 	                	<!-- <i class="fa-solid fa-circle-check"></i> 추천영화등록하기 --> 
-	                	<i class="fa-regular fa-circle-check"></i> 추천 영화 등록
+	                	<a href="javascript:goRecommendSave()" style="text-decoration: none; color: inherit;">
+	                		<i class="fa-regular fa-circle-check"></i> 추천 영화 등록
+	                	</a>
 	                </button>
 	            </c:if>
 	        </div>
@@ -444,6 +450,26 @@
 		} else {
 			return;
 		}    	
+    }
+    // URL에서 ID 값을 추출하는 함수
+    function getIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
+    }
+
+    // 추천 영화를 저장하는 함수
+    function goRecommendSave() {
+        const movieId = getIdFromUrl();
+        document.getElementById('movieId').value = movieId;
+
+        if (confirm("추천 영화로 등록하시겠습니까?")) {
+            document.reco.t_gubun.value = "goSaveRecommend";
+            document.reco.method = "post";
+            document.reco.action = "Index";
+            document.reco.submit();
+        } else {
+            return;
+        }
     }
 </script>	
 </body>

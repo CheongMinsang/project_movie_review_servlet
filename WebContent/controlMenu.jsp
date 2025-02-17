@@ -68,13 +68,19 @@
         <form name="mem">
         <input type="hidden" name="t_gubun">
             <button type="button" id="button1" onclick="goMemberList()">회원목록</button>
-            <button type="button" id="button1" onclick="goLogin()">추천영화목록</button>
+            <button type="button" id="button1" onclick="goReco()">추천영화목록</button>
             <button type="button" id="button1" onclick="goLogin()">리뷰관리</button>
         </form>
     </div>
 <script>
 	function goMemberList(){
 		mem.t_gubun.value="goMemberList";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function goReco(){
+		mem.t_gubun.value="goRecoList";
 		mem.method="post";
 		mem.action="Index";
 		mem.submit();

@@ -5,6 +5,14 @@ public class MovieDto {
 					nickname, gender, birthdate, phone, writeid, content, rating_date;
 	private int movieid, rating, no;
 	
+	
+	//추천영화목록
+	public MovieDto(String reg_date, int movieid, int no) {
+		this.reg_date = reg_date;
+		this.movieid = movieid;
+		this.no = no;
+	}
+
 	//가입회원목록조회
 	public MovieDto(String id, String name, String reg_date, String nickname, String gender, String birthdate,
 			String phone, String exit_date, String password) {
@@ -54,6 +62,14 @@ public class MovieDto {
 	
 	public MovieDto() {}
 	
+	//추천영화등록시
+	public MovieDto(String writeid, String reg_date, int movieid, int no) {
+		this.writeid = writeid;
+		this.reg_date = reg_date;
+		this.movieid = movieid;
+		this.no = no;
+	}
+
 	public String getId() {
 		return id;
 	}

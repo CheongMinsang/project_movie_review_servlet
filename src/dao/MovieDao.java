@@ -363,7 +363,29 @@ public class MovieDao {
 			}
 			return result;
 		}
-
+		
+		//추천영화등록시 가장 큰 넘버
+		public int getMaxRecoTabelNumber() {
+			int result =0;
+			String query ="select nvl(max(to_number(no)),0) +1 as no\r\n" + 
+					"from pjt_정민상_recommend";
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				rs  = ps.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt("no");
+				}
+			}catch(Exception e) {
+				System.out.println("getMaxRecoTabelNumber() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return result;
+		}
+		
+		//평가시 가장 큰 넘버
 		public int getMaxRatingTabelNumber() {
 			int result =0;
 			String query ="select nvl(max(to_number(no)),0) +1 as no\r\n" + 
@@ -539,5 +561,63 @@ public class MovieDao {
 				DBConnection.closeDB(con, ps, rs);
 			}
 			return result;
+		}
+		
+		// 추천영화 저장
+		public int saveReco(MovieDto dto) {
+			int result=0;
+			String query="insert into pjt_정민상_recommend\r\n" + 
+					"(no, movieid, writeid, reg_date)\r\n" + 
+					"values\r\n" + 
+					"("+dto.getNo()+", "+dto.getMovieid()+",'"+dto.getWriteid()+"',\r\n" + 
+					"to_date('"+dto.getReg_date()+"','yyyy-MM-dd hh24:mi:ss')\r\n" + 
+					")";
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				result = ps.executeUpdate();
+			}catch(Exception e) {
+				System.out.println("saveReco() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return result;
+		}
+		//추천영화목록 가져오기
+		public ArrayList<MovieDto> getRecoList(String writeid) {
+			ArrayList<MovieDto> dtos = new ArrayList<>();
+			String query ="select no,movieid,reg_date\r\n" + 
+					"from pjt_정민상_recommend\r\n" + 
+					"where writeid='"+writeid+"'\r\n" + 
+					"order by no" ;
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				rs  = ps.executeQuery();
+				while(rs.next()) {
+					int no = rs.getInt("no");
+					int movieid = rs.getInt("movieid");
+					String reg_date =rs.getString("reg_date");
+					
+					Timestamp timestamp = Timestamp.valueOf(reg_date);
+					Date date = new Date(timestamp.getTime());
+
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					String formattedDate = formatter.format(date);
+					
+					reg_date = formattedDate;
+					
+					MovieDto dto = new MovieDto(reg_date, movieid, no);
+					dtos.add(dto);
+					
+				}
+			}catch(Exception e) {
+				System.out.println("getRecoList() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return dtos;
 		}
 }
