@@ -11,7 +11,7 @@ public class goGetRecoList implements CommonExecute {
     @Override
     public void execute(HttpServletRequest request) {
         // 세션에서 사용자 식별값(예: sessionId) 가져오기
-        String sessionId = (String) request.getSession().getAttribute("sessionId");
+        String sessionId = "admin@naver.com";
         
         // DAO를 통해 추천 영화 목록 조회 (MovieDao와 MovieDto는 미리 구현되어 있다고 가정)
         MovieDao dao = new MovieDao();

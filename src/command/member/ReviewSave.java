@@ -29,8 +29,8 @@ public class ReviewSave implements CommonExecute {
 		int result = dao.getRating(dto);
 		
 		String msg = "";
-		if(result == 1) msg = "리뷰가 등록 되었습니다.";
-		else msg = "리뷰등록 실패!! 관리자에게 문의 바랍니다.";
+		if(result == 1) msg = "리뷰가 등록되었습니다.";
+		else msg = "리뷰 등록 실패!! 관리자에게 문의 바랍니다.";
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", "javascript:history.back();");

@@ -19,11 +19,12 @@ public class MovieDao {
 	ResultSet 			rs  = null;
 	
 	// 추천영화목록에 들어가있는지 확인
-		public int getRecommendList(String id) {
+		public int getRecommendList(String id, String writeid) {
 			int count=0;
 			String query="select count(*) as count\r\n" + 
 					"    from pjt_정민상_recommend \r\n" + 
-					"    where movieid ='"+id+"'";
+					"    where movieid ='"+id+"'\r\n" + 
+					"    and writeid ='"+writeid+"'";
 			try {
 				con = DBConnection.getConnection();
 				ps  = con.prepareStatement(query);
@@ -586,10 +587,11 @@ public class MovieDao {
 		}
 		
 		// 추천영화 삭제
-		public int deleteReco(String movieId) {
+		public int deleteReco(String movieId, String writeId) {
 			int result=0;
 			String query="delete from pjt_정민상_recommend\r\n" + 
-					"where movieid ='"+movieId+"'";
+					"where movieid ='"+movieId+"'\r\n" + 
+					"and writeid ='"+writeId+"'";
 			try {
 				con = DBConnection.getConnection();
 				ps  = con.prepareStatement(query);

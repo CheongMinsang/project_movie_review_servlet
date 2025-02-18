@@ -1,5 +1,7 @@
 package command.member;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +21,9 @@ public class MemberMyinfo implements CommonExecute {
 		
 		MovieDto dto = dao.getMemberInfo(id);
 		request.setAttribute("dto", dto);
+		
+		//ArrayList<MovieDto> dtos = dao.getUserRecoList(id);
+		//ArrayList<MovieDto> daos = dao.getUserReviewList(id);
 
 	}
 

@@ -29,8 +29,8 @@ public class ReviewUpdate implements CommonExecute {
 		int result = dao.getRatingUpdate(dto);
 		
 		String msg = "";
-		if(result == 1) msg = "리뷰가 수정 되었습니다.";
-		else msg = "리뷰수정 실패!! 관리자에게 문의 바랍니다.";
+		if(result == 1) msg = "리뷰가 수정되었습니다.";
+		else msg = "리뷰 수정 실패!! 관리자에게 문의 바랍니다.";
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", "javascript:history.back();");

@@ -20,7 +20,7 @@ public class ReviewDelete implements CommonExecute {
 		int result = dao.goReviewDelete(movieid,writeid);
 		
         String msg = "";
-		if(result == 1) msg = "리뷰가 삭제 되었습니다!";
+		if(result == 1) msg = "리뷰가 삭제되었습니다!";
 		else msg = "리뷰 삭제 실패!! 관리자에게 문의 바랍니다.";
 		
 		request.setAttribute("msg", msg);

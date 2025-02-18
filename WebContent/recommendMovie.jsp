@@ -99,7 +99,7 @@
 			</a>
 			<a href="MovieList?t_gubun=top_rated&page=1">
 				<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 높은 평점 목록</button>
-			</a>	
+			</a>
 			<button class="filter-btn2" onclick="goReco()"><i class="fa-solid fa-bars"></i> 추천 영화 목록</button>
 			<button class="filter-btn2"><i class="fa-solid fa-bars"></i> 리뷰 많은 순</button>
 		</div>
