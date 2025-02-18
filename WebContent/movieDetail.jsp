@@ -32,7 +32,7 @@
 </head>
 <body>
 <form name="reco">
-	<input type="hidden" name="t_gubun" id="t_gubun" value="">
+	<input type="hidden" name="t_gubun" id="recoT_gubun" value="">
 	<input type="hidden" name="movieId" id="movieId" value="">
 </form>
 	<div class="user-wrap">
@@ -269,8 +269,8 @@
 			<form id="reviewForm" name="reviewForm" action="Index" method="post">
 			  <!-- 등록 시 기본값은 reviewSave -->
 			  <!-- 값을 비워두고 JavaScript에서 설정하도록 변경 -->
-			  <input type="hidden" name="t_gubun" id="t_gubun" value="">
-			  <input type="hidden" name="movieId" id="movieId" value="">
+			  <input type="hidden" name="t_gubun" id="reviewT_gubun" value="">
+			  <input type="hidden" name="movieId" id="reviewMovieId" value="">
 			  <!-- 선택된 별점 값을 전송하기 위한 히든필드 -->
 			  <input type="hidden" id="ratingValue" name="ratingValue" value="0">
 			  
@@ -314,7 +314,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const movieIdParam = urlParams.get('id');
     if(movieIdParam) {
-      document.getElementById('movieId').value = movieIdParam;
+      document.getElementById('reviewMovieId').value = movieIdParam;
     }
     
     /***********************
@@ -408,10 +408,10 @@
     	    }
     	    
     	    if (isUpdateMode) {
-    	        document.getElementById('t_gubun').value = "ReviewUpdate";
+    	        document.getElementById('reviewT_gubun').value = "ReviewUpdate";
     	        this.submit();
     	    } else {
-    	    	document.getElementById('t_gubun').value = "reviewSave";
+    	    	document.getElementById('reviewT_gubun').value = "reviewSave";
     	         // 등록 모드: AJAX 호출로 중복 등록 여부 확인
     	         $.ajax({
     	             url: "CheckRatingMember",
@@ -426,7 +426,7 @@
     	                     alert("이미 리뷰를 작성하였습니다!");
     	                     return;
     	                 } else {
-	   	                	   document.getElementById('t_gubun').value = "reviewSave";
+	   	                	   document.getElementById('reviewT_gubun').value = "reviewSave";
 	   	                       document.getElementById('reviewForm').submit();
     	                 }
     	             },
@@ -436,7 +436,12 @@
     	         });
     	    }
     	});
-
+     // URL에서 ID 값을 추출하는 함수
+     function getIdFromUrl() {
+         const urlParams = new URLSearchParams(window.location.search);
+         return urlParams.get('id');
+     }
+    
      function goFix(){
     	    var myReview = document.getElementById('myReview');
     	    if (!myReview) {
@@ -448,10 +453,18 @@
     	    var rating = myReview.getAttribute('data-rating');
     	    var content = myReview.getAttribute('data-content');
     	    
+    	    // movieId 가져오기
+    	    const movieId = getIdFromUrl();
+    	    if (!movieId) {
+    	        alert("영화 정보를 찾을 수 없습니다.");
+    	        return;
+    	    }
+    	    
     	    // 폼에 기존 데이터 채워넣기
+    	    document.getElementById('reviewMovieId').value = movieId;
     	    document.getElementById('ratingValue').value = rating;
     	    document.getElementById('reviewContent').value = content;
-    	    document.getElementById('t_gubun').value = "ReviewUpdate";  // ID를 사용하여 직접 접근
+    	    document.getElementById('reviewT_gubun').value = "ReviewUpdate";  // ID를 사용하여 직접 접근
     	    
     	    fixedRating = parseInt(rating);
     	    updateStars(fixedRating);
@@ -474,11 +487,6 @@
 		} else {
 			return;
 		}    	
-    }
-    // URL에서 ID 값을 추출하는 함수
-    function getIdFromUrl() {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('id');
     }
     function goRecommendSave(sessionLevel) {
     	const movieId = getIdFromUrl();
