@@ -33,6 +33,7 @@ import command.member.ReviewUpdate;
 import command.member.goDeleteRecommend;
 import command.member.goGetRecoList;
 import command.member.goMemberInfo;
+import command.member.goSaveMovieList;
 import command.member.goSaveRecommend;
 import common.CommonExecute;
 
@@ -120,6 +121,9 @@ public class Index extends HttpServlet {
 		}else if(gubun.equals("controlMenu")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("controlMenu.jsp");
 		    dispatcher.forward(request, response); 
+		}else if(gubun.equals("MemberControlMenu")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("MemberControlMenu.jsp");
+		    dispatcher.forward(request, response); 
 		}else if(gubun.equals("goMemberList")) {
 			CommonExecute mem = new MemberList();
 			mem.execute(request);
@@ -161,6 +165,24 @@ public class Index extends HttpServlet {
 		        if (idString != null && !idString.isEmpty()) {
 		            response.setStatus(HttpServletResponse.SC_FOUND); // 302 상태 코드 설정
 		            response.setHeader("Location", "recommend-movie?id=" + idString);
+		            return; // 중요: 여기서 메소드 실행을 종료
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		    }
+		//회원 저장한 영화목록    
+		}else if(gubun.equals("goSaveMovieList")) {
+		    try {
+		        CommonExecute mem = new goSaveMovieList();
+		        mem.execute(request);
+		        
+		        String idString = (String) request.getAttribute("id");
+		        
+		        // 응답을 커밋하기 전에 리다이렉트
+		        if (idString != null && !idString.isEmpty()) {
+		            response.setStatus(HttpServletResponse.SC_FOUND); // 302 상태 코드 설정
+		            response.setHeader("Location", "recommend-movie-member?id=" + idString);
 		            return; // 중요: 여기서 메소드 실행을 종료
 		        }
 		    } catch (Exception e) {

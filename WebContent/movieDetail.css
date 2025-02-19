@@ -184,14 +184,10 @@
 		    padding: 10px 15px;
 		    font-size: 1.5rem;
 		    border: none;
-		    background-color: #121212;
+		    background-color: #2a2a2a;
 		    color: white;
 		    cursor: pointer;
 		    transition: background-color 0.3s, transform 0.2s;
-		}
-		.filter-btn2:hover {
-		    background-color: #ff8c00;; /* 호버 시 강조 색상 */
-		    transform: scale(1.05); /* 살짝 확대 효과 */
 		}
 		 .movie-review {
 		      width: 80%;
@@ -331,4 +327,5 @@
 		.review-link:hover {
 			color: #ffa500;
 		}
+		
 		
