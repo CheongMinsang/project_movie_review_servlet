@@ -587,13 +587,15 @@ body .dropdown .dropdown-content {
 }
 
 /* container 클래스와의 충돌 방지 */
-body header .dropdown-content .container,
-body .dropdown .dropdown-content .container {
+/* dropdown 전용 컨테이너 스타일 */
+body header .dropdown-content .dropdown-container,
+body .dropdown .dropdown-content .dropdown-container {
     background-color: transparent !important;
     padding: 0 !important;
     max-width: none !important;
     margin: 0 !important;
 }
+
 
 /* menu-items 클래스 추가로 더 구체적인 선택자 사용 */
 body header .dropdown-content .menu-items button,

@@ -115,7 +115,7 @@
 			        <i class="fa-solid fa-clapperboard"></i> 영화
 			    </a>
 			    <div id="movieDropdown" class="dropdown-content">
-			        <div class="container">
+			        <div class="dropdown-container">
 			            <div class="menu-items">
 			                <a href="MovieList?t_gubun=popular&page=1">
 			                    <button type="button">
@@ -179,7 +179,7 @@
 					        <i class="fa-solid fa-list"></i> 회원메뉴
 					    </button>
 					    <div id="memberDropdown" class="dropdown-content">
-					        <div class="container">
+					        <div class="dropdown-container">
 					            <div class="menu-items">
 					                <button type="button" onclick="goMemberInfo()">
 					                    <i class="fa-solid fa-user"></i> 내 정보
