@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: white;
+    background-color: white;
+    color: #333;
 }
 
 /* 헤더 고정 */
@@ -149,8 +149,8 @@ header {
     margin-bottom: 20px;
 }
 footer {
-    background-color: #1f1f1f;
-    color: white;
+    background-color: white;
+    color: #333;
     padding: 20px;
     text-align: center;
     font-size: 0.9em;
@@ -212,6 +212,7 @@ footer a:hover {
     cursor: pointer; /* 커서 변경 */
     transition: transform 0.3s; /* 호버 효과 추가 */
     border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .cgv-image:hover {
@@ -283,7 +284,7 @@ footer a:hover {
 	font-size:40px;
 	font-family:'ypseo';
 	text-align:center;
-	 color: white;
+	color: white;
     font-size: 1rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
@@ -294,14 +295,13 @@ footer a:hover {
 .filter-section {
     margin: 20px;
     padding: 20px;
-    background-color: #1f1f1f; /* 배경색 */
+    background-color: white; /* 배경색 */
     color: white;
     text-align: center;
 }
 
 .filter-section2 {
     padding: 10px;
-    background-color: #121212; /* 배경색 */
     color: white;
     text-align: center;
 }
@@ -329,33 +329,39 @@ footer a:hover {
     padding: 10px 15px;
     font-size: 0.9rem;
     border: none;
-    background-color: #2a2a2a;
-    color: white;
+    background-color: white;
+    color: #333;
     cursor: pointer;
-    border: 2px solid #2a2a2a;
+    border: 1px solid #2a2a2a;
 	outline: none;
     transition: border-color 0.3s ease;
     border-radius: 20px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .filter-btn2 {
     padding: 10px 15px;
     font-size: 1.5rem;
     border: none;
-    background-color: #2a2a2a;
-    color: white;
+    background-color: white;
+    color: #333;
     cursor: pointer;
-    border: 2px solid #2a2a2a;
+    border: 1px solid #333;
 	outline: none;
     transition: border-color 0.3s ease;
     border-radius: 30px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .filter-btn:hover {
-    border: 2px solid #ffa500;
+    background-color: #333;
+    color: white;
 }
 .filter-btn2:hover {
-    border: 2px solid #ffa500;
+    background-color: #333;
+    color: white;
 }
 
 /* 모바일 대응 */
@@ -381,7 +387,7 @@ footer a:hover {
 
 .more-link {
     font-size: 25px; /* 작은 글씨 크기 설정 */
-    color: #fff; /* 링크 색상 설정 */
+    color: #aaa; /* 링크 색상 설정 */
     text-decoration: none; /* 밑줄 제거 */
     padding: 7px 7px; 
     margin-left: 5px; /* 왼쪽 여백 추가 */
@@ -418,7 +424,7 @@ footer a:hover {
 .search-input-wrapper input {
     padding: 13px 20px 10px 40px; /* 아이콘 공간 확보 */
     font-size: 1.1em;
-    border: 2px solid #2a2a2a;
+    border: 1px solid #2a2a2a;
     flex-grow: 1;
     box-sizing: border-box;
     height: 40px; /* 검색창 높이 설정 */
@@ -427,7 +433,7 @@ footer a:hover {
     border-radius: 20px;
 }
 .search-input-wrapper input:hover {
-	border: 2px solid #ffa500;	
+	border: 1px solid #ffa500;	
 }
 
 
@@ -486,19 +492,19 @@ footer a:hover {
     border-radius: 25px;
 }
 #submit{
-	border: 2px solid #ffa500;
+	border: 1px solid #ffa500;
 }
 #submit:hover{
 	background-color: #ff8c00;
-	border: 2px solid #ff8c00;
+	border: 1px solid #ff8c00;
 }
 #login-btn, #signup-btn, #login-btn-myinfo, #login-btn{
-	border: 2px solid #2a2a2a;
+	border: 1px solid #2a2a2a;
 	outline: none;
     transition: border-color 0.3s ease;
 }	
 #login-btn:hover, #signup-btn:hover, #login-btn-myinfo:hover, #login-btn:hover{
-	border: 2px solid #ffa500;	
+	border: 1px solid #ffa500;	
 }
 
 /* 기존 .movie 관련 스타일을 모두 아래 내용으로 교체해주세요 */
@@ -513,15 +519,14 @@ footer a:hover {
     width: 280px;           /* 카드 너비 증가 */
     border-radius: 10px;
     overflow: hidden;
-    background-color: #1f1f1f;    /* 배경색 변경 */
+    /* background-color: #1f1f1f; */    /* 배경색 변경 */
     text-align: center;           /* 내용 가운데 정렬 */
-    border: 2px solid #121212;
     /* transition: border-color 0.3s ease; */
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 .movie:hover {
-	/* border: 2px solid #ffa500; */
+	/* border: 1px solid #ffa500; */
 	transform: translateY(-5px);
 }
 .movie img {
@@ -533,19 +538,19 @@ footer a:hover {
 
 .movie-info {
     padding: 15px;
-    background-color: #1f1f1f;    /* 정보 영역 배경색도 변경 */
+    background-color: white;    /* 정보 영역 배경색도 변경 */
 }
 
 .movie h2 {
     font-size: 1.2em;
     margin: 0 0 10px 0;
-    color: white;              /* 제목 색상 흰색으로 */
+    color: black;              /* 제목 색상 흰색으로 */
     text-align: left;
 }
 
 .movie p {
     margin: 5px 0;
-    color: white;              /* 개봉일 텍스트 색상 흰색으로 */
+    color: #aaa;              /* 개봉일 텍스트 색상 흰색으로 */
     text-align: left;
 }
 
