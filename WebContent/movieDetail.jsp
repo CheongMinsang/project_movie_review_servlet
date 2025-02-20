@@ -153,7 +153,7 @@
                 <div class="movie-poster">
                     <img src="https://image.tmdb.org/t/p/w500<%= movieDetail.optString("poster_path", "") %>" alt="포스터">
                 </div>
-                <div class="movie-info" style="background-color: #121212;">
+                <div class="movie-info movie-info2" style="background-color: white;">
                     <h2>영화 정보</h2>
                     <p>개봉일: <%= movieDetail.optString("release_date", "N/A") %></p>
                     <p class="vote-average"><i class="fa-solid fa-star"></i> <%= String.format("%.1f", movieDetail.optDouble("vote_average", 0.0)) %></p>
@@ -300,7 +300,7 @@
 	ids.forEach(id => {
 	    const element = document.getElementById(id);
 	    element.addEventListener('focus', function() {
-	        this.style.borderColor = '#ffa500'; // 입력 중일 때 테두리 색을 오렌지색으로
+	        this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
 	    });
 	
 	    element.addEventListener('blur', function() {
@@ -534,10 +534,9 @@
 </body>
 <style>
 	body {
-	background-color: #121212; 
-	/* background-image: url('https://image.tmdb.org/t/p/w500<%= movieDetail.optString("poster_path", "") %>'); */
+	background-color: white; 
 	background-size: cover; 
-	color: #FFFFFF; 
+	color: black; 
 	font-family: Arial, sans-serif; 
 	margin: 0; 
 	padding: 0;

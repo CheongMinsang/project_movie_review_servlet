@@ -28,10 +28,10 @@
     <title>로그인 페이지</title>
     <style>
         body {
-            background-image: url('images/loginBackGround.jpg');
-            background-color: #121212;
+            /* background-image: url('images/loginBackGround.jpg'); */
+            background-color: white;
             background-size: 100%;
-            color: #FFFFFF;
+            color: #333;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -40,9 +40,12 @@
             margin: 0;
         }
         .container {
-            background-color: rgba(30, 30, 30, 0.9);
+            background-color: white;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+					    0 -4px 6px rgba(0, 0, 0, 0.1), 
+					    4px 0 6px rgba(0, 0, 0, 0.1),
+					    -4px 0 6px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
             position: relative;
@@ -52,47 +55,46 @@
             width: calc(100%); /* input 요소의 너비 조정 */
             padding: 10px 15px;
             margin: 10px 0;
-            border: 2px solid #FFFFFF;
-            background-color: #121212;
-            color: #FFFFFF;
+            border: 1px solid #e0e0e0;
+            background-color: white;
+            color: #333;
             outline: none;
     		transition: border-color 0.3s ease;
     		border-radius: 20px;
         }
         input[type="text"]:focus , input[type="password"]:focus {
-        	border-color: #ffa500;
+        	border-color: #292A31;
         }
         input[type="text"]:hover , input[type="password"]:hover {
-        	border-color: #ffa500;
+        	border-color: #292A31;
         }
         button {
             margin-top: 20px;
             width: 100%;
             padding: 10px;
             border: none;
-            background-color: #ffa500;
-            color: #fff;
+            background-color: #292A31;
+            color: white;
             font-size: 16px;
             cursor: pointer;
             border-radius: 20px;
         }
         button:hover {
-            background-color: #ff8c00;
+            background-color: black;
         }
         .home-link {
             position: absolute;
             top: 10px; /* 로그인 글자와 같은 높이로 설정 */
             left: 10px; /* 로그인 글자의 왼쪽 상단에 위치 */
             font-size: 14px;
-            color: #ffa500;
+            color: #292A31;
             text-decoration: none;
             display: flex;
             align-items: center;
             transition: transform 0.3s ease;
         }
         .home-link:hover {
-            color: #ff8c00;
-            transform: scale(1.2);
+            color: black;
         }
         .home-link i {
             margin-right: 5px; /* 아이콘과 텍스트 사이의 간격 조정 */
@@ -117,7 +119,7 @@
 	ids.forEach(id => {
 	    const element = document.getElementById(id);
 	    element.addEventListener('focus', function() {
-	        this.style.borderColor = '#ffa500'; // 입력 중일 때 테두리 색을 오렌지색으로
+	        this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
 	    });
 	
 	    element.addEventListener('blur', function() {

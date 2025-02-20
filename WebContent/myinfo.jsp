@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<link href="main.css" rel="stylesheet">
 <script>
     // 로그인 정보가 없을 때 alert를 띄우고 Index 페이지로 이동
     function redirectToIndex() {
@@ -40,7 +41,8 @@
         var inputs = document.querySelectorAll('#mem input[readonly]');
         inputs.forEach(function(input) {
             input.removeAttribute('readonly');
-            input.style.backgroundColor = '#121212';
+            input.style.backgroundColor = 'white';
+            input.style.border = '1px solid #292A31';
         });
        	alert("내 정보 수정이 가능합니다.");
     }
@@ -183,10 +185,9 @@
 <title>내 정보</title>
 <style>
     body {
-        background-image: url('images/loginBackGround.jpg');
-        background-color: #121212;
+        background-color: white;
         background-size: 100%;
-        color: #FFFFFF;
+        color: #333;
         font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
@@ -194,10 +195,16 @@
         height: 100vh;
         margin: 0;
     }
+    h2{
+    	color:black;
+    }
     .container {
-        background-color: rgba(30, 30, 30, 0.8);
+        background-color: white;
         padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+		            0 -4px 6px rgba(0, 0, 0, 0.1), 
+		            4px 0 6px rgba(0, 0, 0, 0.1),
+		            -4px 0 6px rgba(0, 0, 0, 0.1);
         width: 100%;
         max-width: 400px;
         max-height: 600px;
@@ -213,73 +220,78 @@
 
     /* 스크롤 바 트랙 */
     .container::-webkit-scrollbar-track {
-        background: #2a2a2a; /* 트랙 배경 색상 */
+        border-radius: 10px;
     }
 
     /* 스크롤 바 핸들 */
     .container::-webkit-scrollbar-thumb {
-        background: #ffa500; /* 핸들 배경 색상 */
+        background: #333; /* 핸들 배경 색상 */
         border-radius: 10px; /* 핸들 둥근 모서리 */
         height: 5px;
     }
 
     /* 스크롤 바 핸들 - 마우스 오버 상태 */
     .container::-webkit-scrollbar-thumb:hover {
-        background: #ff8c00; /* 오버 시 핸들 배경 색상 */
+        background: black; /* 오버 시 핸들 배경 색상 */
     }
     input[type="text"], input[type="password"] {
         width: calc(100%);
         padding: 10px 15px;
         margin: 10px 0;
-        border: 2px solid #FFFFFF;
-        background-color: #121212;
-        color: #FFFFFF;
+        border: 1px solid #e0e0e0;
+        background-color: white;
+        color: black;
         outline: none;
   		transition: border-color 0.3s ease;
   		border-radius: 20px;
     }
     input[type="text"]:hover, input[type="password"]:hover {
-    	border-color: #ffa500;
+    	border-color: #292A31;
     }
     input[type="text"]:focus, input[type="password"]:focus {
-    	border-color: #ffa500;
+    	border-color: #292A31;
     }
     input[readonly] {
-        background-color: #121212; /* 읽기 전용 필드 스타일 */
+        background-color: white; /* 읽기 전용 필드 스타일 */
     }
     input[disabled] {
-    	background-color: #555;
+    	background-color: white;
+    	color: #747474;
     }
     button {
         margin-top: 20px;
         width: 100%;
         padding: 10px;
         border: none;
-        background-color: #ffa500;
-        color: #fff;
+        background-color: #292A31;
+        border: 1px solid #e0e0e0;
+        color: white;
         font-size: 16px;
         cursor: pointer;
    		border-radius: 20px;
+   		transition: background-color 0.3s ease, color 0.3s ease;
     }
     button:disabled {
-        background-color: #555;
+    	color: #333;
+        background-color: white;
         cursor: not-allowed;
     }
     button:hover {
-        background-color: #ff8c00;
+        background-color: black;
+        color: white;
     }
     .home-link {
         position: absolute;
         top: 10px;
         left: 10px;
         font-size: 14px;
-        color: #ffa500;
+        color: #333;
         text-decoration: none;
         display: flex;
         align-items: center;
     }
     .home-link:hover {
-        color: #ff8c00;
+        color: black;
     }
     .home-link i {
         margin-right: 5px;
@@ -287,6 +299,7 @@
 </style>
 </head>
 <body>
+	
     <!-- 로그인 여부 체크 -->
     <c:if test="${empty sessionScope.sessionId}">
         <script>
@@ -305,13 +318,13 @@
 	        <label for="phone">비밀번호 입력</label>
 	            <input type="password" id="t_password" name="t_password" placeholder="비밀번호 입력" oninput="checkPassword()" required><br><br>    
 	        <label>이름</label>
-	            <input type="text" id="t_name" name="t_name" value="${dto.name}" readonly style="background-color: #555;"><br><br>
+	            <input type="text" id="t_name" name="t_name" value="${dto.name}" readonly style="background-color: white;"><br><br>
 	        <label>닉네임</label>  
-	            <input type="text" id="t_nickname" name="t_nickname" value="${dto.nickname}" readonly style="background-color: #555;"><br><br>
+	            <input type="text" id="t_nickname" name="t_nickname" value="${dto.nickname}" readonly style="background-color: white;"><br><br>
 	        <label for="birthDate">생년월일</label>   
-	            <input type="text" id="t_birthdate" name="t_birthdate" value="${dto.birthdate}" readonly style="background-color: #555;"><br><br>
+	            <input type="text" id="t_birthdate" name="t_birthdate" value="${dto.birthdate}" readonly style="background-color: white;"><br><br>
 	        <label for="phone">전화번호</label>
-	            <input type="text" id="t_phone" name="t_phone" value="${dto.phone}" readonly style="background-color: #555;"><br><br>
+	            <input type="text" id="t_phone" name="t_phone" value="${dto.phone}" readonly style="background-color: white;"><br><br>
 	        <label>성별</label>  
 	            <input type="text" id="t_gender" name="t_gender" value="${dto.gender}" disabled><br><br>
 	        <label for="phone">가입날짜</label>   

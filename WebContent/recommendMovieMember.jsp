@@ -22,7 +22,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             overflow: hidden;
-            background-color: #1f1f1f;
             transition: transform 0.3s ease;
         }
         
@@ -50,6 +49,7 @@
             font-size: 1.2em;
             font-weight: bold;
             margin-bottom: 10px;
+            color: black;
         }
         
         .recommend-rating {
@@ -60,7 +60,7 @@
         }
         
         .recommend-date {
-            color: white;
+            color: #2a2a2a;
             font-size: 0.9em;
         }
     </style>
@@ -105,7 +105,7 @@
 		</div>	
 	</div>		
     
-    <h1 style="text-align:center; margin-bottom:60px; margin-top:80px;">
+    <h1 style="text-align:center; margin-bottom:60px; margin-top:80px; color:#333;">
     	<i class="fa-solid fa-play"></i>&nbsp내가 저장한 영화
    	</h1>
    	

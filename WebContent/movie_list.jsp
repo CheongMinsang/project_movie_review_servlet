@@ -49,7 +49,7 @@
 		</div>	
 	</div>	
     <div class="movie-list-container" style="position: relative;">
-        <a href="javascript:history.back()" class="home-link">&nbsp&nbsp<i class="fa-solid fa-arrow-left"></i> </a>
+        <!-- <a href="javascript:history.back()" class="home-link">&nbsp&nbsp<i class="fa-solid fa-arrow-left"></i> </a> -->
         <h1>
 	        <%= request.getAttribute("pageTitle") %>
 	    	<span id="selectedGenreName"></span>
@@ -140,8 +140,8 @@
         %>
         <div class="pagination">
             <% if (currentPage > 1) { %>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=1&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>">&laquo;</a>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage - 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>">&lt;</a>
+                <a href="MovieList?t_gubun=<%= tGubun %>&page=1&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angles-left"></i></a>
+                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage - 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angle-left"></i></a>
             <% } %>
             
             <% for (int i = startPage; i <= endPage; i++) { %>
@@ -152,8 +152,8 @@
             <% } %>
             
             <% if (currentPage < totalPages) { %>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage + 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>">&gt;</a>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= totalPages %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>">&raquo;</a>
+                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage + 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angle-right"></i></a>
+                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= totalPages %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angles-right"></i></a>
             <% } %>
         </div>
     </div>
@@ -163,14 +163,14 @@
     </footer>
 <script>
 	document.getElementById('search-input').addEventListener('focus', function() {
-	    this.style.borderColor = '#ffa500'; // 입력 중일 때 테두리 색을 오렌지색으로
+	    this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
 	});
 	
 	document.getElementById('search-input').addEventListener('blur', function() {
 	    this.style.borderColor = ''; // 기본 테두리 색으로 돌아감
 	});
 	document.getElementById('sort').addEventListener('focus', function() {
-	    this.style.borderColor = '#ffa500'; // 입력 중일 때 테두리 색을 오렌지색으로
+	    this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
 	});
 	
 	document.getElementById('sort').addEventListener('blur', function() {

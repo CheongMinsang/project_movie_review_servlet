@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: white;
-    color: #333;
+    color: #747474;
 }
 
 /* 헤더 고정 */
@@ -11,13 +11,14 @@ header {
     justify-content: space-between; /* 양쪽 정렬 */
     align-items: center;
     padding: 10px 55px; /* 패딩 조정 */
-    background-color: #1f1f1f;
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); */
+    background-color: white;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     box-sizing: border-box; /* 전체 박스 크기 계산 포함 */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); */
+    border-bottom: 1px solid #e0e0e0;
 }
 
 /* 로고 스타일 */
@@ -30,14 +31,14 @@ header {
 }
 
 .logo a {
-    color: white;
+    color: #333;
     text-decoration: none;
     font-size: 1.2em;
     transition: transform 0.5s ease;
 }
 .logo a:hover{
 	/*transform: scale(1.05);*/
-	color: #ffa500;
+	color: #292A31;
 }
 
 /* 검색창 및 버튼 컨테이너 */
@@ -62,8 +63,8 @@ header {
     padding: 10px 10px;
     font-size: 1.2em;
     border: 1px solid #333;
-    background-color: #2a2a2a;
-    color: white;
+    background-color: white;
+    color: #333;
     width: 100%; /* 가용 공간에 맞게 확장 */
     max-width: 400px; /* 검색창 최대 너비 제한 */
     box-sizing: border-box;
@@ -98,15 +99,17 @@ header {
 }
 
 #login-btn-myinfo {
-    background-color: #2a2a2a; /* 원하는 색상 */
     padding: 8px 17px;
     font-size: 1.2em;
     border: none;
-    color: white;
+    color: #747474;
     cursor: pointer;
     flex-shrink: 0; /* 버튼 크기 유지 */
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
-
+#login-btn-myinfo:hover {
+	color: black !important;
+}
 .buttons button:disabled {
     background-color: #666;
 }
@@ -154,7 +157,7 @@ footer {
     padding: 20px;
     text-align: center;
     font-size: 0.9em;
-    border-top: 1px solid #333;
+    border-top: 1px solid #e0e0e0;
 	margin-top: 120px;
 }
 
@@ -330,14 +333,14 @@ footer a:hover {
     font-size: 0.9rem;
     border: none;
     background-color: white;
-    color: #333;
+    color: #747474;
     cursor: pointer;
-    border: 1px solid #2a2a2a;
+    border: 1px solid #e0e0e0;
 	outline: none;
     transition: border-color 0.3s ease;
     border-radius: 20px;
     transition: background-color 0.5s ease, color 0.5s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .filter-btn2 {
@@ -345,23 +348,21 @@ footer a:hover {
     font-size: 1.5rem;
     border: none;
     background-color: white;
-    color: #333;
+    color: #747474;
     cursor: pointer;
-    border: 1px solid #333;
+    border: 1px solid #e0e0e0;
 	outline: none;
     transition: border-color 0.3s ease;
     border-radius: 30px;
     transition: background-color 0.5s ease, color 0.5s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .filter-btn:hover {
-    background-color: #333;
-    color: white;
+    color: #292A31;
 }
 .filter-btn2:hover {
-    background-color: #333;
-    color: white;
+    color: #292A31;
 }
 
 /* 모바일 대응 */
@@ -383,11 +384,12 @@ footer a:hover {
     justify-content: center; /* 텍스트와 링크를 가운데 정렬 */
     align-items: center; /* 수직 정렬 */
     position: relative;
+    color: #333;
 }
 
 .more-link {
     font-size: 25px; /* 작은 글씨 크기 설정 */
-    color: #aaa; /* 링크 색상 설정 */
+    color: #747474; /* 링크 색상 설정 */
     text-decoration: none; /* 밑줄 제거 */
     padding: 7px 7px; 
     margin-left: 5px; /* 왼쪽 여백 추가 */
@@ -398,8 +400,8 @@ footer a:hover {
 }
 
 .more-link:hover {
-    transform: scale(1.1); 
-    color: #ffa500;
+    /* transform: scale(1.1); */ 
+    color: #292A31;
 }
 
 /* 검색창 스타일 */
@@ -424,7 +426,7 @@ footer a:hover {
 .search-input-wrapper input {
     padding: 13px 20px 10px 40px; /* 아이콘 공간 확보 */
     font-size: 1.1em;
-    border: 1px solid #2a2a2a;
+    border: 1px solid #e0e0e0;
     flex-grow: 1;
     box-sizing: border-box;
     height: 40px; /* 검색창 높이 설정 */
@@ -432,13 +434,14 @@ footer a:hover {
     transition: border-color 0.3s ease;
     border-radius: 20px;
 }
-.search-input-wrapper input:hover {
-	border: 1px solid #ffa500;	
-}
 
-
-.search-input-wrapper input:focus {
-	border-color: #ffa500; /* 입력 중일 때 테두리 색을 오렌지색으로 */
+/* .search-input-wrapper input 스타일 */
+.search-input-wrapper input:hover,
+.search-input-wrapper input:focus,
+#submit:hover {
+    border-color: #292A31;
+    border-radius: 20px;
+    border: 0.5px solid #292A31; 
 }
 .search-input-wrapper button {
     padding: 10px 20px;
@@ -469,7 +472,7 @@ footer a:hover {
     top: 0;
     height: 100%;
     border: none;
-    background-color: #ffa500;
+    background-color: #292A31;
     color: white;
     padding: 10px 20px;
     cursor: pointer;
@@ -486,25 +489,29 @@ footer a:hover {
     padding: 10px 20px;
     font-size: 1.2em;
     border: none;
-    background-color: #2a2a2a;
-    color: white;
+    background-color: white;
+    color: #747474;
     cursor: pointer;
     border-radius: 25px;
-}
+    transition: background-color 0.5s ease, color 0.5s ease;
+}	
 #submit{
-	border: 1px solid #ffa500;
+	backgroud-color: #292A31;
+	transition: background-color 0.5s ease, color 0.5s ease;
+	border: 1px solid #292A31;
 }
 #submit:hover{
-	background-color: #ff8c00;
-	border: 1px solid #ff8c00;
-}
+	background-color: black;
+	color: white;
+}	
 #login-btn, #signup-btn, #login-btn-myinfo, #login-btn{
-	border: 1px solid #2a2a2a;
+	border: 1px solid #e0e0e0;
 	outline: none;
-    transition: border-color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }	
 #login-btn:hover, #signup-btn:hover, #login-btn-myinfo:hover, #login-btn:hover{
-	border: 1px solid #ffa500;	
+	color: black !important;
+	border: 1px solid #e0e0e0;	
 }
 
 /* 기존 .movie 관련 스타일을 모두 아래 내용으로 교체해주세요 */
@@ -523,7 +530,7 @@ footer a:hover {
     text-align: center;           /* 내용 가운데 정렬 */
     /* transition: border-color 0.3s ease; */
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .movie:hover {
 	/* border: 1px solid #ffa500; */
@@ -550,7 +557,7 @@ footer a:hover {
 
 .movie p {
     margin: 5px 0;
-    color: #aaa;              /* 개봉일 텍스트 색상 흰색으로 */
+    color: #2a2a2a;              /* 개봉일 텍스트 색상 흰색으로 */
     text-align: left;
 }
 
@@ -581,8 +588,8 @@ body header .dropdown-content,
 body .dropdown .dropdown-content {
     display: none !important;
     position: absolute !important;
-    right: 0 !important;
-    background-color: #2a2a2a !important;
+    /* right: 0 !important; */
+    background-color: #fff !important;
     min-width: 200px !important;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1) !important;
     border-radius: 8px !important;
@@ -610,8 +617,8 @@ body .dropdown .dropdown-content .menu-items button {
     text-align: left !important;
     background: none !important;
     border: none !important;
-    border-radius: 4px !important;
-    color: #fff !important;
+    border-radius: 0px !important;
+    color: #333 !important;
     font-size: 14px !important;
     cursor: pointer !important;
     transition: background-color 0.2s !important;
@@ -622,8 +629,8 @@ body .dropdown .dropdown-content .menu-items button {
 
 body header .dropdown-content .menu-items button:hover,
 body .dropdown .dropdown-content .menu-items button:hover {
-    background-color: #3a3a3a !important;
-    color: #ffa500 !important;
+    background-color: #f5f5f5 !important;
+    color: black !important;
 }
 
 body header .dropdown-content .menu-items,
@@ -644,7 +651,7 @@ body .dropdown .dropdown-content .menu-items .close-btn {
 body header .movie-dropdown .movie-link,
 body .movie-dropdown .movie-link {
     text-decoration: none !important;
-    color: white !important;
+    color: #333 !important;
     cursor: pointer !important;
 }
 
@@ -653,4 +660,3 @@ body header .dropdown-content.show,
 body .dropdown .dropdown-content.show {
     display: block !important;
 }
-

@@ -22,7 +22,7 @@ body {
 .movie-item {
     position: relative;
     width: 270px;
-    background-color: #1f1f1f;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -54,14 +54,14 @@ body {
 .movie-item h2 {
     font-size: 1.2em;
     margin: 0 0 10px 0;
-    color: white;
+    color: black;
     text-align: left;
 }
 
 .movie-item p {
     margin: 5px 0;
     font-size: 14px;
-    color: white;
+    color: #2a2a2a;
     text-align: left;
 }
 
@@ -81,21 +81,25 @@ body {
 .pagination a {
     margin: 0 3px; /* 중앙 정렬을 유지하면서 여백 조정 */
     padding: 10px 25px;
-    background-color: #1f1f1f;
-    color: #ffffff;
+    background-color: white;
+    color: #333;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #e0e0e0;
     border-radius: 20px;
 }
 
 .pagination a.active {
-    background-color: #ffa500;
-    color: #fff;
+    background-color: #292A31;
+    color: white;
 }
 
 .pagination a:hover {
-    background-color: #333333;
+    background-color: #e0e0e0;
 }
+.pagination a.active:hover {
+	background-color: black;
+}	
 
 .movie-info {
     padding: 15px;
@@ -191,7 +195,6 @@ header {
 }
 
 #login-btn-myinfo {
-    background-color: #1f1f1f; /* 원하는 색상 */
     padding: 8px 17px;
     font-size: 1.2em;
     border: none;
@@ -225,10 +228,8 @@ header {
 }
 
 h1{
-	margin-left: 340px;
-}
-h1:hover,h2:hover{
-	color: #ffa500;
+	margin-left: 300px;
+	color: black !important;
 }	
 /* 검색창 및 버튼 스타일 */
 /* header 검색창 스타일 */
@@ -254,46 +255,50 @@ h1:hover,h2:hover{
 
 #mainSearchForm input[type="text"] {
     padding: 5px 15px;
-    background-color: #2a2a2a;
-    border: 2px solid #2a2a2a;
+    background-color: white;
+    border: 1px solid #e0e0e0;
     outline: none;
     transition: border-color 0.3s ease;
     border-radius: 20px;
-    color: white;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 #mainSearchForm input[type="text"]:hover {
-	border: 2px solid #ffa500;
+	border: 1px solid #292A31;
 }	
 #mainSearchForm input[type="text"]:focus {
-	border-color: #ffa500;
+	border-color: #292A31;
 }	
 #mainSearchForm select {
     margin-left: 10px;
     padding: 5px;
-    border: 2px solid #2a2a2a;
-    color: #fff;
-    background-color: #2a2a2a;
+    border: 1px solid #e0e0e0;
+    color: #333;
+    background-color: white;
     outline: none;
     transition: border-color 0.3s ease;
     border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 #mainSearchForm select:focus {
-	border-color: #ffa500;
+	border-color: #e0e0e0;
 }
 #mainSearchForm select:hover {
-	border: 2px solid #ffa500;
+	border: 1px solid #e0e0e0;
 }	
 #mainSearchForm button {
     margin-left: 10px;
     padding: 5px 10px;
     border: none;
-    color: #fff;
-    background-color: #ffa500;
+    color: white;
+    background-color: #292A31;
     cursor: pointer;
     border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 #mainSearchForm button:hover {
-    background-color: #ff8c00;
+    background-color: black;
+    color: white;
 }
 
 footer {
@@ -330,30 +335,31 @@ footer a:hover {
     margin: 0;
 }
 .genre-item {
-    border-top: 1px solid #444; /* 위쪽 선 색상 변경 */
+    border-top: 1px solid #e0e0e0; /* 위쪽 선 색상 변경 */
     padding: 5px 0; /* 패딩 축소 */
-    color: white; /* 글씨 색상 흰색 */
+    color: #333; /* 글씨 색상 흰색 */
     font-size: 18px; /* 글씨 크기 조정 */
 }
 .genre-item:first-child {
     border-top: none; /* 첫 항목 위쪽 선 제거 */
 }
 .genre-box {
-    border: 1px solid #444; /* 박스의 외곽선 색상 변경 */
+    border: 1px solid #e0e0e0; /* 박스의 외곽선 색상 변경 */
     padding: 10px;
-    background-color: #1f1f1f; /* 배경색 */
-    color: white; /* 박스의 글자 색상 흰색 */
+    background-color: white; /* 배경색 */
+    color: #333; /* 박스의 글자 색상 흰색 */
     flex-basis: 15%;
     margin-right: 20px; /* 오른쪽 여백 */
     flex-shrink: 0; /* 크기가 줄어들지 않도록 설정 */
     border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .genre-box a{
 	transition: transform 0.3s ease;
 }
 .genre-box a:hover{
 	transform: scale(1.03);
-	color: #ffa500;
+	color: black;
 }
 .movie-list {
     flex-grow: 1; /* 남은 영역을 모두 차지하도록 설정 */
@@ -369,7 +375,7 @@ footer a:hover {
     flex-grow: 1; /* 남은 영역을 모두 차지하도록 설정 */
 }
 .genre-name:hover {
-	color: #ffa500; /* 텍스트 색상 변경 */
+	color: black; /* 텍스트 색상 변경 */
 }
 .genre-icon {
     margin-left: auto; /* 아이콘을 오른쪽으로 밀어냄 */

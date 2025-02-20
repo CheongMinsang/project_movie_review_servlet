@@ -1,5 +1,5 @@
         body {
-            background-color: #121212;
+            background-color: white;
             background-size: cover;
             color: #FFFFFF;
             font-family: Arial, sans-serif;
@@ -7,7 +7,7 @@
             padding: 0;
         }
         .container {
-            background-color: #121212;
+            background-color: white;
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -42,16 +42,21 @@
             text-align: left;
             margin-top: -30px;
         }
+        .movie-info2 {
+        	padding: 0px 15px !important;
+        }
         .movie-info h2 {
-            color: #ffa500;
+            color: #333;	
             font-size: 1.8em;
             margin-bottom: 10px;
         }
         .movie-info p {
+        	color: #333;
             margin: 10px 0;
             line-height: 1.6;
         }
         .movie-info .overview {
+        	color: #333;
             margin-top: 20px;
             text-align: justify;
         }
@@ -59,11 +64,11 @@
             margin-top: 30px;
         }
         .movie-extra h3 {
-            color: #ffa500;
+            color: #333;
             margin-bottom: 10px;
         }
         .movie-extra h2 {
-            color: #ffa500;
+            color: #333
             margin-bottom: 10px;
         }
         .trailer-link { 
@@ -193,23 +198,22 @@
 		      width: 80%;
 		      max-width: 800px;
 		      margin: 20px auto;
-		      background-color: #121212;
+		      background-color: white;
 		      padding: 20px;
 		      border-radius: 10px;
-		      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 		      font-family: Arial, sans-serif;
 		    }
 		    .movie-review h2 {
 		      margin-top: 50px;
 		      text-align: center;
 		      margin-bottom: 20px;
-		      color: #ffa500;
+		      color: #333;
 		    }
 		    /* 별점 영역 */
 		    .star-rating {
 		      display: flex;
 		      justify-content: center;
-		      margin-bottom: 10px;
+		      margin-bottom: 30px;
 		      font-size: 2em;
 		      cursor: pointer;
 		    }
@@ -219,22 +223,22 @@
 		    }
 		    /* 리뷰 텍스트 영역 */
 		    .movie-review textarea {
-			   width: 100%;
+			   width: 95%;
 			   height: 160px;
 			   resize: none;
 			   padding: 12px 15px;
-			   border: 2px solid #2a2a2a;
+			   border: 1px solid #e0e0e0;
 			   outline: none;
 			   border-radius: 15px;
 			   font-size: 1.5em;
 			   margin-bottom: 10px;
-			   background-color: #2a2a2a;
+			   background-color: white;
 			   transition: border-color 0.3s ease;
-			   color: white; /* 글자색을 흰색으로 설정 */
-        	   caret-color: white; /* 입력할 때 커서 색을 흰색으로 설정 */
+			   color: #333; /* 글자색을 흰색으로 설정 */
+        	   caret-color: black; /* 입력할 때 커서 색을 흰색으로 설정 */
 		    }
 		    .movie-review textarea:hover, .movie-review textarea:focus {
-		    	border: 2px solid #ffa500;
+		    	border: 1px solid #292A31;
 		    }
 		    /* 등록 버튼 */
 		    .movie-review button {
@@ -243,14 +247,16 @@
 		      margin: 0 auto;
 		      padding: 10px 20px;
 		      font-size: 1.2em;
-		      background-color: #ffa500;
+		      background-color: #292A31;
 		      color: white;
-		      border: none;
+		      border: 1px solid #e0e0e0;
 		      border-radius: 25px;
 		      cursor: pointer;
+		      transition: background-color 0.5s ease, color 0.5s ease;
 		    }
 		    .movie-review button:hover {
-		      background-color: #ff8c00;
+		    	background-color: black;
+		    	color: white;
 		    }
 		    .review-list {
 	            width: 80%;
@@ -260,7 +266,7 @@
 	        }
 	        .review-list h2 {
 	        	margin-top: 100px;
-	        	color: #ffa500;
+	        	color: #333;
 	            text-align: center;
 	            margin-bottom: 20px;
 	            
@@ -280,6 +286,7 @@
 	            font-size: 1.2em;
 	        }
 	        .review-nickname {
+	        	color: #333;
 	            font-weight: bold;
 	            margin-right: 10px;
 	        }
@@ -288,11 +295,13 @@
 	            font-size: 0.9em;
 	        }
 	        .review-content {
+	        	color: #333;
 	            margin-top: 5px;
 	            line-height: 1.5em;
 	        }
 	         /* h1 스타일 */
         .movie-header-title {
+        	color: black;
             display: inline-block;
             vertical-align: middle;
             margin-right: 20px;
@@ -304,20 +313,21 @@
             padding: 8px 10px;
             font-size: 1.2em;
             cursor: pointer;
-            background-color: #2a2a2a;
-            color: white;
+            background-color: white;
+            color: #747474;
             margin-left: 25px;
-            border: 2px solid #2a2a2a;
+            border: 1px solid #e0e0e0;
 			outline: none;
-		    transition: border-color 0.3s ease;
+		    transition: background-color 0.5s ease, color 0.5s ease;
             border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .recommend-btn:hover {
-        	border: 2px solid #ffa500;
+        	color: #333;
         }
         /* styles.css */
 		.review-link {
-		  color: white;
+		  color: #747474;
 		  text-decoration: none;
 		}
 		
@@ -325,7 +335,7 @@
 		  margin-right: 5px;
 		}
 		.review-link:hover {
-			color: #ffa500;
+			color: #333;
 		}
 		
 		
