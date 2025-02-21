@@ -114,7 +114,7 @@
         %>
         <div class="container">
 		    <div class="header" style="position: relative;">
-		        <a href="javascript:history.back()" class="home-link">&nbsp&nbsp<i class="fa-solid fa-arrow-left"></i> </a>
+		        <!-- <a href="javascript:history.back()" class="home-link">&nbsp&nbsp<i class="fa-solid fa-arrow-left"></i> </a> -->
 		        <!-- h1에 클래스 적용 -->
 	            <h1 class="movie-header-title">
 	                <%= movieDetail.optString("title", "Unknown Movie") %>

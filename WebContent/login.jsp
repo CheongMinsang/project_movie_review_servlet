@@ -11,6 +11,21 @@
 		mem.submit();
 	}
 	function goLogin(){
+        var emailInput = document.getElementById("input1");
+        var passwordInput = document.getElementById("input2");
+
+        if (emailInput.value === "") {
+            alert("이메일을 입력해주세요.");
+            emailInput.focus();
+            return;
+        }
+
+        if (passwordInput.value === "") {
+            alert("비밀번호를 입력해주세요.");
+            passwordInput.focus();
+            return;
+        }
+		
 		mem.t_gubun.value="loginForm";
 		mem.method="post";
 		mem.action="Index";

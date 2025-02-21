@@ -57,7 +57,7 @@
 		        <label for="phone">전화번호</label>
 		       		<input type="text" id="t_phone" name="t_phone" placeholder="-는 제외하고 입력해주세요" onkeydown="focusNext(event,'button1')" autocomplete="off"><br><br>
             <button type="button" id="button1" onclick="goJoinMember()" class="submit-button">회원가입</button>
-            <button type="submit" onclick="goLogin()" class="submit-button">로그인</button>
+            <button type="button" onclick="goLogin()" class="submit-button">로그인</button>
         </form>
     </div>
     <script>

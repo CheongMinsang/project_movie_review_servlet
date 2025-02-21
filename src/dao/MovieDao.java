@@ -632,7 +632,7 @@ public class MovieDao {
 			String query ="select no,movieid,reg_date\r\n" + 
 					"from pjt_정민상_recommend\r\n" + 
 					"where writeid='"+writeid+"'\r\n" + 
-					"order by no" ;
+					"order by reg_date desc" ;
 			try {
 				con = DBConnection.getConnection();
 				ps  = con.prepareStatement(query);

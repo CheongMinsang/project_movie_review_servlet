@@ -12,8 +12,8 @@
     	body {
 		    margin: 0;
 		    font-family: Arial, sans-serif;
-		    background-color: #121212;
-		    color: white;
+		    background-color: white;
+		    color: #333;
 		    margin-top: 150px;
 		}	
 		.container{
@@ -29,14 +29,14 @@
             margin-top: 20px;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #e0e0e0;
         }
         th, td {
             padding: 10px;
             text-align: center;
         }
         tr:hover {
-            background-color: #2a2a2a;
+            background-color: #f5f5f5;
         }
         /* 탈퇴회원(탈퇴일이 있는 회원)은 빨간색으로 표시 */
         .withdrawn {
@@ -49,52 +49,63 @@
         }
         .search-form select,
         .search-form input[type="text"] {
-        	background-color: #2a2a2a;
-        	border: 2px solid #2a2a2a;
+        	background-color: white;
+        	border: 1px solid #e0e0e0;
 			outline: none;
-			color: white;
+			color: #333;
    		 	transition: border-color 0.3s ease;
             padding: 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-right: 5px;
+            border-radius: 20px;
         }
         .search-form input[type="submit"] {
- 	       	background-color: #2a2a2a;
-        	border: 2px solid #2a2a2a;
+ 	       	background-color: #292A31;
+        	border: 1px solid #e0e0e0;
 			outline: none;
 			color: white;
    		 	transition: border-color 0.3s ease;
         	padding: 7px 15px;
+        	border-radius: 20px;
         }
         .search-form select:hover,
-        .search-form input[type="text"]:hover,
+        .search-form input[type="text"]:hover {
+        	border: 1px solid #292A31;
+        }
         .search-form input[type="submit"]:hover {
-        	border: 2px solid #ffa500;
+        	background-color: black;
         }
         .search-form select:focus,
         .search-form input[type="text"]:focus{
-        	border-color: #ffa500
+        	border-color: #292A31
         }
         .pagination {
             margin-top: 50px;
             text-align: center;
         }
         .pagination a {
-        	background-color: #2a2a2a;
-        	border: 2px solid #2a2a2a;
+        	background-color: white;
+        	border: 1px solid #e0e0e0;
 			outline: none;
    		 	transition: border-color 0.3s ease;
             margin: 0 5px;
-            padding: 5px 10px;
+            padding: 10px 20px;
             text-decoration: none;
-            color: white;
-        }
-        .pagination a:hover { 
-        	border: 2px solid #ffa500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            color: #333;
+            border-radius: 20px;
         }
         .pagination a.active {
-            font-weight: bold;
-            background-color: #ffa500;
-        }
+		    background-color: #292A31;
+		    color: white;
+		}
+		
+		.pagination a:hover {
+		    background-color: #e0e0e0;
+		}
+		.pagination a.active:hover {
+			background-color: black;
+		}	
     </style>
 </head>
 <body>
@@ -131,6 +142,7 @@
                     <th>성별</th>
                     <th>생년월일</th>
                     <th>휴대폰번호</th>
+                    <th>탈퇴여부</th>
                 </tr>
             </thead>
             <tbody>
@@ -146,6 +158,16 @@
                         <td>${dto.gender}</td>
                         <td>${dto.birthdate}</td>
                         <td>${dto.phone}</td>
+                        <td>
+				            <c:choose>
+				                <c:when test="${dto.exit_date != null && dto.exit_date != ''}">
+				                  	탈퇴회원
+				                </c:when>
+				                <c:otherwise>
+				                    &nbsp; <!-- 탈퇴회원이 아닌 경우 공백 -->
+				                </c:otherwise>
+				            </c:choose>
+				        </td>
                     </tr>
                 </c:forEach>
             </tbody>

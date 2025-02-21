@@ -24,8 +24,8 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: white;
+            background-color: white;
+            color: #333;
             margin-top: 150px;
         }
     	.container{
@@ -45,14 +45,14 @@
             margin: 20px auto;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #e0e0e0;
         }
         th, td {
             padding: 10px;
             text-align: left;
         }
         tr:hover {
-            background-color: #2a2a2a;
+            background-color: #f5f5f5;
         }
         /* 탈퇴회원(탈퇴일이 있는 회원)은 빨간색으로 표시 */
         .withdrawn {
@@ -62,15 +62,17 @@
         .back-btn {
         	margin-top: 30px;
             display: inline-block;
-            background-color: #2a2a2a;
-            border: 2px solid #2a2a2a;
+            background-color: #292A31;
+            border: 1px solid #e0e0e0;
             padding: 7px 15px;
             color: white;
             text-decoration: none;
-            transition: border-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .back-btn:hover {
-            border: 2px solid #ffa500;
+            background-color: black;
         }
     </style>
 </head>
