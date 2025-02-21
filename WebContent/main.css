@@ -99,7 +99,8 @@ header {
 }
 
 #login-btn-myinfo {
-    padding: 8px 17px;
+    padding: 10px 20px;
+    /* padding: 8px 17px; */
     font-size: 1.2em;
     border: none;
     color: #747474;
@@ -505,13 +506,13 @@ footer a:hover {
 	color: white;
 }	
 #login-btn, #signup-btn, #login-btn-myinfo, #login-btn{
-	border: 1px solid #e0e0e0;
+	/* border: 1px solid #e0e0e0; */
 	outline: none;
     transition: background-color 0.5s ease, color 0.5s ease;
 }	
 #login-btn:hover, #signup-btn:hover, #login-btn-myinfo:hover, #login-btn:hover{
-	color: black !important;
-	border: 1px solid #e0e0e0;	
+	color: #141414 !important;
+	/* border: 1px solid #e0e0e0; */	
 }
 
 /* 기존 .movie 관련 스타일을 모두 아래 내용으로 교체해주세요 */

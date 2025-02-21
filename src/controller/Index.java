@@ -189,6 +189,11 @@ public class Index extends HttpServlet {
 		        e.printStackTrace();
 		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		    }
+		}else if(gubun.equals("goSaveRatingList")) {
+			CommonExecute mem = new goSaveRecommend();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 		try { 
