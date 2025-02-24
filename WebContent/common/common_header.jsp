@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
 <script>
-	// 기존 함수들...
 	function goLogin(){
 		mem.t_gubun.value="login";
 		mem.method="post";
