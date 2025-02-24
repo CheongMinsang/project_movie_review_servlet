@@ -19,6 +19,7 @@ public class ReviewSave implements CommonExecute {
 		
 		String nickname = dao.getNickname(writeid);
 		String movieId = request.getParameter("movieId");
+		String movieName = request.getParameter("movieName");
 		String ratingValue = request.getParameter("ratingValue");
 		String reviewContent = request.getParameter("reviewContent");
 		String rating_date = CommonUtil.getTodayTime();

@@ -243,11 +243,25 @@
         </form>
     </div>
     <c:if test="${empty sessionId}">
-        <div class="buttons">
-            <button id="login-btn" onclick="goLogin()"><i class="fa-solid fa-arrow-right-to-bracket"></i> 로그인</button>
-            <button id="signup-btn" onclick="goRegister()"><i class="fa-solid fa-user-plus"></i> 회원가입</button>
-        </div>
-    </c:if>
+	    <div class="buttons">
+	        <button id="login-btn" onclick="openLoginPopup()">
+	            <i class="fa-solid fa-arrow-right-to-bracket"></i> 로그인
+	        </button>
+	        <button id="signup-btn" onclick="openRegisterPopup()">
+	            <i class="fa-solid fa-user-plus"></i> 회원가입
+	        </button>
+	    </div>
+	</c:if>
+	<script>
+	    function openLoginPopup(){
+	        // 팝업창 이름, 크기, 기타 옵션 설정 (필요에 따라 옵션을 조정)
+	        window.open('login.jsp', 'loginPopup', 'width=500,height=600,scrollbars=yes');
+	    }
+	    function openRegisterPopup(){
+	        // 팝업창 이름, 크기, 기타 옵션 설정 (필요에 따라 옵션을 조정)
+	        window.open('register.jsp', 'registerPopup', 'width=500,height=1200,scrollbars=yes');
+	    }
+	</script>
     
     <c:if test="${not empty sessionId}">
         <div class="buttons">
@@ -286,7 +300,7 @@
                 <div id="memberDropdown" class="dropdown-content">
                     <div class="dropdown-container">
                         <div class="menu-items">
-                            <button type="button" onclick="goMemberInfo()">
+                            <button type="button" onclick="goMyInfo()">
                                 <i class="fa-solid fa-user"></i> 내 정보
                             </button>
                             <button type="button" onclick="goSaveMovieList()">
@@ -306,3 +320,19 @@
         </div>
     </c:if>    
 </div>
+<script>
+/*
+    function openInfoPopup(){
+        // 먼저 빈 팝업창을 열어 target 이름을 지정합니다.
+        window.open('', 'myinfoPopup', 'width=600,height=1200,scrollbars=yes');
+        
+        // 폼의 target을 팝업창 이름과 동일하게 설정
+        mem.target = 'myinfoPopup';
+        mem.t_gubun.value = "myinfo";
+        mem.method = "post";
+        mem.action = "Index";
+        mem.submit();
+        
+    }
+*/    
+</script>

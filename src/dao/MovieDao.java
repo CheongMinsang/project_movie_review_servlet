@@ -662,4 +662,43 @@ public class MovieDao {
 			}
 			return dtos;
 		}
+		
+		// 멤버의 리뷰작성목록 가져오기
+		public ArrayList<MovieDto> getReviewList(String sessionId) {
+			ArrayList<MovieDto> dtos = new ArrayList<>();
+			String query ="select movieid, content, rating, name, rating_date\r\n" + 
+					"from pjt_정민상_rating\r\n" + 
+					"where writeid ='"+sessionId+"'\r\n" + 
+					"order by rating_date desc" ;
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				rs  = ps.executeQuery();
+				while(rs.next()) {
+					int movieid = rs.getInt("movieid");
+					String nickname = rs.getString("name");
+					int rating = rs.getInt("rating");
+					String content = rs.getString("content");
+					String rating_date =rs.getString("rating_date");
+					
+					Timestamp timestamp = Timestamp.valueOf(rating_date);
+					Date date = new Date(timestamp.getTime());
+
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					String formattedDate = formatter.format(date);
+					
+					rating_date = formattedDate;
+					
+					MovieDto dto = new MovieDto(nickname, content, rating_date, movieid, rating);
+					dtos.add(dto);
+					
+				}
+			}catch(Exception e) {
+				System.out.println("getReviewList() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return dtos;
+		}
 }

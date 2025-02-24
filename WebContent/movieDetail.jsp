@@ -271,6 +271,7 @@
 			  <!-- 값을 비워두고 JavaScript에서 설정하도록 변경 -->
 			  <input type="hidden" name="t_gubun" id="reviewT_gubun" value="">
 			  <input type="hidden" name="movieId" id="reviewMovieId" value="">
+			  <input type="hidden" name="movieName" id="reviewMovieName" value="<%= movieDetail.optString("title", "Unknown Movie") %>">
 			  <!-- 선택된 별점 값을 전송하기 위한 히든필드 -->
 			  <input type="hidden" id="ratingValue" name="ratingValue" value="0">
 			  

@@ -2,10 +2,19 @@ package dto;
 
 public class MovieDto {
 	private String id, password, name, reg_date, exit_date, last_login_date,
-					nickname, gender, birthdate, phone, writeid, content, rating_date;
+					nickname, gender, birthdate, phone, writeid, content, rating_date,
+					moviename;
 	private int movieid, rating, no;
 	
-	
+	// 개인 리뷰 목록
+	public MovieDto(String name, String content, String rating_date, int movieid, int rating) {
+		this.name = name;
+		this.content = content;
+		this.rating_date = rating_date;
+		this.movieid = movieid;
+		this.rating = rating;
+	}
+
 	//추천영화목록
 	public MovieDto(String reg_date, int movieid, int no) {
 		this.reg_date = reg_date;
@@ -171,5 +180,11 @@ public class MovieDto {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public String getMoviename() {
+		return moviename;
+	}
+	public void setMoviename(String moviename) {
+		this.moviename = moviename;
 	}
 }

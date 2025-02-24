@@ -34,6 +34,7 @@ import command.member.goDeleteRecommend;
 import command.member.goGetRecoList;
 import command.member.goMemberInfo;
 import command.member.goSaveMovieList;
+import command.member.goSaveRatingList;
 import command.member.goSaveRecommend;
 import common.CommonExecute;
 
@@ -77,12 +78,12 @@ public class Index extends HttpServlet {
 		}else if(gubun.equals("domemberjoin")) {
 			CommonExecute mem = new MemberJoin();
 			mem.execute(request);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert_member.jsp");
 		    dispatcher.forward(request, response); 
 		}else if(gubun.equals("loginForm")) {
 			CommonExecute mem = new MemberLogin();
 			mem.execute(request);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert_popup.jsp");
 		    dispatcher.forward(request, response); 
 		}else if(gubun.equals("logout")) {
 			CommonExecute mem = new MemberLogout();
@@ -96,7 +97,7 @@ public class Index extends HttpServlet {
 	            System.out.println("세션 무효화에 실패하였습니다.");
 	        }
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common/common_alert.jsp");
 		    dispatcher.forward(request, response); 
 		}else if(gubun.equals("myinfo")) {
 			CommonExecute mem = new MemberMyinfo();
@@ -106,7 +107,7 @@ public class Index extends HttpServlet {
 		}else if(gubun.equals("goMemberExit")) {
 			CommonExecute mem = new MemberGoExit();
 			mem.execute(request);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert_popup.jsp");
 			dispatcher.forward(request, response); 
 		}else if(gubun.equals("myinfoupdate")) {
 			CommonExecute mem = new MemberMyinfoUpdate();
@@ -190,9 +191,9 @@ public class Index extends HttpServlet {
 		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		    }
 		}else if(gubun.equals("goSaveRatingList")) {
-			CommonExecute mem = new goSaveRecommend();
+			CommonExecute mem = new goSaveRatingList();
 			mem.execute(request);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goSaveRatingList.jsp");
 			dispatcher.forward(request, response);
 		}
 		

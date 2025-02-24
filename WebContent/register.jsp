@@ -248,5 +248,13 @@
             });
         });
     </script>
+    <script>
+    // 팝업창이 언로드될 때(닫힐 때) 부모창 새로고침 시도
+    window.addEventListener('unload', function(){
+        if(window.opener && !window.opener.closed){
+            window.opener.location.reload();
+        }
+    });
+</script>
 </body>
 </html>
