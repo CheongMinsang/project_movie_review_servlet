@@ -34,7 +34,7 @@ public class goSaveRecommend implements CommonExecute {
 			if(result == 1) msg = "추천 영화가 등록되었습니다.";
 			else msg = "추천 영화 등록 실패!! 관리자에게 문의 바랍니다.";
 		} else {
-			if(result == 1) msg = "북마크가 등록되었습니다.";
+			if(result == 1) msg = "북마크에 등록되었습니다.";
 			else msg = "북마크 등록 실패!! 관리자에게 문의 바랍니다.";
 		}
 		

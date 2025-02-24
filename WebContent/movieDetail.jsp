@@ -496,7 +496,7 @@
         // sessionLevel에 따라 다른 confirm 메시지 표시
         const confirmMessage = sessionLevel === 'top' 
             ? "추천 영화로 등록하시겠습니까?" 
-            : "북마크 등록하시겠습니까??";
+            : "북마크에 등록하시겠습니까?";
             
         if (confirm(confirmMessage)) {
             document.reco.t_gubun.value = "goSaveRecommend";

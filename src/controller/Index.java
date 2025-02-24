@@ -33,6 +33,7 @@ import command.member.ReviewUpdate;
 import command.member.goDeleteRecommend;
 import command.member.goGetRecoList;
 import command.member.goMemberInfo;
+import command.member.goReviewManage;
 import command.member.goSaveMovieList;
 import command.member.goSaveRatingList;
 import command.member.goSaveRecommend;
@@ -194,6 +195,11 @@ public class Index extends HttpServlet {
 			CommonExecute mem = new goSaveRatingList();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goSaveRatingList.jsp");
+			dispatcher.forward(request, response);
+		}else if(gubun.equals("goReviewManage")) {
+			CommonExecute mem = new goReviewManage();
+			mem.execute(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("goReviewManage.jsp");
 			dispatcher.forward(request, response);
 		}
 		

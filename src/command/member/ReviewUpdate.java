@@ -25,7 +25,7 @@ public class ReviewUpdate implements CommonExecute {
 		
 		int no = dao.getMaxRatingTabelNumber();
 		
-		MovieDto dto = new MovieDto(no, Integer.parseInt(movieId), nickname, writeid, reviewContent, rating_date, Integer.parseInt(ratingValue));
+		MovieDto dto = new MovieDto(no, Integer.parseInt(movieId), nickname, writeid, reviewContent, rating_date, Integer.parseInt(ratingValue), "");
 		int result = dao.getRatingUpdate(dto);
 		
 		String msg = "";

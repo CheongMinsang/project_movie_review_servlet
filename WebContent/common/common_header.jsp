@@ -52,6 +52,12 @@
 		mem.action="Index";
 		mem.submit();
 	}
+	function goReviewManage(){
+		mem.t_gubun.value="goReviewManage";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
 	
 	// 관리메뉴 관련 함수들
 	function goMemberList(){

@@ -7,12 +7,13 @@ public class MovieDto {
 	private int movieid, rating, no;
 	
 	// 개인 리뷰 목록
-	public MovieDto(String name, String content, String rating_date, int movieid, int rating) {
+	public MovieDto(String name, String content, String rating_date, int movieid, int rating, String moviename) {
 		this.name = name;
 		this.content = content;
 		this.rating_date = rating_date;
 		this.movieid = movieid;
 		this.rating = rating;
+		this.moviename = moviename;
 	}
 
 	//추천영화목록
@@ -37,7 +38,7 @@ public class MovieDto {
 	}
 
 	//영화 리뷰 등록
-	public MovieDto(int no, int movieid, String nickname, String writeid, String content, String rating_date, int rating) {
+	public MovieDto(int no, int movieid, String nickname, String writeid, String content, String rating_date, int rating, String moviename) {
 		this.no = no;
 		this.movieid = movieid;
 		this.nickname = nickname;
@@ -45,6 +46,7 @@ public class MovieDto {
 		this.content = content;
 		this.rating_date = rating_date;
 		this.rating = rating;
+		this.moviename = moviename;
 	}
 
 	//회원정보 수정 시

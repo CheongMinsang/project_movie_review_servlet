@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>나의 리뷰 목록</title>
+    <title>모든 리뷰 목록</title>
     <link href="main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -86,7 +86,7 @@
     </header>
 
     <div class="review-container">
-        <h2>내가 작성한 리뷰</h2>
+        <h2>작성한 리뷰 목록</h2>
         
         <%
         ArrayList<MovieDto> dtos = (ArrayList<MovieDto>)request.getAttribute("dtos");
@@ -116,7 +116,7 @@
                 </div>
                 <div class="review-content">
 				    <h3 class="movie-title"><%= dto.getMoviename() %></h3>
-				    <!-- <div><strong><%= dto.getName() %></strong>님의 리뷰</div> -->
+				    <div><strong><%= dto.getName() %></strong>님의 리뷰</div>
 				    <p><%= dto.getContent() %></p>
 				</div>
             </div>

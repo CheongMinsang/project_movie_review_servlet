@@ -43,7 +43,7 @@
     <title>로그인 페이지</title>
     <style>
         body {
-            /* background-image: url('images/loginBackGround.jpg'); */
+            background-image: url('images/2.jpg');
             background-color: white;
             background-size: 100%;
             color: #333;

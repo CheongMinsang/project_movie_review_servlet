@@ -68,7 +68,7 @@ public class MovieDao {
 				
 				rating_date = formattedDate;
 				
-				MovieDto dto = new MovieDto(no, Integer.parseInt(id), nickname, writeid, content, rating_date, rating);
+				MovieDto dto = new MovieDto(no, Integer.parseInt(id), nickname, writeid, content, rating_date, rating, "");
 				dtos.add(dto);
 				
 			}
@@ -346,10 +346,10 @@ public class MovieDao {
 		public int getRating(MovieDto dto) {
 			int result = 0;
 			String query="insert into pjt_정민상_rating\r\n" + 
-					"(no, movieid, writeid, content, rating, name, rating_date)\r\n" + 
+					"(no, movieid, writeid, content, rating, name, rating_date, moviename)\r\n" + 
 					"values\r\n" + 
 					"("+dto.getNo()+","+dto.getMovieid()+",'"+dto.getWriteid()+"','"+dto.getContent()+"',"+dto.getRating()+",'"+dto.getNickname()+"',\r\n" + 
-					"to_date('"+dto.getRating_date()+"','yyyy-MM-dd hh24:mi:ss')\r\n" + 
+					"to_date('"+dto.getRating_date()+"','yyyy-MM-dd hh24:mi:ss'), '"+dto.getMoviename()+"'\r\n" + 
 					")";
 			try {
 				con = DBConnection.getConnection();
@@ -666,7 +666,7 @@ public class MovieDao {
 		// 멤버의 리뷰작성목록 가져오기
 		public ArrayList<MovieDto> getReviewList(String sessionId) {
 			ArrayList<MovieDto> dtos = new ArrayList<>();
-			String query ="select movieid, content, rating, name, rating_date\r\n" + 
+			String query ="select movieid, content, rating, name, rating_date, moviename\r\n" + 
 					"from pjt_정민상_rating\r\n" + 
 					"where writeid ='"+sessionId+"'\r\n" + 
 					"order by rating_date desc" ;
@@ -677,6 +677,7 @@ public class MovieDao {
 				while(rs.next()) {
 					int movieid = rs.getInt("movieid");
 					String nickname = rs.getString("name");
+					String moviename = rs.getString("moviename");
 					int rating = rs.getInt("rating");
 					String content = rs.getString("content");
 					String rating_date =rs.getString("rating_date");
@@ -689,7 +690,45 @@ public class MovieDao {
 					
 					rating_date = formattedDate;
 					
-					MovieDto dto = new MovieDto(nickname, content, rating_date, movieid, rating);
+					MovieDto dto = new MovieDto(nickname, content, rating_date, movieid, rating, moviename);
+					dtos.add(dto);
+					
+				}
+			}catch(Exception e) {
+				System.out.println("getReviewList() 오류:"+query);
+				e.printStackTrace();
+			}finally {
+				DBConnection.closeDB(con, ps, rs);
+			}
+			return dtos;
+		}
+		// 모든 리뷰목록 가져오기
+		public ArrayList<MovieDto> getAllReview() {
+			ArrayList<MovieDto> dtos = new ArrayList<>();
+			String query ="select movieid, content, rating, name, rating_date, moviename\r\n" + 
+					"from pjt_정민상_rating\r\n" + 
+					"order by rating_date desc" ;
+			try {
+				con = DBConnection.getConnection();
+				ps  = con.prepareStatement(query);
+				rs  = ps.executeQuery();
+				while(rs.next()) {
+					int movieid = rs.getInt("movieid");
+					String nickname = rs.getString("name");
+					String moviename = rs.getString("moviename");
+					int rating = rs.getInt("rating");
+					String content = rs.getString("content");
+					String rating_date =rs.getString("rating_date");
+					
+					Timestamp timestamp = Timestamp.valueOf(rating_date);
+					Date date = new Date(timestamp.getTime());
+					
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					String formattedDate = formatter.format(date);
+					
+					rating_date = formattedDate;
+					
+					MovieDto dto = new MovieDto(nickname, content, rating_date, movieid, rating, moviename);
 					dtos.add(dto);
 					
 				}
