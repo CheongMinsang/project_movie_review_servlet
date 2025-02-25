@@ -15,6 +15,17 @@ public class MovieDto {
 		this.rating = rating;
 		this.moviename = moviename;
 	}
+	// 전체리뷰관리 검색
+	public MovieDto(String name, String writeid, String content, String rating_date, String moviename, int movieid,
+			int rating) {
+		this.name = name;
+		this.writeid = writeid;
+		this.content = content;
+		this.rating_date = rating_date;
+		this.moviename = moviename;
+		this.movieid = movieid;
+		this.rating = rating;
+	}
 
 	//회원전원 리뷰목록
 	public MovieDto(String name, String content, String rating_date, int movieid, int rating, String moviename, String writeid) {

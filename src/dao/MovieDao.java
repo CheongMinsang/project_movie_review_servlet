@@ -18,6 +18,58 @@ public class MovieDao {
 	PreparedStatement	ps  = null;
 	ResultSet 			rs  = null;
 	
+	public ArrayList<MovieDto> getReviewsBySearch(String searchType, String searchValue) {
+	    ArrayList<MovieDto> dtos = new ArrayList<>();
+	    String query = "";
+	    
+	    // 검색 조건에 따른 쿼리 작성 (단일 테이블 사용)
+	    if (searchType.equals("moviename")) {
+	        query = "SELECT movieid, moviename, writeid, name, rating, content, TO_CHAR(rating_date, 'YYYY-MM-DD') rating_date " +
+	                "FROM pjt_정민상_rating " +
+	                "WHERE LOWER(moviename) LIKE LOWER(?) " +
+	                "ORDER BY rating_date DESC";
+	    } else if (searchType.equals("name")) {
+	        query = "SELECT movieid, moviename, writeid, name, rating, content, TO_CHAR(rating_date, 'YYYY-MM-DD') rating_date " +
+	                "FROM pjt_정민상_rating " +
+	                "WHERE LOWER(name) LIKE LOWER(?) " +
+	                "ORDER BY rating_date DESC";
+	    } else if (searchType.equals("writeid")) {
+	        query = "SELECT movieid, moviename, writeid, name, rating, content, TO_CHAR(rating_date, 'YYYY-MM-DD') rating_date " +
+	                "FROM pjt_정민상_rating " +
+	                "WHERE LOWER(writeid) LIKE LOWER(?) " +
+	                "ORDER BY rating_date DESC";
+	    }
+	    
+	    try {
+	        con = DBConnection.getConnection();
+	        PreparedStatement ps = con.prepareStatement(query);
+	        ps.setString(1, "%" + searchValue + "%");
+	        
+	        ResultSet rs = ps.executeQuery();
+	        
+	        while (rs.next()) {
+	            String movieId = rs.getString("movieid");
+	            String movieName = rs.getString("moviename");
+	            String writeId = rs.getString("writeid");
+	            String name = rs.getString("name");
+	            int rating = rs.getInt("rating");
+	            String content = rs.getString("content");
+	            String ratingDate = rs.getString("rating_date");
+	            
+	            MovieDto dto = new MovieDto(name, writeId, content, ratingDate, movieName, Integer.parseInt(movieId), rating);
+	            dtos.add(dto);
+	        }
+	        
+	        DBConnection.closeDB(con, ps, rs);
+	    } catch (Exception e) {
+	        System.out.println("리뷰 검색 중 오류 발생: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	    
+	    return dtos;
+	}
+
+	
 	// 추천영화목록에 들어가있는지 확인
 		public int getRecommendList(String id, String writeid) {
 			int count=0;

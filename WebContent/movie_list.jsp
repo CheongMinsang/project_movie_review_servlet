@@ -140,8 +140,10 @@
         %>
         <div class="pagination">
             <% if (currentPage > 1) { %>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=1&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angles-left"></i></a>
+                <!-- <a href="MovieList?t_gubun=<%= tGubun %>&page=1&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angles-left"></i></a> -->
                 <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage - 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angle-left"></i></a>
+            <% } else { %>
+            	<li class="disabled"><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
             <% } %>
             
             <% for (int i = startPage; i <= endPage; i++) { %>
@@ -152,9 +154,11 @@
             <% } %>
             
             <% if (currentPage < totalPages) { %>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage + 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angle-right"></i></a>
-                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= totalPages %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angles-right"></i></a>
-            <% } %>
+                <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= currentPage + 1 %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angle-right"></i></a> 
+                <!-- <a href="MovieList?t_gubun=<%= tGubun %>&page=<%= totalPages %>&sort=<%= sort %>&search=<%= search %>&genre_id=<%= genreId %>"><i class="fa-solid fa-angles-right"></i></a>  -->
+            <% } else { %>
+	            <li class="disabled"><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+	        <% } %>
         </div>
     </div>
     

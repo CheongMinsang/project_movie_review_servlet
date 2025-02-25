@@ -72,22 +72,27 @@ public class Index extends HttpServlet {
 	    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 	    response.setDateHeader("Expires", 0); 
 		
+	    // 회원가입 페이지
 		if(gubun.equals("register")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
-		    dispatcher.forward(request, response); 
+		    dispatcher.forward(request, response);
+		// 로그인 페이지   
 		}else if(gubun.equals("login")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		    dispatcher.forward(request, response); 
+		// 회원가입 테이블 저장    
 		}else if(gubun.equals("domemberjoin")) {
 			CommonExecute mem = new MemberJoin();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert_member.jsp");
-		    dispatcher.forward(request, response); 
+		    dispatcher.forward(request, response);
+		// 로그인 실행    
 		}else if(gubun.equals("loginForm")) {
 			CommonExecute mem = new MemberLogin();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert_popup.jsp");
 		    dispatcher.forward(request, response); 
+		// 로그아웃 실행    
 		}else if(gubun.equals("logout")) {
 			CommonExecute mem = new MemberLogout();
 			mem.execute(request);
@@ -102,62 +107,75 @@ public class Index extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common/common_alert.jsp");
 		    dispatcher.forward(request, response); 
+		// 내 정보 페이지   
 		}else if(gubun.equals("myinfo")) {
 			CommonExecute mem = new MemberMyinfo();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("myinfo.jsp");
 			dispatcher.forward(request, response); 
+		// 회원탈퇴 실행(탈퇴일 추가)	
 		}else if(gubun.equals("goMemberExit")) {
 			CommonExecute mem = new MemberGoExit();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert_popup.jsp");
 			dispatcher.forward(request, response); 
+		// 내 정보 테이블 수정	
 		}else if(gubun.equals("myinfoupdate")) {
 			CommonExecute mem = new MemberMyinfoUpdate();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
-			dispatcher.forward(request, response); 
+			dispatcher.forward(request, response);
+		// 영화 리뷰 테이블 저장	
 		}else if(gubun.equals("reviewSave")) {
 			CommonExecute mem = new ReviewSave();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
+		// 관리자 메뉴 페이지 열기
 		}else if(gubun.equals("controlMenu")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("controlMenu.jsp");
 		    dispatcher.forward(request, response); 
+		// 회원 메뉴 페이지 열기    
 		}else if(gubun.equals("MemberControlMenu")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("MemberControlMenu.jsp");
-		    dispatcher.forward(request, response); 
+		    dispatcher.forward(request, response);
+		// 관리자 가입멤버 목록 페이지 열기
 		}else if(gubun.equals("goMemberList")) {
 			CommonExecute mem = new MemberList();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("showMemberList.jsp");
 		    dispatcher.forward(request, response); 
+		// 관리자 가입멤버 상세정보 페이지 열기    
 		}else if(gubun.equals("goMemberInfo")) {
 			CommonExecute mem = new goMemberInfo();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("showMemberInfo.jsp");
-		    dispatcher.forward(request, response); 
+		    dispatcher.forward(request, response);
+		// 리뷰 삭제 테이블에서 삭제   
 		}else if(gubun.equals("RatingDelete")) {
 			CommonExecute mem = new ReviewDelete();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
+		// 리뷰 수정 테이블 수정	
 		}else if(gubun.equals("ReviewUpdate")) {
 			CommonExecute mem = new ReviewUpdate();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
+		// 영화 찜하기
 		}else if(gubun.equals("goSaveRecommend")) {
 			CommonExecute mem = new goSaveRecommend();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
+		// 찜한 영화 삭제	
 		}else if(gubun.equals("goDeleteRecommend")) {
 			CommonExecute mem = new goDeleteRecommend();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("common_alert.jsp");
 			dispatcher.forward(request, response);
+		// 관리자 추천 영화 목록	
 		}else if(gubun.equals("goRecoList")) {
 		    try {
 		        CommonExecute mem = new goGetRecoList();
@@ -193,16 +211,19 @@ public class Index extends HttpServlet {
 		        e.printStackTrace();
 		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		    }
+		// 작성한 리뷰 목록 가져오기     
 		}else if(gubun.equals("goSaveRatingList")) {
 			CommonExecute mem = new goSaveRatingList();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goSaveRatingList.jsp");
 			dispatcher.forward(request, response);
+		// 관리자 관리용 전체 리뷰 목록 가져오기
 		}else if(gubun.equals("goReviewManage")) {
 			CommonExecute mem = new goReviewManage();
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goReviewManage.jsp");
 			dispatcher.forward(request, response);
+		// 내가 작성한 리뷰 삭제하기	
 		}else if(gubun.equals("MyRatingDelete")) {
 		    // RequestDispatcher 대신 직접 처리
 		    String movieId = request.getParameter("movieId");
@@ -220,6 +241,7 @@ public class Index extends HttpServlet {
 		    PrintWriter out = response.getWriter();
 		    out.print(msg);
 		    return; // 중요: 더 이상 처리하지 않도록 여기서 종료
+		// 관리자 회원 리뷰 삭제하기    
 		}else if(gubun.equals("MemberRatingDelete")) {
 			// RequestDispatcher 대신 직접 처리
 			String movieId = request.getParameter("movieId");
