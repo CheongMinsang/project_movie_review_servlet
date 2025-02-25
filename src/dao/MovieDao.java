@@ -705,7 +705,7 @@ public class MovieDao {
 		// 모든 리뷰목록 가져오기
 		public ArrayList<MovieDto> getAllReview() {
 			ArrayList<MovieDto> dtos = new ArrayList<>();
-			String query ="select movieid, content, rating, name, rating_date, moviename\r\n" + 
+			String query ="select movieid, writeid, content, rating, name, rating_date, moviename\r\n" + 
 					"from pjt_정민상_rating\r\n" + 
 					"order by rating_date desc" ;
 			try {
@@ -716,6 +716,7 @@ public class MovieDao {
 					int movieid = rs.getInt("movieid");
 					String nickname = rs.getString("name");
 					String moviename = rs.getString("moviename");
+					String writeid = rs.getString("writeid");
 					int rating = rs.getInt("rating");
 					String content = rs.getString("content");
 					String rating_date =rs.getString("rating_date");
@@ -728,7 +729,7 @@ public class MovieDao {
 					
 					rating_date = formattedDate;
 					
-					MovieDto dto = new MovieDto(nickname, content, rating_date, movieid, rating, moviename);
+					MovieDto dto = new MovieDto(nickname, content, rating_date, movieid, rating, moviename, writeid);
 					dtos.add(dto);
 					
 				}

@@ -13,16 +13,16 @@ import javax.servlet.http.HttpSession;
 import dao.MovieDao;
 
 /**
- * Servlet implementation class MemberCheckId
+ * Servlet implementation class MyReviewDelete
  */
-@WebServlet("/MemberCheckId")
-public class MemberCheckId extends HttpServlet {
+@WebServlet("/MyReviewDelete")
+public class MyReviewDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberCheckId() {
+    public MyReviewDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +32,16 @@ public class MemberCheckId extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MovieDao dao = new MovieDao();
-		String id = request.getParameter("t_id");
 		
-		int count = dao.checkId(id);
-		String msg = count != 1 ? "사용가능":"사용불가";
+		String movieid = request.getParameter("movieId");
+		HttpSession session = request.getSession();
+		String writeid = (String) session.getAttribute("sessionId");
+		
+		int result = dao.goReviewDelete(movieid,writeid);
+		
+        String msg = "";
+		if(result == 1) msg = "삭제되었습니다";
+		else msg = "리뷰 삭제 실패!! 관리자에게 문의 바랍니다.";
 		
 		response.setContentType("text/html; charset=utf-8"); // 보여줄 웹페이지 형식
 		PrintWriter out = response.getWriter(); // out.print를 사용하기 위한 Class

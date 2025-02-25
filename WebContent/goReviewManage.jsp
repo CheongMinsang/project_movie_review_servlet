@@ -8,6 +8,7 @@
     <title>모든 리뷰 목록</title>
     <link href="main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .review-container {
             max-width: 800px;
@@ -77,6 +78,31 @@
 		    padding-bottom: 8px;
 		    border-bottom: 1px solid #eee;
 		}
+		
+        .delete-btn {
+            background: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        .delete-btn:hover {
+            background: #ff1a1a;
+        }
+        
+        .delete-icon {
+            color: #ff5252;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.2s;
+            margin-left: 10px;
+        }
+        .delete-icon:hover {
+            color: #ff1a1a;
+        }
     </style>
 </head>
 <body>
@@ -97,8 +123,7 @@
                 int halfStar = (rating % 2);
                 int emptyStars = 5 - fullStars - halfStar;
         %>
-        <a href="MovieDetail?id=<%= dto.getMovieid() %>" class="review-link">
-            <div class="review-card">
+            <div class="review-card" id="review-<%= dto.getMovieid() %>">
                 <div class="review-header">
                     <div class="review-stars">
                         <% for(int i = 0; i < fullStars; i++) { %>
@@ -112,15 +137,19 @@
                         <% } %>
                         <span class="review-info">(<%= rating %>/10)</span>
                     </div>
-                    <div class="review-date"><%= dto.getRating_date() %></div>
+                    <div>
+                        <span class="review-date"><%= dto.getRating_date() %></span>
+                        <i class="fa-solid fa-trash delete-icon" onclick="confirmDelete('<%= dto.getMovieid() %>','<%= dto.getWriteid() %>')"></i>
+                    </div>
                 </div>
-                <div class="review-content">
+            <a href="MovieDetail?id=<%= dto.getMovieid() %>" class="review-link">
+	             <div class="review-content">
 				    <h3 class="movie-title"><%= dto.getMoviename() %></h3>
 				    <div><strong><%= dto.getName() %></strong>님의 리뷰</div>
-				    <p><%= dto.getContent() %></p>
+		   			<p><%= dto.getContent() %></p>
 				</div>
-            </div>
-        </a>
+	      </a>
+        </div>
         <%
             }
         } else {
@@ -137,5 +166,44 @@
     <footer class="footer">
         <%@ include file="../common/common_footer.jsp" %>
     </footer>
+    
+    <script>
+        function confirmDelete(movieId, writeId) {
+            if (confirm("해당 리뷰를 삭제하시겠습니까?")) {
+                deleteReview(movieId, writeId);
+            }
+        }
+        
+        function deleteReview(movieId, writeId) {
+            $.ajax({
+                url: "Index", // 컨트롤러 메인 서블릿으로 요청 전송
+                type: "POST",
+                data: {
+                    t_gubun: "MemberRatingDelete", // MyReviewDelete 클래스 호출을 위한 구분자
+                    movieId: movieId,
+                    writeId: writeId
+                },
+                success: function(response) {
+                    // DB에서 삭제는 성공했으므로 화면에서도 리뷰 카드 제거
+                    $("#review-" + movieId).fadeOut(300, function() {
+                        $(this).remove();
+                        
+                        // 남은 리뷰가 없는지 확인하고 메시지 표시
+                        if ($(".review-card").length === 0) {
+                            $(".review-container").append(
+                                '<div class="no-reviews"><p>작성한 리뷰가 없습니다.</p></div>'
+                            );
+                        }
+                        
+                        // 성공 메시지 표시
+                        alert("리뷰가 삭제되었습니다!");
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert("리뷰 삭제 중 오류가 발생했습니다: " + error);
+                }
+            });
+        }
+    </script>
 </body>
 </html>

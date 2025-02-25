@@ -16,6 +16,17 @@ public class MovieDto {
 		this.moviename = moviename;
 	}
 
+	//회원전원 리뷰목록
+	public MovieDto(String name, String content, String rating_date, int movieid, int rating, String moviename, String writeid) {
+		this.name = name;
+		this.content = content;
+		this.rating_date = rating_date;
+		this.movieid = movieid;
+		this.rating = rating;
+		this.moviename = moviename;
+		this.writeid = writeid;
+	}
+
 	//추천영화목록
 	public MovieDto(String reg_date, int movieid, int no) {
 		this.reg_date = reg_date;

@@ -3,6 +3,7 @@ package controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ import command.member.goSaveMovieList;
 import command.member.goSaveRatingList;
 import command.member.goSaveRecommend;
 import common.CommonExecute;
+import dao.MovieDao;
 
 /**
  * Servlet implementation class Index
@@ -201,6 +203,41 @@ public class Index extends HttpServlet {
 			mem.execute(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("goReviewManage.jsp");
 			dispatcher.forward(request, response);
+		}else if(gubun.equals("MyRatingDelete")) {
+		    // RequestDispatcher 대신 직접 처리
+		    String movieId = request.getParameter("movieId");
+		    HttpSession session = request.getSession();
+		    String writeid = (String) session.getAttribute("sessionId");
+		    
+		    MovieDao dao = new MovieDao();
+		    int result = dao.goReviewDelete(movieId, writeid);
+		    
+		    String msg = "";
+		    if(result == 1) msg = "삭제되었습니다";
+		    else msg = "리뷰 삭제 실패!! 관리자에게 문의 바랍니다.";
+		    
+		    response.setContentType("text/html; charset=utf-8");
+		    PrintWriter out = response.getWriter();
+		    out.print(msg);
+		    return; // 중요: 더 이상 처리하지 않도록 여기서 종료
+		}else if(gubun.equals("MemberRatingDelete")) {
+			// RequestDispatcher 대신 직접 처리
+			String movieId = request.getParameter("movieId");
+			String writeId = request.getParameter("writeId");
+			
+			System.out.println(movieId+writeId);
+			
+			MovieDao dao = new MovieDao();
+			int result = dao.goReviewDelete(movieId, writeId);
+			
+			String msg = "";
+			if(result == 1) msg = "삭제되었습니다";
+			else msg = "리뷰 삭제 실패!! 관리자에게 문의 바랍니다.";
+			
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print(msg);
+			return; // 중요: 더 이상 처리하지 않도록 여기서 종료
 		}
 		
 		try { 
