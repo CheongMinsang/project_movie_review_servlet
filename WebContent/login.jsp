@@ -43,7 +43,7 @@
     <title>로그인 페이지</title>
     <style>
         body {
-            background-image: url('images/2.jpg');
+            /* background-image: url('images/4.jpg'); */
             background-color: white;
             background-size: 100%;
             color: #333;
@@ -57,12 +57,12 @@
         .container {
             background-color: white;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
 					    0 -4px 6px rgba(0, 0, 0, 0.1), 
 					    4px 0 6px rgba(0, 0, 0, 0.1),
-					    -4px 0 6px rgba(0, 0, 0, 0.1);
+					    -4px 0 6px rgba(0, 0, 0, 0.1); */
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             position: relative;
             border-radius: 20px;
         }
@@ -99,7 +99,7 @@
         }
         .home-link {
             position: absolute;
-            top: 10px; /* 로그인 글자와 같은 높이로 설정 */
+            top: -10px; /* 로그인 글자와 같은 높이로 설정 */
             left: 10px; /* 로그인 글자의 왼쪽 상단에 위치 */
             font-size: 14px;
             color: #292A31;

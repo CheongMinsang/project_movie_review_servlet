@@ -185,6 +185,7 @@
 <title>내 정보</title>
 <style>
     body {
+    	background-image: url('images/4.jpg');
         background-color: white;
         background-size: 100%;
         color: #333;
@@ -210,7 +211,7 @@
         max-height: 600px;
         overflow: auto;
         position: relative;
-        border-radius: 20px;
+        border-radius: 10px;
     }
         /* 전체 스크롤 바 */
     .container::-webkit-scrollbar {
