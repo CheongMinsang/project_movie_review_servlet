@@ -682,3 +682,19 @@ body .dropdown .dropdown-content.show {
     display: block;
     object-fit: cover;
 }
+
+.award-filter .filter-btn3 i {
+	color: red;
+}
+.award-filter .filter-btn4 i {
+	color: #c094c4;
+}
+.award-filter .filter-btn5 i {
+	color: gold;
+}
+.award-filter .filter-btn6 i {
+	color: #66afe9;
+}
+.award-filter .filter-btn7 i {
+	color: #32CD32;
+}

@@ -208,24 +208,24 @@
                 <div class="menu-items">
                     <a href="MovieList?t_gubun=popular&page=1">
                         <button type="button">
-                            <i class="fa-solid fa-fire"></i> 인기 영화 목록
+                            <i class="fa-solid fa-fire" style="color: red;"></i> 인기 영화 목록
                         </button>
                     </a>
                     <a href="MovieList?t_gubun=upcoming&page=1">    
                         <button type="button">
-                            <i class="fa-solid fa-calendar"></i> 개봉 예정 목록
+                            <i class="fa-solid fa-calendar" style="color: #c094c4;"></i> 개봉 예정 목록
                         </button>
                     </a>
                     <a href="MovieList?t_gubun=top_rated&page=1">
                         <button type="button">
-                            <i class="fa-solid fa-star"></i> 높은 평점 목록
+                            <i class="fa-solid fa-star" style="color: gold;"></i> 높은 평점 목록
                         </button>
                     </a>    
                     <button type="button" onclick="goReco()">
-                        <i class="fa-solid fa-thumbs-up"></i> 추천 영화 목록
+                        <i class="fa-solid fa-thumbs-up" style="color: #66afe9;"></i> 추천 영화 목록
                     </button>
                     <button type="button">
-                        <i class="fa-solid fa-comments"></i> 리뷰 많은 순
+                        <i class="fa-solid fa-comments" style="color: #32CD32;"></i> 리뷰 많은 순
                     </button>
                     <button type="button" class="close-btn" onclick="toggleMovieMenu(event)">
                         <i class="fa-solid fa-times"></i> 닫기
