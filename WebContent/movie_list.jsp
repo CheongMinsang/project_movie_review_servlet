@@ -167,14 +167,14 @@
     </footer>
 <script>
 	document.getElementById('search-input').addEventListener('focus', function() {
-	    this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
+	    this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
 	});
 	
 	document.getElementById('search-input').addEventListener('blur', function() {
 	    this.style.borderColor = ''; // 기본 테두리 색으로 돌아감
 	});
 	document.getElementById('sort').addEventListener('focus', function() {
-	    this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
+	    this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
 	});
 	
 	document.getElementById('sort').addEventListener('blur', function() {

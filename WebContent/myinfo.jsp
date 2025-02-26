@@ -42,7 +42,7 @@
         inputs.forEach(function(input) {
             input.removeAttribute('readonly');
             input.style.backgroundColor = 'white';
-            input.style.border = '1px solid #292A31';
+            input.style.border = '1px solid #66afe9';
         });
        	alert("내 정보 수정이 가능합니다.");
     }
@@ -247,10 +247,12 @@
   		border-radius: 20px;
     }
     input[type="text"]:hover, input[type="password"]:hover {
-    	border-color: #292A31;
+    	outline: none;
+		border-color: #66afe9;
     }
     input[type="text"]:focus, input[type="password"]:focus {
-    	border-color: #292A31;
+    	outline: none;
+		border-color: #66afe9;
     }
     input[readonly] {
         background-color: white; /* 읽기 전용 필드 스타일 */
@@ -344,7 +346,7 @@
 		ids.forEach(id => {
 		const element = document.getElementById(id);
 		element.addEventListener('focus', function() {
-		this.style.borderColor = '#ffa500'; // 입력 중일 때 테두리 색을 오렌지색으로
+		this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
 		});
 		
 		element.addEventListener('blur', function() {

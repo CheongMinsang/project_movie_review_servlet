@@ -177,7 +177,7 @@
         <div class="pagination">
             <!-- 이전 페이지 링크 -->
             <c:if test="${page > 1}">
-                <a href="Index?t_gubun=goMemberList&page=${page - 1}&category=${param.category}&keyword=${param.keyword}"><i class="fa-solid fa-angles-left"></i> 이전</a>
+                <a href="Index?t_gubun=goMemberList&page=${page - 1}&category=${param.category}&keyword=${param.keyword}"><i class="fa-solid fa-angle-left"></i> 이전</a>
             </c:if>
             
             <!-- 페이지 번호 링크 -->
@@ -188,7 +188,7 @@
             
             <!-- 다음 페이지 링크 -->
             <c:if test="${page < totalPage}">
-                <a href="Index?t_gubun=goMemberList&page=${page + 1}&category=${param.category}&keyword=${param.keyword}">다음 <i class="fa-solid fa-angles-right"></i></a>
+                <a href="Index?t_gubun=goMemberList&page=${page + 1}&category=${param.category}&keyword=${param.keyword}">다음 <i class="fa-solid fa-angle-right"></i></a>
             </c:if>
         </div>
         

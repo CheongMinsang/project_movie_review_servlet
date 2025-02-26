@@ -78,10 +78,12 @@
     		border-radius: 20px;
         }
         input[type="text"]:focus , input[type="password"]:focus {
-        	border-color: #292A31;
+        	outline: none;
+			border-color: #66afe9;
         }
         input[type="text"]:hover , input[type="password"]:hover {
-        	border-color: #292A31;
+        	outline: none;
+			border-color: #66afe9;
         }
         button {
             margin-top: 20px;
@@ -134,7 +136,7 @@
 	ids.forEach(id => {
 	    const element = document.getElementById(id);
 	    element.addEventListener('focus', function() {
-	        this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
+	        this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
 	    });
 	
 	    element.addEventListener('blur', function() {

@@ -141,67 +141,53 @@
             cursor: not-allowed;
         }
         
-        /* 검색 스타일 */
-        .search-container1 {
-            margin-bottom: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .search-box1 {
-            display: flex;
-            align-items: center;
-            width: 70%;
-        }
-        
-        .search-input1 {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            font-size: 14px;
-        }
-        
-        .search-select1 {
-            padding: 11px;
-            border: 1px solid #ddd;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
-            background-color: #f8f8f8;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        
-        .search-button1 {
-            padding: 10px 15px;
-            background: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .search-button1:hover {
-            background: #3a80d2;
-        }
-        
-        .reset-button1 {
-            padding: 10px 15px;
-            background: #ff5252;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-left: 10px;
-        }
-        
-        .reset-button1:hover {
-            background: #e04343;
-        }
-        
+         .search-container1 {
+		      width: 100%;
+		      padding: 20px 0px;
+		      margin: 20px 0;
+		  }
+		
+		  .search-box1 {
+		      display: inline-block;
+		      background-color: #fff;
+		      border-radius: 8px;
+		      /* padding: 10px 20px; */
+		      /* border: 1px solid #ddd; */
+		      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+		  }
+		
+		  .search-box1 select,
+		  .search-box1 input[type="text"],
+		  .search-box1 button {
+		      padding: 8px;
+		      margin-right: 8px;
+		      border: 1px solid #ccc;
+		      border-radius: 3px;
+		      font-size: 14px;
+		  }
+		
+		  .search-box1 select:focus,
+		  .search-box1 input[type="text"]:focus,
+		  .search-box1 button:focus {
+		      outline: none;
+		      border-color: #66afe9;
+		  }
+		
+		  .search-box1 input[type="text"] {
+		      width: 200px;
+		  }
+		
+		  .search-box1 button {
+		      background-color: #292A31;
+		      color: #fff;
+		      cursor: pointer;
+		      border: none;
+		      transition: background-color 0.3s;
+		  }
+		
+		  .search-box1 button:hover {
+		      background-color: black;
+		  }
     </style>
 </head>
 <body>
@@ -213,19 +199,18 @@
     <div class="review-container">
         <h2>작성한 리뷰 목록</h2>
         
-        <!-- 검색 기능 -->
         <div class="search-container1">
-            <div class="search-box1">
-                <select id="searchType" class="search-select1">
-                    <option value="moviename">영화 제목</option>
-                    <option value="name">작성자 이름</option>
-                    <option value="writeid">작성자 ID</option>
-                </select>
-                <input type="text" id="searchInput" class="search-input1" placeholder="검색어를 입력하세요">
-                <button id="searchButton" class="search-button1">검색</button>
-                <button id="resetButton" class="reset-button1">초기화</button>
-            </div>
-        </div>
+		  <div class="search-box1">
+		    <select id="searchType">
+		      <option value="moviename">영화명</option>
+		      <option value="name">작성자명</option>
+		      <option value="writeid">작성자ID</option>
+		    </select>
+		    <input type="text" id="searchValue" placeholder="검색어를 입력하세요">
+		    <button type="button" onclick="doSearch()">검색</button>
+		    <button type="button" onclick="resetSearch()">초기화</button>
+		  </div>
+		</div>
         
         <div id="reviewsContent">
             <%
@@ -334,7 +319,6 @@
                 deleteReview(movieId, writeId);
             }
         }
-        
         function deleteReview(movieId, writeId) {
             $.ajax({
                 url: "Index", // 컨트롤러 메인 서블릿으로 요청 전송
@@ -371,68 +355,30 @@
             });
         }
         
-        // 검색 기능
-        $(document).ready(function() {
-            // 검색 버튼 클릭 시
-            $("#searchButton").click(function() {
-                performSearch();
-            });
-            
-            // 엔터 키 입력 시 검색 실행
-            $("#searchInput").keypress(function(e) {
-                if(e.which === 13) {
-                    performSearch();
-                }
-            });
-            
-            // 초기화 버튼 클릭 시
-            $("#resetButton").click(function() {
-                $("#searchInput").val("");
-                $(".review-card").show();
-                
-                // 리뷰 카드가 있으면 no-reviews 메시지 숨김
-                if($(".review-card").length > 0) {
-                    $(".no-reviews").hide();
-                    $(".pagination").show();
-                }
-            });
-            
-            function performSearch() {
-                var searchType = $("#searchType").val();
-                var searchValue = $("#searchInput").val().toLowerCase();
-                
-                if(searchValue.trim() === "") {
-                    alert("검색어를 입력해주세요.");
-                    return;
-                }
-                
-                var found = false;
-                
-                $(".review-card").each(function() {
-                    var dataValue = $(this).data(searchType).toString();
-                    
-                    if(dataValue.indexOf(searchValue) !== -1) {
-                        $(this).show();
-                        found = true;
-                    } else {
-                        $(this).hide();
-                    }
-                });
-                
-                // 검색 결과가 없을 때
-                if(!found) {
-                    if($(".no-reviews").length === 0) {
-                        $("#reviewsContent").append(
-                            '<div class="no-reviews"><p>검색 결과가 없습니다.</p></div>'
-                        );
-                    } else {
-                        $(".no-reviews").show().find("p").text("검색 결과가 없습니다.");
-                    }
-                    $(".pagination").hide();
-                } else {
-                    $(".no-reviews").hide();
-                    $(".pagination").hide(); // 검색 시에는 페이지네이션 숨김
-                }
+        // 검색 함수: 입력값이 없으면 전체검색 수행
+        function doSearch() {
+            var searchValue = document.getElementById("searchValue").value;
+            var searchType = document.getElementById("searchType").value;
+            if(searchValue.trim() === ""){
+                // 입력값이 없으면 전체검색(검색 파라미터 없이 이동)
+                window.location.href = "Index?t_gubun=goReviewManage";
+            } else {
+                window.location.href = "Index?t_gubun=goReviewManage&searchType=" 
+                                   + searchType + "&searchValue=" + encodeURIComponent(searchValue);
+            }
+        }
+
+        // 초기화 함수: 검색 입력값과 선택값 초기화 후 전체검색 페이지로 이동
+        function resetSearch() {
+            document.getElementById("searchValue").value = "";
+            document.getElementById("searchType").selectedIndex = 0;
+            window.location.href = "Index?t_gubun=goReviewManage";
+        }
+
+        // 엔터키 이벤트: 검색 입력창에서 엔터를 누르면 doSearch() 호출
+        document.getElementById("searchValue").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                doSearch();
             }
         });
     </script>

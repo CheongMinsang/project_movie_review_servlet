@@ -240,7 +240,7 @@
         ids.forEach(id => {
             const element = document.getElementById(id);
             element.addEventListener('focus', function() {
-                this.style.borderColor = '#292A31'; // 입력 중일 때 테두리 색을 오렌지색으로
+                this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
             });
 
             element.addEventListener('blur', function() {

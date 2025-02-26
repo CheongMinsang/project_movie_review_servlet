@@ -40,6 +40,7 @@ import command.member.goSaveRatingList;
 import command.member.goSaveRecommend;
 import common.CommonExecute;
 import dao.MovieDao;
+import dto.MovieDto;
 
 /**
  * Servlet implementation class Index

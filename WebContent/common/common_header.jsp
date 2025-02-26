@@ -80,7 +80,7 @@
 	}
 	
 	document.getElementById('search-input'&'submit').addEventListener('focus', function() {
-	    this.style.borderColor = '#ffa500'; // 입력 중일 때 테두리 색을 오렌지색으로
+	    this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
 	});
 
 	document.getElementById('search-input'&'submit').addEventListener('blur', function() {
@@ -261,7 +261,7 @@
 	<script>
 	    function openLoginPopup(){
 	        // 팝업창 이름, 크기, 기타 옵션 설정 (필요에 따라 옵션을 조정)
-	        window.open('login.jsp', 'loginPopup', 'width=500,height=600,scrollbars=yes');
+	        window.open('login.jsp', 'loginPopup', 'width=500,height=1200,scrollbars=yes');
 	    }
 	    function openRegisterPopup(){
 	        // 팝업창 이름, 크기, 기타 옵션 설정 (필요에 따라 옵션을 조정)

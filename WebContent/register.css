@@ -61,10 +61,12 @@
     		border-radius: 20px;
         }
         input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, .email-input:focus {
-        	border-color: #292A31;
+        	outline: none;
+			border-color: #66afe9;
         }
         input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover, .email-input:hover {
-       		border-color: #292A31;
+       		outline: none;
+			border-color: #66afe9;
         }
         .phone-input {
             width: calc(33.3333% - 10px); /* 각 박스의 너비 조정 */

@@ -18,56 +18,150 @@ public class MovieDao {
 	PreparedStatement	ps  = null;
 	ResultSet 			rs  = null;
 	
-	public ArrayList<MovieDto> getReviewsBySearch(String searchType, String searchValue) {
-	    ArrayList<MovieDto> dtos = new ArrayList<>();
-	    String query = "";
-	    
-	    // 검색 조건에 따른 쿼리 작성 (단일 테이블 사용)
-	    if (searchType.equals("moviename")) {
-	        query = "SELECT movieid, moviename, writeid, name, rating, content, TO_CHAR(rating_date, 'YYYY-MM-DD') rating_date " +
-	                "FROM pjt_정민상_rating " +
-	                "WHERE LOWER(moviename) LIKE LOWER(?) " +
-	                "ORDER BY rating_date DESC";
-	    } else if (searchType.equals("name")) {
-	        query = "SELECT movieid, moviename, writeid, name, rating, content, TO_CHAR(rating_date, 'YYYY-MM-DD') rating_date " +
-	                "FROM pjt_정민상_rating " +
-	                "WHERE LOWER(name) LIKE LOWER(?) " +
-	                "ORDER BY rating_date DESC";
-	    } else if (searchType.equals("writeid")) {
-	        query = "SELECT movieid, moviename, writeid, name, rating, content, TO_CHAR(rating_date, 'YYYY-MM-DD') rating_date " +
-	                "FROM pjt_정민상_rating " +
-	                "WHERE LOWER(writeid) LIKE LOWER(?) " +
-	                "ORDER BY rating_date DESC";
-	    }
-	    
-	    try {
-	        con = DBConnection.getConnection();
-	        PreparedStatement ps = con.prepareStatement(query);
-	        ps.setString(1, "%" + searchValue + "%");
-	        
-	        ResultSet rs = ps.executeQuery();
-	        
-	        while (rs.next()) {
-	            String movieId = rs.getString("movieid");
-	            String movieName = rs.getString("moviename");
-	            String writeId = rs.getString("writeid");
-	            String name = rs.getString("name");
-	            int rating = rs.getInt("rating");
-	            String content = rs.getString("content");
-	            String ratingDate = rs.getString("rating_date");
-	            
-	            MovieDto dto = new MovieDto(name, writeId, content, ratingDate, movieName, Integer.parseInt(movieId), rating);
-	            dtos.add(dto);
-	        }
-	        
-	        DBConnection.closeDB(con, ps, rs);
-	    } catch (Exception e) {
-	        System.out.println("리뷰 검색 중 오류 발생: " + e.getMessage());
-	        e.printStackTrace();
-	    }
-	    
-	    return dtos;
-	}
+    private Connection conn = null;
+    private PreparedStatement pstmt = null;
+	
+	// 모든 리뷰 조회 메소드
+    public ArrayList<MovieDto> getAllReviews() {
+        ArrayList<MovieDto> dtos = new ArrayList<>();
+        String query = "SELECT movieid, moviename, rating, content, writeid, name, rating_date, no " +
+                      "FROM pjt_정민상_rating " +
+                      "ORDER BY rating_date DESC";
+        
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                MovieDto dto = new MovieDto();
+                dto.setMovieid(rs.getInt("movieid"));
+                dto.setMoviename(rs.getString("moviename"));
+                dto.setRating(rs.getInt("rating"));
+                dto.setContent(rs.getString("content"));
+                dto.setWriteid(rs.getString("writeid"));
+                dto.setName(rs.getString("name"));
+                dto.setRating_date(rs.getString("rating_date"));
+                dto.setNo(rs.getInt("no"));
+                
+                dtos.add(dto);
+            }
+        } catch(Exception e) {
+            System.out.println("getAllReviews() 오류: " + e.getMessage());
+        } finally {
+            DBConnection.closeDB(conn, pstmt, rs);
+        }
+        
+        return dtos;
+    }
+    
+    // 영화 이름으로 리뷰 검색
+    public ArrayList<MovieDto> searchReviewsByMovieName(String movieName) {
+        ArrayList<MovieDto> dtos = new ArrayList<>();
+        String query = "SELECT movieid, moviename, rating, content, writeid, name, rating_date, no " +
+                      "FROM pjt_정민상_rating " +
+                      "WHERE UPPER(moviename) LIKE UPPER(?) " +
+                      "ORDER BY rating_date DESC";
+        
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, "%" + movieName + "%");
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                MovieDto dto = new MovieDto();
+                dto.setMovieid(rs.getInt("movieid"));
+                dto.setMoviename(rs.getString("moviename"));
+                dto.setRating(rs.getInt("rating"));
+                dto.setContent(rs.getString("content"));
+                dto.setWriteid(rs.getString("writeid"));
+                dto.setName(rs.getString("name"));
+                dto.setRating_date(rs.getString("rating_date"));
+                dto.setNo(rs.getInt("no"));
+                
+                dtos.add(dto);
+            }
+        } catch(Exception e) {
+            System.out.println("searchReviewsByMovieName() 오류: " + e.getMessage());
+        } finally {
+            DBConnection.closeDB(conn, pstmt, rs);
+        }
+        
+        return dtos;
+    }
+    
+    // 사용자 이름으로 리뷰 검색
+    public ArrayList<MovieDto> searchReviewsByUserName(String userName) {
+        ArrayList<MovieDto> dtos = new ArrayList<>();
+        String query = "SELECT movieid, moviename, rating, content, writeid, name, rating_date, no " +
+                      "FROM pjt_정민상_rating " +
+                      "WHERE UPPER(name) LIKE UPPER(?) " +
+                      "ORDER BY rating_date DESC";
+        
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, "%" + userName + "%");
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                MovieDto dto = new MovieDto();
+                dto.setMovieid(rs.getInt("movieid"));
+                dto.setMoviename(rs.getString("moviename"));
+                dto.setRating(rs.getInt("rating"));
+                dto.setContent(rs.getString("content"));
+                dto.setWriteid(rs.getString("writeid"));
+                dto.setName(rs.getString("name"));
+                dto.setRating_date(rs.getString("rating_date"));
+                dto.setNo(rs.getInt("no"));
+                
+                dtos.add(dto);
+            }
+        } catch(Exception e) {
+            System.out.println("searchReviewsByUserName() 오류: " + e.getMessage());
+        } finally {
+            DBConnection.closeDB(conn, pstmt, rs);
+        }
+        
+        return dtos;
+    }
+    
+    // 작성자 ID로 리뷰 검색
+    public ArrayList<MovieDto> searchReviewsByWriteId(String writeId) {
+        ArrayList<MovieDto> dtos = new ArrayList<>();
+        String query = "SELECT movieid, moviename, rating, content, writeid, name, rating_date, no " +
+                      "FROM pjt_정민상_rating " +
+                      "WHERE UPPER(writeid) LIKE UPPER(?) " +
+                      "ORDER BY rating_date DESC";
+        
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, "%" + writeId + "%");
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                MovieDto dto = new MovieDto();
+                dto.setMovieid(rs.getInt("movieid"));
+                dto.setMoviename(rs.getString("moviename"));
+                dto.setRating(rs.getInt("rating"));
+                dto.setContent(rs.getString("content"));
+                dto.setWriteid(rs.getString("writeid"));
+                dto.setName(rs.getString("name"));
+                dto.setRating_date(rs.getString("rating_date"));
+                dto.setNo(rs.getInt("no"));
+                
+                dtos.add(dto);
+            }
+        } catch(Exception e) {
+            System.out.println("searchReviewsByWriteId() 오류: " + e.getMessage());
+        } finally {
+            DBConnection.closeDB(conn, pstmt, rs);
+        }
+        
+        return dtos;
+    }
 
 	
 	// 추천영화목록에 들어가있는지 확인

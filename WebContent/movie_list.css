@@ -277,10 +277,12 @@ h1{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 #mainSearchForm input[type="text"]:hover {
-	border: 1px solid #292A31;
+	outline: none;
+	border-color: #66afe9;
 }	
 #mainSearchForm input[type="text"]:focus {
-	border-color: #292A31;
+	outline: none;
+	border-color: #66afe9;
 }	
 #mainSearchForm select {
     margin-left: 10px;
@@ -294,10 +296,12 @@ h1{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 #mainSearchForm select:focus {
-	border-color: #e0e0e0;
+	outline: none;
+	border-color: #66afe9;
 }
 #mainSearchForm select:hover {
-	border: 1px solid #e0e0e0;
+	outline: none;
+	border-color: #66afe9;
 }	
 #mainSearchForm button {
     margin-left: 10px;
