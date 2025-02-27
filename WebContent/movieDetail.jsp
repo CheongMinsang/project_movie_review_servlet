@@ -31,10 +31,6 @@
 	<script src="js/jquery-1.8.1.min.js"></script>
 </head>
 <body>
-<form name="reco">
-	<input type="hidden" name="t_gubun" id="recoT_gubun" value="">
-	<input type="hidden" name="movieId" id="movieId" value="">
-</form>
 	<div class="user-wrap">
         <div class="user-image">
             <img src="images/1.jpg" alt="영화 리뷰 사이트" class="main-image">
@@ -69,7 +65,7 @@
 				<button class="filter-btn2 filter-btn5"><i class="fa-solid fa-star"></i> 높은 평점 목록</button>
 			</a>	
 			<button class="filter-btn2 filter-btn6" onclick="goReco()"><i class="fa-solid fa-thumbs-up"></i> 추천 영화 목록</button>
-			<button class="filter-btn2 filter-btn7"><i class="fa-solid fa-comments"></i> 리뷰 많은 순</button>
+			<button class="filter-btn2 filter-btn7" onclick="goManyReview()"><i class="fa-solid fa-comments"></i> 리뷰 많은 순</button>
 		</div>	
 	</div>
 	
@@ -287,6 +283,11 @@
 			  <!-- 리뷰 작성 텍스트 영역 -->
 			  <textarea name="reviewContent" id="reviewContent" placeholder="리뷰를 작성하세요"></textarea>
 			  <button type="submit">등록</button>
+			</form>
+			<form name="reco">
+				<input type="hidden" name="t_gubun" id="recoT_gubun" value="">
+				<input type="hidden" name="movieId" id="movieId" value="">
+				<input type="hidden" name="movieName" id="recoMovieName" value="<%= movieDetail.optString("title", "Unknown Movie") %>">
 			</form>
 		  </div>
     </div>
@@ -527,6 +528,12 @@
     }
 	function goReco(){
 		mem.t_gubun.value="goRecoList";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function goManyReview(){
+		mem.t_gubun.value="goManyReview";
 		mem.method="post";
 		mem.action="Index";
 		mem.submit();

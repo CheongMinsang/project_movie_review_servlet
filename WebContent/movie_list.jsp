@@ -45,7 +45,7 @@
 				<button class="filter-btn2 filter-btn5"><i class="fa-solid fa-star"></i> 높은 평점 목록</button>
 			</a>	
 			<button class="filter-btn2 filter-btn6" onclick="goReco()"><i class="fa-solid fa-thumbs-up"></i> 추천 영화 목록</button>
-			<button class="filter-btn2 filter-btn7"><i class="fa-solid fa-comments"></i> 리뷰 많은 순</button>
+			<button class="filter-btn2 filter-btn7" onclick="goManyReview()"><i class="fa-solid fa-comments"></i> 리뷰 많은 순</button>
 		</div>	
 	</div>	
     <div class="movie-list-container" style="position: relative;">
@@ -203,6 +203,12 @@
 	});
 	function goReco(){
 		mem.t_gubun.value="goRecoList";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function goManyReview(){
+		mem.t_gubun.value="goManyReview";
 		mem.method="post";
 		mem.action="Index";
 		mem.submit();

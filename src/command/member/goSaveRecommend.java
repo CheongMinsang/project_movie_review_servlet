@@ -18,11 +18,15 @@ public class goSaveRecommend implements CommonExecute {
 		String writeid = (String) session.getAttribute("sessionId");
 		
 		String movieId = request.getParameter("movieId");
+		String movieName = request.getParameter("movieName");
+		if (movieName.contains("'")) {
+		    movieName = movieName.replace("'", "''");
+		}
 		String reg_date = CommonUtil.getTodayTime();
 		
 		int no = dao.getMaxRecoTabelNumber();
 		
-		MovieDto dto = new MovieDto(writeid, reg_date, Integer.parseInt(movieId), no);
+		MovieDto dto = new MovieDto(writeid, movieName, reg_date, Integer.parseInt(movieId), no);
 		int result = dao.saveReco(dto);
 		
 		// 세션에서 sessionLevel 값을 가져옴

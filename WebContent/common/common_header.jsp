@@ -224,7 +224,7 @@
                     <button type="button" onclick="goReco()">
                         <i class="fa-solid fa-thumbs-up" style="color: #66afe9;"></i> 추천 영화 목록
                     </button>
-                    <button type="button">
+                    <button type="button" onclick="goManyReview()">
                         <i class="fa-solid fa-comments" style="color: #32CD32;"></i> 리뷰 많은 순
                     </button>
                     <button type="button" class="close-btn" onclick="toggleMovieMenu(event)">
@@ -326,19 +326,3 @@
         </div>
     </c:if>    
 </div>
-<script>
-/*
-    function openInfoPopup(){
-        // 먼저 빈 팝업창을 열어 target 이름을 지정합니다.
-        window.open('', 'myinfoPopup', 'width=600,height=1200,scrollbars=yes');
-        
-        // 폼의 target을 팝업창 이름과 동일하게 설정
-        mem.target = 'myinfoPopup';
-        mem.t_gubun.value = "myinfo";
-        mem.method = "post";
-        mem.action = "Index";
-        mem.submit();
-        
-    }
-*/    
-</script>

@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>추천 영화 목록</title>
+    <title>리뷰 많은 영화 목록</title>
     <link href="main.css" rel="stylesheet">
     <style>
         .recommend-container {
@@ -106,7 +106,7 @@
 	</div>			
     
     <h1 style="text-align:center; margin-bottom:60px; margin-top:80px; color:#333;">
-    	<i class="fa-solid fa-play" style="color: #66afe9"></i>&nbsp추천 영화 목록
+    	<i class="fa-solid fa-comments" style="color: #32CD32;"></i>&nbsp 리뷰 많은 영화 목록
    	</h1>
    	
     <div class="recommend-container">
@@ -118,7 +118,7 @@
 		                 src="https://image.tmdb.org/t/p/w500${movie.getString('poster_path')}" 
 		                 alt="${movie.getString('title')}">
 		            <div class="recommend-info">
-		                <div class="recommend-title">${movie.getString('title')}</div>
+		                <div class="recommend-title">${movie.getString('dbTitle')}</div>
 		                <div class="recommend-rating"><i class="fa-solid fa-star"></i> ${movie.getDouble('vote_average')}</div>
 		                <div class="recommend-date">개봉일: ${movie.getString('release_date')}</div>
 		            </div>

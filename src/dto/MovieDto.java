@@ -6,6 +6,12 @@ public class MovieDto {
 					moviename;
 	private int movieid, rating, no;
 	
+	//리뷰많은순 영화 목록
+	public MovieDto(String moviename, int movieid) {
+		this.moviename = moviename;
+		this.movieid = movieid;
+	}
+	
 	// 개인 리뷰 목록
 	public MovieDto(String name, String content, String rating_date, int movieid, int rating, String moviename) {
 		this.name = name;
@@ -96,8 +102,9 @@ public class MovieDto {
 	public MovieDto() {}
 	
 	//추천영화등록시
-	public MovieDto(String writeid, String reg_date, int movieid, int no) {
+	public MovieDto(String writeid, String moviename, String reg_date, int movieid, int no) {
 		this.writeid = writeid;
+		this.moviename = moviename;
 		this.reg_date = reg_date;
 		this.movieid = movieid;
 		this.no = no;

@@ -755,9 +755,9 @@ public class MovieDao {
 		public int saveReco(MovieDto dto) {
 			int result=0;
 			String query="insert into pjt_정민상_recommend\r\n" + 
-					"(no, movieid, writeid, reg_date)\r\n" + 
+					"(no, movieid, moviename, writeid, reg_date)\r\n" + 
 					"values\r\n" + 
-					"("+dto.getNo()+", "+dto.getMovieid()+",'"+dto.getWriteid()+"',\r\n" + 
+					"("+dto.getNo()+", "+dto.getMovieid()+", '"+dto.getMoviename()+"','"+dto.getWriteid()+"',\r\n" + 
 					"to_date('"+dto.getReg_date()+"','yyyy-MM-dd hh24:mi:ss')\r\n" + 
 					")";
 			try {
@@ -772,6 +772,36 @@ public class MovieDao {
 			}
 			return result;
 		}
+		//리뷰많은순, 찜많은순
+			public ArrayList<MovieDto> goManyReview(int gubun) {
+				ArrayList<MovieDto> dtos = new ArrayList<>();
+				String query ="" ;
+				if(gubun == 1) {
+					query ="SELECT movieid, moviename || ' (리뷰' || COUNT(*) || '개)' AS moviename\r\n" + 
+							"FROM pjt_정민상_rating\r\n" + 
+							"GROUP BY movieid, moviename\r\n" + 
+							"ORDER BY COUNT(*) DESC";
+				}
+				try {
+					con = DBConnection.getConnection();
+					ps  = con.prepareStatement(query);
+					rs  = ps.executeQuery();
+					while(rs.next()) {
+						int movieid = rs.getInt("movieid");
+						String moviename = rs.getString("moviename");
+						
+						MovieDto dto = new MovieDto(moviename, movieid);
+						dtos.add(dto);
+						
+					}
+				}catch(Exception e) {
+					System.out.println("goManyReview() 오류:"+query);
+					e.printStackTrace();
+				}finally {
+					DBConnection.closeDB(con, ps, rs);
+				}
+				return dtos;
+			}
 		//추천영화목록 가져오기
 		public ArrayList<MovieDto> getRecoList(String writeid) {
 			ArrayList<MovieDto> dtos = new ArrayList<>();
