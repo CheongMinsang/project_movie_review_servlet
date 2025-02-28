@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
     <title>관리메뉴 페이지</title>
     <style>
         body {

@@ -1,35 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<script>
-	function goLogin(){
-		mem.t_gubun.value="login";
-		mem.method="post";
-		mem.action="Index";
-		mem.submit();
-	}
-	function focusNext(event, nextId){
-		if(event.key === "Enter"){
-			event.preventDefault();
-			document.getElementById(nextId).focus();
-		}
-	}
-</script>
-<form name="mem">
-	<input type="hidden" name="t_gubun">
-</form>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
     <link href="register.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+	<script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<form name="mem">
+	<input type="hidden" name="t_gubun">
+</form>
     <div class="container">
-        <a href="Index" class="home-link"><i class="fa-solid fa-house"></i> 홈으로</a>
+        <a href="javascript:window.close();" class="home-link"><i class="fa-solid fa-house"></i> 홈으로</a>
         <h2 align="center">회원가입</h2>
         <form name="register">
         <input type="hidden" name="t_gubun">
@@ -255,6 +240,21 @@
             window.opener.location.reload();
         }
     });
+</script>
+<script>
+	function goLogin(){
+		window.resizeTo(500, 600); // 현재 창의 크기를 500x1200으로 변경
+		mem.t_gubun.value="login";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function focusNext(event, nextId){
+		if(event.key === "Enter"){
+			event.preventDefault();
+			document.getElementById(nextId).focus();
+		}
+	}
 </script>
 </body>
 </html>

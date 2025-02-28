@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <style>
     .slick-prev:before, .slick-next:before {
         font-size: 40px; /* 버튼 내부 아이콘 크기 증가 */
@@ -77,29 +77,29 @@
 	<div class="filter-section2">
 		<div class="award-filter">
 			<a href="MovieList?t_gubun=popular&page=1">
-				<button class="filter-btn2 filter-btn3"><i class="fa-solid fa-fire"></i> 인기 영화 목록</button>
+				<button class="filter-btn2"><!--  <i class="fa-solid fa-fire"></i>--> 인기 영화 목록</button>
 			</a>
 			<a href="MovieList?t_gubun=upcoming&page=1">	
-				<button class="filter-btn2 filter-btn4"><i class="fa-solid fa-calendar"></i> 개봉 예정 목록</button>
+				<button class="filter-btn2"><!-- <i class="fa-solid fa-calendar"></i>--> 개봉 예정 목록</button>
 			</a>
 			<a href="MovieList?t_gubun=top_rated&page=1">
-				<button class="filter-btn2 filter-btn5"><i class="fa-solid fa-star"></i> 높은 평점 목록</button>
+				<button class="filter-btn2"> <!--<i class="fa-solid fa-star"></i>--> 높은 평점 목록</button>
 			</a>	
-			<button class="filter-btn2 filter-btn6" onclick="goReco()"><i class="fa-solid fa-thumbs-up"></i> 추천 영화 목록</button>
-			<button class="filter-btn2 filter-btn7" onclick="goManyReview()"><i class="fa-solid fa-comments"></i> 리뷰 많은 순</button>
+			<button class="filter-btn2" onclick="goReco()"> <!-- <i class="fa-solid fa-thumbs-up"></i>--> 추천 영화 목록</button>
+			<button class="filter-btn2" onclick="goManyReview()"> <!-- <i class="fa-solid fa-comments"></i>--> 리뷰 많은 순</button>
 		</div>	
 	</div>		
 	
 	<style>
 	  .section .section-title1 i {
-	    color: red;
+	    color: #DB4455;
 	  }
 	</style>
 	
     <!-- 인기 영화 섹션 -->
     <div class="section">
         <div class="section-title section-title1">
-        	<i class="fa-solid fa-fire"></i>&nbsp인기 영화 목록
+        	<i class="fa-solid fa-fire"></i>&nbsp;인기 영화 목록
         	<a href="MovieList?t_gubun=popular&page=1" class="more-link">more</a>
         </div>
         <div class="slider-container">
@@ -120,7 +120,7 @@
 				             alt="<%= title %>">
 				        <div class="movie-info">
 				            <h2><%= title %></h2>
-				            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></div>
+				            <div class="rating"><span><i class="fa-solid fa-star"></i></span> <%= String.format("%.1f", voteAverage) %></div>
 				            <p>개봉일: <%= releaseDate %></p>
 				        </div>
 				    </a>
@@ -142,7 +142,7 @@
     <!-- 개봉 예정 영화 섹션 -->
     <div class="section">
         <div class="section-title section-title2">
-        	<i class="fa-solid fa-calendar"></i>&nbsp개봉 예정 영화
+        	<i class="fa-solid fa-calendar"></i>&nbsp;개봉 예정 영화
         	<a href="MovieList?t_gubun=upcoming&page=1" class="more-link">more</a>
         </div>
         <div class="slider-container">
@@ -162,7 +162,7 @@
 				             alt="<%= title %>">
 				        <div class="movie-info">
 				            <h2><%= title %></h2>
-				            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></div>
+				            <div class="rating"><span><i class="fa-solid fa-star"></i></span> <%= String.format("%.1f", voteAverage) %></div>
 				            <p>개봉일: <%= releaseDate %></p>
 				        </div>
 				    </a>
@@ -184,7 +184,7 @@
     <!-- 평점 높은 영화 섹션 -->
     <div class="section">
         <div class="section-title section-title3">
-        	<i class="fa-solid fa-star"></i>&nbsp평점 높은 영화
+        	<i class="fa-solid fa-star"></i>&nbsp;평점 높은 영화
         	<a href="MovieList?t_gubun=top_rated&page=1" class="more-link">more</a>
         </div>
         <div class="slider-container">
@@ -204,7 +204,7 @@
 				             alt="<%= title %>">
 				        <div class="movie-info">
 				            <h2><%= title %></h2>
-				            <div class="rating"><span><i class="fa-solid fa-star"></i> <%= String.format("%.1f", voteAverage) %></div>
+				            <div class="rating"><span><i class="fa-solid fa-star"></i></span> <%= String.format("%.1f", voteAverage) %></div>
 				            <p>개봉일: <%= releaseDate %></p>
 				        </div>
 				    </a>
@@ -218,15 +218,14 @@
     </div>
 
     <!-- 영화 예매 사이트 및 앱 링크 -->
-    <div class="section-title" style="margin-top: 100px;">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-link"></i>&nbsp예매사이트 및 영화관람추천App</div>
+    <div class="section-title" style="margin-top: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-link"></i>&nbsp;예매사이트 및 영화관람추천App</div>
     <div class="cgv-link" style="margin-bottom: 100px;">
         <%@ include file="../common/common_link.jsp" %>
     </div>
 	
     <!-- 태그별 영화 분류 -->
-    <div class="section-title section-title1" style="margin-top: 100px;"><i class="fa-solid fa-hashtag" style="color: #ffa500;"></i>&nbsp태그별 영화 분류</div>
+    <div class="section-title section-title1" style="margin-top: 100px;"><i class="fa-solid fa-hashtag" style="color: #ffa500;"></i>&nbsp;태그별 영화 분류</div>
     <%@ include file="../common/common_filter.jsp" %>
-
     <footer class="footer">
         <%@ include file="../common/common_footer.jsp" %>
     </footer>

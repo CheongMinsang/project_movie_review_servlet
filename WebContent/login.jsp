@@ -1,45 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<script>
-	function goRegister(){
-		mem.t_gubun.value="register";
-		mem.method="post";
-		mem.action="Index";
-		mem.submit();
-	}
-	function goLogin(){
-        var emailInput = document.getElementById("input1");
-        var passwordInput = document.getElementById("input2");
-
-        if (emailInput.value === "") {
-            alert("이메일을 입력해주세요.");
-            emailInput.focus();
-            return;
-        }
-
-        if (passwordInput.value === "") {
-            alert("비밀번호를 입력해주세요.");
-            passwordInput.focus();
-            return;
-        }
-		
-		mem.t_gubun.value="loginForm";
-		mem.method="post";
-		mem.action="Index";
-		mem.submit();
-	}
-	function focusNext(event, nextId) {
-		if (event.key === "Enter") {
-			event.preventDefault(); 
-			document.getElementById(nextId).focus(); 
-		} 
-	}
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
     <title>로그인 페이지</title>
     <style>
         body {
@@ -120,7 +85,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="Index" class="home-link">&nbsp&nbsp<i class="fa-solid fa-house"></i> 홈으로</a>
+        <a href="javascript:window.close();" class="home-link">&nbsp&nbsp<i class="fa-solid fa-house"></i> 홈으로</a>
         <h2 align="center">로그인</h2>
         <form name="mem">
         <input type="hidden" name="t_gubun">
@@ -143,6 +108,42 @@
 	        this.style.borderColor = ''; // 기본 테두리 색으로 돌아감
 	    });
 	});
+</script>
+<script>
+	function goRegister(){
+		window.resizeTo(500, 1200); // 현재 창의 크기를 500x1200으로 변경
+		mem.t_gubun.value="register";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function goLogin(){
+        var emailInput = document.getElementById("input1");
+        var passwordInput = document.getElementById("input2");
+
+        if (emailInput.value === "") {
+            alert("이메일을 입력해주세요.");
+            emailInput.focus();
+            return;
+        }
+
+        if (passwordInput.value === "") {
+            alert("비밀번호를 입력해주세요.");
+            passwordInput.focus();
+            return;
+        }
+		
+		mem.t_gubun.value="loginForm";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function focusNext(event, nextId) {
+		if (event.key === "Enter") {
+			event.preventDefault(); 
+			document.getElementById(nextId).focus(); 
+		} 
+	}
 </script>    
 <script>
     // 팝업창이 언로드될 때(닫힐 때) 부모창 새로고침 시도

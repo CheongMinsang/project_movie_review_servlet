@@ -106,7 +106,7 @@
 	</div>				
     
     <h1 style="text-align:center; margin-bottom:60px; margin-top:80px; color:#333;">
-    	<i class="fa-solid fa-play"></i>&nbsp내가 저장한 영화
+    	<i class="fa-solid fa-film"></i>&nbsp내가 저장한 영화
    	</h1>
    	
     <div class="recommend-container">

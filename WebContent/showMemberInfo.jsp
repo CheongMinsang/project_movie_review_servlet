@@ -1,25 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">
-	function goExit(){
-		if (confirm("정말 탈퇴시키겠습니까?")) {
-		 	mem.t_gubun.value = "goMemberExit";
-	        mem.method      = "post";
-	        mem.action      = "Index";
-	        mem.submit();
-		} else {
-			return;
-		}
-	}
-</script>
     <meta charset="UTF-8">
     <title>회원 상세 정보</title>
     <!-- 메인 CSS 파일 -->
     <link href="main.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
@@ -143,6 +131,17 @@
     <footer class="footer">
         <%@ include file="../common/common_footer.jsp" %>
     </footer>
-    
+<script type="text/javascript">
+	function goExit(){
+		if (confirm("정말 탈퇴시키겠습니까?")) {
+		 	mem.t_gubun.value = "goMemberExit";
+	        mem.method      = "post";
+	        mem.action      = "Index";
+	        mem.submit();
+		} else {
+			return;
+		}
+	}
+</script>    
 </body>
 </html>

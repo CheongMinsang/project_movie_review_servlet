@@ -70,9 +70,11 @@ public class Index extends HttpServlet {
 		}
 		String apiKey = "14268f35e4a6081c29de2405e84e82c2";
 		
+		/*
 	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
 	    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-	    response.setDateHeader("Expires", 0); 
+	    response.setDateHeader("Expires", 0);
+	    */ 
 		
 	    // 회원가입 페이지
 		if(gubun.equals("register")) {

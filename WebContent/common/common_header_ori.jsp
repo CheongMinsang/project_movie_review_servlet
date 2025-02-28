@@ -91,15 +91,13 @@
 		mem.submit();
 	}
 	
-	/*
-	// search-input 요소에 이벤트 등록
-	document.getElementById('search-input').addEventListener('focus', function() {
-	  this.style.borderColor = '#66afe9'; // 포커스 시 테두리 색 변경
+	document.getElementById('search-input'&'submit').addEventListener('focus', function() {
+	    this.style.borderColor = '#66afe9'; // 입력 중일 때 테두리 색을 오렌지색으로
 	});
-	document.getElementById('search-input').addEventListener('blur', function() {
-	  this.style.borderColor = ''; // 포커스 아웃 시 원래 색으로 복구
+
+	document.getElementById('search-input'&'submit').addEventListener('blur', function() {
+	    this.style.borderColor = ''; // 기본 테두리 색으로 돌아감
 	});
-	*/
 	
 	// 드롭다운 관련 함수들
 	function toggleMemberMenu() {
@@ -311,7 +309,7 @@
 	<script>
 	    function openLoginPopup(){
 	        // 팝업창 이름, 크기, 기타 옵션 설정 (필요에 따라 옵션을 조정)
-	        window.open('login.jsp', 'loginPopup', 'width=500,height=600,scrollbars=yes');
+	        window.open('login.jsp', 'loginPopup', 'width=500,height=1200,scrollbars=yes');
 	    }
 	    function openRegisterPopup(){
 	        // 팝업창 이름, 크기, 기타 옵션 설정 (필요에 따라 옵션을 조정)

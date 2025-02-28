@@ -8,7 +8,6 @@
     <title>모든 리뷰 목록</title>
     <link href="main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .review-container {
             max-width: 800px;
@@ -312,7 +311,7 @@
     <footer class="footer">
         <%@ include file="../common/common_footer.jsp" %>
     </footer>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         function confirmDelete(movieId, writeId) {
             if (confirm("해당 리뷰를 삭제하시겠습니까?")) {

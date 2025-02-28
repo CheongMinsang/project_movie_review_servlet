@@ -26,7 +26,7 @@
     <link href="movieDetail.css" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 	<script src="js/jquery-1.8.1.min.js"></script>
 </head>
@@ -538,7 +538,7 @@
 		mem.action="Index";
 		mem.submit();
 	}
-</script>	
+</script>
 </body>
 <style>
 	body {

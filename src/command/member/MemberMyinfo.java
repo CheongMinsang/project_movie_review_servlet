@@ -14,7 +14,6 @@ public class MemberMyinfo implements CommonExecute {
 	@Override
 	public void execute(HttpServletRequest request) {
 		MovieDao dao = new MovieDao();
-		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("sessionId");
 		String name = (String) session.getAttribute("sessionName");
