@@ -223,10 +223,14 @@ public class Index extends HttpServlet {
 			dispatcher.forward(request, response);
 		// 관리자 관리용 전체 리뷰 목록 가져오기
 		}else if(gubun.equals("goReviewManage")) {
-			CommonExecute mem = new goReviewManage();
-			mem.execute(request);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("goReviewManage.jsp");
-			dispatcher.forward(request, response);
+			if (!response.isCommitted()) {
+			    CommonExecute mem = new goReviewManage();
+			    mem.execute(request);
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("goReviewManage.jsp");
+			    dispatcher.forward(request, response);
+			} else {
+			    // Handle committed response case
+			}
 		// 내가 작성한 리뷰 삭제하기	
 		}else if(gubun.equals("MyRatingDelete")) {
 		    // RequestDispatcher 대신 직접 처리

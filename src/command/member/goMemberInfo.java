@@ -17,7 +17,6 @@ public class goMemberInfo implements CommonExecute {
 		
 		MovieDto dto = dao.getMemberInfo2(id);
 		request.setAttribute("dto", dto);
-
 	}
 
 }

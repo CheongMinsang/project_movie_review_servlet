@@ -35,14 +35,26 @@ public class goReviewManage implements CommonExecute {
             // 검색 유형에 따라 다른 검색 메소드 호출
             if(searchType.equals("moviename")) {
                 dtos = dao.searchReviewsByMovieName(searchValue);
+                if(dtos == null) {
+                    dtos = new ArrayList<MovieDto>();
+                }
             } else if(searchType.equals("name")) {
                 dtos = dao.searchReviewsByUserName(searchValue);
+                if(dtos == null) {
+                    dtos = new ArrayList<MovieDto>();
+                }
             } else if(searchType.equals("writeid")) {
                 dtos = dao.searchReviewsByWriteId(searchValue);
+                if(dtos == null) {
+                    dtos = new ArrayList<MovieDto>();
+                }
             }
         } else {
             // 검색 파라미터가 없으면 전체 리뷰 조회
-            dtos = dao.getAllReviews();
+        	dtos = dao.getAllReviews();
+        	if(dtos == null) {
+        	    dtos = new ArrayList<MovieDto>();
+        	}
         }
 	    
 	    // 결과를 request에 저장
@@ -50,7 +62,7 @@ public class goReviewManage implements CommonExecute {
 	    request.setAttribute("currentPage", currentPage);
 	    
 	    // 페이징 정보 계산
-	    int totalReviews = dtos.size();
+	    int totalReviews = (dtos != null) ? dtos.size() : 0;
 	    int reviewsPerPage = 6;
 	    int totalPages = (int) Math.ceil((double) totalReviews / reviewsPerPage);
 	    

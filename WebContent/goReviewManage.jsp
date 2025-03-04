@@ -1,203 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="dto.MovieDto" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, dto.MovieDto" %>
+<%@ page buffer="64kb" autoFlush="true" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>모든 리뷰 목록</title>
     <link href="main.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .review-container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            margin-top: 100px;
-        }
-        h2{
-            color: #333;
-            margin-bottom: 30px;
-        }
-        .review-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .review-stars {
-            color: #ffd700;
-            font-size: 18px;
-        }
-        
-        .review-info {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .review-content {
-            color: #333;
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-        
-        .review-link {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .review-date {
-            color: #888;
-            font-size: 14px;
-        }
-        
-        .no-reviews {
-            text-align: center;
-            padding: 50px;
-            color: #666;
-        }
-        .movie-title {
-            font-size: 1.3em;
-            color: #2c3e50;
-            margin: 0 0 10px 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .delete-btn {
-            background: #ff5252;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: background 0.2s;
-        }
-        .delete-btn:hover {
-            background: #ff1a1a;
-        }
-        
-        .delete-icon {
-            color: #ff5252;
-            cursor: pointer;
-            font-size: 16px;
-            transition: color 0.2s;
-            margin-left: 10px;
-        }
-        .delete-icon:hover {
-            color: #ff1a1a;
-        }
-        
-        /* 페이징 스타일 */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin-top: 30px;
-        }
-        
-        .pagination li {
-            margin: 0 5px;
-        }
-        
-        .pagination a {
-        	margin: 0 3px; /* 중앙 정렬을 유지하면서 여백 조정 */
-            display: block;
-            padding: 10px 25px;
-            text-decoration: none;
-            color: #666;
-            border-radius: 20px;
-            transition: background 0.3s, color 0.3s;
-        }
-        
-        .pagination a:hover {
-            background: #f0f0f0;
-        }
-        
-        .pagination .active a {
-            background: #292A31;
-            color: white;
-        }
-        
-        .pagination .disabled a {
-            color: #ccc;
-            cursor: not-allowed;
-        }
-        
-         .search-container1 {
-		      width: 100%;
-		      padding: 20px 0px;
-		      margin: 20px 0;
-		  }
-		
-		  .search-box1 {
-		      display: inline-block;
-		      background-color: #fff;
-		      border-radius: 8px;
-		      /* padding: 10px 20px; */
-		      /* border: 1px solid #ddd; */
-		      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-		  }
-		
-		  .search-box1 select,
-		  .search-box1 input[type="text"],
-		  .search-box1 button {
-		      padding: 8px;
-		      margin-right: 8px;
-		      border: 1px solid #ccc;
-		      border-radius: 3px;
-		      font-size: 14px;
-		  }
-		
-		  .search-box1 select:focus,
-		  .search-box1 input[type="text"]:focus,
-		  .search-box1 button:focus {
-		      outline: none;
-		      border-color: #66afe9;
-		  }
-		
-		  .search-box1 input[type="text"] {
-		      width: 200px;
-		  }
-		
-		  .search-box1 button {
-		      background-color: #292A31;
-		      color: #fff;
-		      cursor: pointer;
-		      border: none;
-		      transition: background-color 0.3s;
-		  }
-		
-		  .search-box1 button:hover {
-		      background-color: black;
-		  }
-    </style>
+    <link href="css/goReviewManage.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- 헤더 -->
     <header>
         <%@ include file="../common/common_header.jsp" %>
     </header>
-
     <div class="review-container">
         <h2>작성한 리뷰 목록</h2>
-        
         <div class="search-container1">
 		  <div class="search-box1">
 		    <select id="searchType">
@@ -210,9 +29,9 @@
 		    <button type="button" onclick="resetSearch()">초기화</button>
 		  </div>
 		</div>
-        
         <div id="reviewsContent">
             <%
+            @SuppressWarnings("unchecked")
             ArrayList<MovieDto> dtos = (ArrayList<MovieDto>)request.getAttribute("dtos");
             if(dtos != null && !dtos.isEmpty()) {
                 // 페이징 처리를 위한 변수
@@ -222,7 +41,7 @@
                     currentPage = Integer.parseInt(pageParam);
                 }
                 
-                int totalReviews = dtos.size();
+                int totalReviews = (dtos != null) ? dtos.size() : 0;
                 int reviewsPerPage = 6;
                 int totalPages = (int) Math.ceil((double) totalReviews / reviewsPerPage);
                 

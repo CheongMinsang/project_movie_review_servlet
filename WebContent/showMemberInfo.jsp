@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page buffer="64kb" autoFlush="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
     <title>회원 상세 정보</title>
     <!-- 메인 CSS 파일 -->
     <link href="main.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a6ae218852.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -65,13 +66,11 @@
     </style>
 </head>
 <body>
-
     <!-- 헤더 include -->
     <header>
         <%@ include file="../common/common_header.jsp" %>
     </header>
-    
-    <form name="mem" id="mem">
+    <form name="mem1" id="mem1">
 		<input type="hidden" name="t_gubun">
 		<input type="hidden" id="t_id2" name="t_id2" value="${dto.id}">
     <div class="container">
@@ -134,10 +133,10 @@
 <script type="text/javascript">
 	function goExit(){
 		if (confirm("정말 탈퇴시키겠습니까?")) {
-		 	mem.t_gubun.value = "goMemberExit";
-	        mem.method      = "post";
-	        mem.action      = "Index";
-	        mem.submit();
+		 	mem1.t_gubun.value = "goMemberExit";
+	        mem1.method      = "post";
+	        mem1.action      = "Index";
+	        mem1.submit();
 		} else {
 			return;
 		}

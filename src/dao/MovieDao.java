@@ -88,7 +88,7 @@ public class MovieDao {
             DBConnection.closeDB(conn, pstmt, rs);
         }
         
-        return dtos;
+        return (dtos.isEmpty()) ? new ArrayList<>() : dtos;
     }
     
     // 사용자 이름으로 리뷰 검색
@@ -124,7 +124,7 @@ public class MovieDao {
             DBConnection.closeDB(conn, pstmt, rs);
         }
         
-        return dtos;
+        return (dtos.isEmpty()) ? new ArrayList<>() : dtos;
     }
     
     // 작성자 ID로 리뷰 검색
@@ -160,7 +160,7 @@ public class MovieDao {
             DBConnection.closeDB(conn, pstmt, rs);
         }
         
-        return dtos;
+        return (dtos.isEmpty()) ? new ArrayList<>() : dtos;
     }
 
 	
