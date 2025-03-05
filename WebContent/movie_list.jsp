@@ -33,21 +33,7 @@
     <header>
         <%@ include file="../common/common_header.jsp" %>
     </header>
-    	<div class="filter-section2">
-		<div class="award-filter">
-			<a href="MovieList?t_gubun=popular&page=1">
-				<button class="filter-btn2"><!--  <i class="fa-solid fa-fire"></i>--> 인기 영화 목록</button>
-			</a>
-			<a href="MovieList?t_gubun=upcoming&page=1">	
-				<button class="filter-btn2"><!-- <i class="fa-solid fa-calendar"></i>--> 개봉 예정 목록</button>
-			</a>
-			<a href="MovieList?t_gubun=top_rated&page=1">
-				<button class="filter-btn2"> <!--<i class="fa-solid fa-star"></i>--> 높은 평점 목록</button>
-			</a>	
-			<button class="filter-btn2" onclick="goReco()"> <!-- <i class="fa-solid fa-thumbs-up"></i>--> 추천 영화 목록</button>
-			<button class="filter-btn2" onclick="goManyReview()"> <!-- <i class="fa-solid fa-comments"></i>--> 리뷰 많은 순</button>
-		</div>	
-	</div>	
+    	<%@ include file="../common/common_filter_section2.jsp" %>
     <div class="movie-list-container" style="position: relative;">
         <!-- <a href="javascript:history.back()" class="home-link">&nbsp&nbsp<i class="fa-solid fa-arrow-left"></i> </a> -->
         <h1>

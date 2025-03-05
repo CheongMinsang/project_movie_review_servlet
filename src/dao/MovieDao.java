@@ -781,6 +781,11 @@ public class MovieDao {
 							"FROM pjt_정민상_rating\r\n" + 
 							"GROUP BY movieid, moviename\r\n" + 
 							"ORDER BY COUNT(*) DESC";
+				} else if(gubun == 2) {
+					query ="SELECT movieid, moviename || ' (찜' || COUNT(*) || '명)' AS moviename\r\n" + 
+							"FROM pjt_정민상_recommend\r\n" + 
+							"GROUP BY movieid, moviename\r\n" + 
+							"ORDER BY COUNT(*) DESC";
 				}
 				try {
 					con = DBConnection.getConnection();

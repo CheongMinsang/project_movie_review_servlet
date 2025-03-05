@@ -4,66 +4,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>추천 영화 목록</title>
+    <title>최다 북마크 목록</title>
     <link href="main.css" rel="stylesheet">
-    <style>
-        .recommend-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        
-        .recommend-card {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .recommend-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .recommend-card a {
-		    text-decoration: none;
-		    color: inherit;
-		    display: block;
-		}
-        
-        .recommend-poster {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-        }
-        
-        .recommend-info {
-            padding: 15px;
-        }
-        
-        .recommend-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: black;
-        }
-        
-        .recommend-rating {
-            color: #f5c518;
-            color: gold;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .recommend-date {
-            color: #2a2a2a;
-            font-size: 0.9em;
-        }
-    </style>
+    <link href="css/goManyReview.css" rel="stylesheet">
 </head>
 <body>
     <div class="user-wrap">
@@ -88,9 +31,9 @@
     <header>
         <%@ include file="../common/common_header.jsp" %>
     </header>
-   		<%@ include file="../common/common_filter_section2.jsp" %>			
+		<%@ include file="../common/common_filter_section2.jsp" %>		
     <h1 style="text-align:center; margin-bottom:60px; margin-top:80px; color:#333;">
-    	<i class="fa-solid fa-film"></i>&nbsp내가 저장한 영화
+    	<i class="fa-solid fa-bookmark" style="color: #94c4b4;"></i>&nbsp 최다 북마크 목록
    	</h1>
    	
     <div class="recommend-container">
@@ -102,7 +45,7 @@
 		                 src="https://image.tmdb.org/t/p/w500${movie.getString('poster_path')}" 
 		                 alt="${movie.getString('title')}">
 		            <div class="recommend-info">
-		                <div class="recommend-title">${movie.getString('title')}</div>
+		                <div class="recommend-title">${movie.getString('dbTitle')}</div>
 		                <div class="recommend-rating"><i class="fa-solid fa-star"></i> ${movie.getDouble('vote_average')}</div>
 		                <div class="recommend-date">개봉일: ${movie.getString('release_date')}</div>
 		            </div>
@@ -122,6 +65,12 @@
 	}
 	function goManyReview(){
 		mem.t_gubun.value="goManyReview";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
+	function goManyRecommend(){
+		mem.t_gubun.value="goManyRecommend";
 		mem.method="post";
 		mem.action="Index";
 		mem.submit();

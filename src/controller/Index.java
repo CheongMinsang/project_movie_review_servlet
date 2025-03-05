@@ -32,6 +32,7 @@ import command.member.ReviewDelete;
 import command.member.ReviewSave;
 import command.member.ReviewUpdate;
 import command.member.goDeleteRecommend;
+import command.member.goGetManyRecommend;
 import command.member.goGetManyReview;
 import command.member.goGetRecoList;
 import command.member.goMemberInfo;
@@ -289,6 +290,27 @@ public class Index extends HttpServlet {
 		        e.printStackTrace();
 		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		    }	
+		}else if(gubun.equals("goManyRecommend")) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+				response.setContentType("text/html; charset=UTF-8");
+				
+				CommonExecute mem = new goGetManyRecommend();
+				mem.execute(request);
+				
+				String idString = (String) request.getAttribute("id");
+				String idString2 = (String) request.getAttribute("name");
+				
+				// 응답을 커밋하기 전에 리다이렉트
+				if (idString != null && !idString.isEmpty()) {
+					response.setStatus(HttpServletResponse.SC_FOUND); // 302 상태 코드 설정
+					response.setHeader("Location", "MovieServlet_ManyRecommend?id=" + idString + "&name=" + idString2);
+					return; // 중요: 여기서 메소드 실행을 종료
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			}	
 		}
 		
 		try { 

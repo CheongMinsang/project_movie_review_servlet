@@ -70,6 +70,12 @@
 		mem.action="Index";
 		mem.submit();
 	}
+	function goManyRecommend(){
+		mem.t_gubun.value="goManyRecommend";
+		mem.method="post";
+		mem.action="Index";
+		mem.submit();
+	}
 	
 	// 관리메뉴 관련 함수들
 	function goMemberList(){
@@ -275,7 +281,10 @@
                         <i class="fa-solid fa-thumbs-up"></i> 추천 영화 목록
                     </button>
                     <button type="button" onclick="goManyReview()">
-                        <i class="fa-solid fa-comments"></i> 리뷰 많은 순
+                    	<i class="fa-solid fa-comment"></i> 최다 리뷰 목록
+                    </button>
+                    <button type="button" onclick="goManyRecommend()">
+                    	<i class="fa-solid fa-bookmark"></i> 최다 북마크 목록
                     </button>
                     <button type="button" class="close-btn" onclick="toggleMovieMenu(event)">
                         <i class="fa-solid fa-times"></i> 닫기
