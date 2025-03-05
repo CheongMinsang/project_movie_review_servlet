@@ -121,7 +121,7 @@
         </table>
         <!-- 목록으로 돌아가기 버튼 -->
         <div style="text-align: center; margin-top: 20px;">
-            <a href="Index?t_gubun=goMemberList" class="back-btn">목록으로 돌아가기</a>
+            <a href="Index2?t_gubun=goMemberList" class="back-btn">목록으로 돌아가기</a>
             <a href="javascript:goExit()" class="back-btn">해당회원탈퇴</a>
         </div>
     </div>
@@ -135,7 +135,7 @@
 		if (confirm("정말 탈퇴시키겠습니까?")) {
 		 	mem1.t_gubun.value = "goMemberExit";
 	        mem1.method      = "post";
-	        mem1.action      = "Index";
+	        mem1.action      = "Index2";
 	        mem1.submit();
 		} else {
 			return;

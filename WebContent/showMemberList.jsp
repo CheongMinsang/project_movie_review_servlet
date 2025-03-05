@@ -19,7 +19,7 @@
     <div class="container">
         <h2>회원 목록</h2>
         <!-- 검색폼 -->
-        <form class="search-form" action="Index" method="get">
+        <form class="search-form" action="Index2" method="get">
       	  	<input type="hidden" name="t_gubun" value="goMemberList">
             <select name="category">
                 <option value="id" <c:if test="${param.category == 'id'}">selected</c:if>>아이디</option>
@@ -49,7 +49,7 @@
                     <!-- dto.exit_date가 null이 아니거나 공백이 아니면 withdrawn 클래스 적용 -->
                     <tr class="${(dto.exit_date != null && dto.exit_date != '') ? 'withdrawn' : ''}"
                     	style="cursor:pointer;"
-                        onclick="location.href='Index?t_gubun=goMemberInfo&id=${dto.id}'">
+                        onclick="location.href='Index2?t_gubun=goMemberInfo&id=${dto.id}'">
                         <td>${dto.id}</td>
                         <td>${dto.name}</td>
                         <td>${dto.reg_date}</td>
@@ -75,16 +75,16 @@
         <div class="pagination">
             <!-- 이전 페이지 링크 -->
             <c:if test="${page > 1}">
-                <a href="Index?t_gubun=goMemberList&page=${page - 1}&category=${param.category}&keyword=${param.keyword}"><i class="fa-solid fa-angle-left"></i> 이전</a>
+                <a href="Index2?t_gubun=goMemberList&page=${page - 1}&category=${param.category}&keyword=${param.keyword}"><i class="fa-solid fa-angle-left"></i> 이전</a>
             </c:if>
             <!-- 페이지 번호 링크 -->
             <c:forEach var="i" begin="1" end="${totalPage}">
-                <a href="Index?t_gubun=goMemberList&page=${i}&category=${param.category}&keyword=${param.keyword}"
+                <a href="Index2?t_gubun=goMemberList&page=${i}&category=${param.category}&keyword=${param.keyword}"
                    class="${i == page ? 'active' : ''}">${i}</a>
             </c:forEach>
             <!-- 다음 페이지 링크 -->
             <c:if test="${page < totalPage}">
-                <a href="Index?t_gubun=goMemberList&page=${page + 1}&category=${param.category}&keyword=${param.keyword}">다음 <i class="fa-solid fa-angle-right"></i></a>
+                <a href="Index2?t_gubun=goMemberList&page=${page + 1}&category=${param.category}&keyword=${param.keyword}">다음 <i class="fa-solid fa-angle-right"></i></a>
             </c:if>
         </div>
     </div>

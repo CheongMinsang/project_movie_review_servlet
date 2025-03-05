@@ -7,73 +7,73 @@
 	function goLogin(){
 		mem.t_gubun.value="login";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goRegister(){
 		mem.t_gubun.value="register";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goLogout(){
 		mem.t_gubun.value="logout";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goMyInfo(){
 		mem.t_gubun.value="myinfo";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goControl(){
 		mem.t_gubun.value="controlMenu";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goMemberInfo(){
 		mem.t_gubun.value="myinfo";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goSaveMovieList(){
 		mem.t_gubun.value="goSaveMovieList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goSaveRatingList(){
 		mem.t_gubun.value="goSaveRatingList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goReviewManage(){
 		mem.t_gubun.value="goReviewManage";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goReco(){
 		mem.t_gubun.value="goRecoList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goManyReview(){
 		mem.t_gubun.value="goManyReview";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goManyRecommend(){
 		mem.t_gubun.value="goManyRecommend";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	
@@ -81,19 +81,19 @@
 	function goMemberList(){
 		mem.t_gubun.value="goMemberList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goRecoList(){
 		mem.t_gubun.value="goRecoList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goReviewManage(){
 		mem.t_gubun.value="goReviewManage";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	
@@ -274,7 +274,7 @@
                     </a>
                     <a href="MovieList?t_gubun=top_rated&page=1">
                         <button type="button">
-                            <i class="fa-solid fa-star"></i> 높은 평점 목록
+                            <i class="fa-solid fa-star"></i> 높은평점목록
                         </button>
                     </a>    
                     <button type="button" onclick="goReco()">

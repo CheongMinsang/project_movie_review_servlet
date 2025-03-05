@@ -118,13 +118,13 @@
 	function goReco(){
 		mem.t_gubun.value="goRecoList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goManyReview(){
 		mem.t_gubun.value="goManyReview";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 </script>        

@@ -469,7 +469,7 @@
 		if (confirm("리뷰를 삭제하시겠습니까?")) {
 			reviewForm.t_gubun.value = "RatingDelete";
 			reviewForm.method      = "post";
-			reviewForm.action      = "Index";
+			reviewForm.action      = "Index2";
 			reviewForm.submit();
 		} else {
 			return;
@@ -487,7 +487,7 @@
         if (confirm(confirmMessage)) {
             document.reco.t_gubun.value = "goSaveRecommend";
             document.reco.method = "post";
-            document.reco.action = "Index";
+            document.reco.action = "Index2";
             document.reco.submit();
         } else {
             return;
@@ -505,7 +505,7 @@
         if (confirm(confirmMessage)) {
             document.reco.t_gubun.value = "goDeleteRecommend";
             document.reco.method = "post";
-            document.reco.action = "Index";
+            document.reco.action = "Index2";
             document.reco.submit();
         } else {
             return;
@@ -514,13 +514,13 @@
 	function goReco(){
 		mem.t_gubun.value="goRecoList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goManyReview(){
 		mem.t_gubun.value="goManyReview";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 </script>

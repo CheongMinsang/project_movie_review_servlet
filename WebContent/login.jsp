@@ -114,7 +114,7 @@
 		window.resizeTo(500, 1200); // 현재 창의 크기를 500x1200으로 변경
 		mem.t_gubun.value="register";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goLogin(){
@@ -135,7 +135,7 @@
 		
 		mem.t_gubun.value="loginForm";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function focusNext(event, nextId) {

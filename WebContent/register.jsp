@@ -181,7 +181,7 @@
 
             register.t_gubun.value = "domemberjoin";
             register.method = "post";
-            register.action = "Index";
+            register.action = "Index2";
             register.submit();
         }
         function checkUsername() {
@@ -246,7 +246,7 @@
 		window.resizeTo(500, 600); // 현재 창의 크기를 500x1200으로 변경
 		mem.t_gubun.value="login";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function focusNext(event, nextId){

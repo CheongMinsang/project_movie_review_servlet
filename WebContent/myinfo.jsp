@@ -202,7 +202,7 @@
     // 로그인 정보가 없을 때 alert를 띄우고 Index 페이지로 이동
     function redirectToIndex() {
         alert("로그인 정보가 없습니다.");
-        window.location.href = "Index";
+        window.location.href = "Index2";
     }
 
     // 비밀번호 입력 시 확인 후 버튼 활성화
@@ -313,7 +313,7 @@
         // 모든 검증 통과 시 폼 전송
         mem.t_gubun.value = "myinfoupdate";
         mem.method      = "post";
-        mem.action      = "Index";
+        mem.action      = "Index2";
         mem.submit();
     }
 
@@ -366,7 +366,7 @@
 		if (confirm("정말 탈퇴하시겠습니까?")) {
 		 	mem.t_gubun.value = "goMemberExit";
 	        mem.method      = "post";
-	        mem.action      = "Index";
+	        mem.action      = "Index2";
 	        mem.submit();
 		} else {
 			return;

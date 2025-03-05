@@ -56,7 +56,7 @@
             <img src="images/1.jpg" alt="영화 리뷰 사이트" class="main-image">
         </div>
         <div class="user-text">
-            <p><i class="fa-solid fa-play"></i>THE MOVIE INDEX</p>
+            <p><i class="fa-solid fa-play"></i>THE MOVIE Index</p>
         </div>
         <div class="user-text2">
             <p>국내 최대 규모 영화 리뷰 사이트</p>
@@ -219,19 +219,19 @@
 	function goReco(){
 		mem.t_gubun.value="goRecoList";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goManyReview(){
 		mem.t_gubun.value="goManyReview";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 	function goManyRecommend(){
 		mem.t_gubun.value="goManyRecommend";
 		mem.method="post";
-		mem.action="Index";
+		mem.action="Index2";
 		mem.submit();
 	}
 </script>    
