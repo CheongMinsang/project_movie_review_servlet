@@ -22,46 +22,59 @@ public class RecommendMovieServlet2 extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-    	 // request parameter 대신 attribute에서 값을 가져옴
-        String ids = request.getParameter("id");  // URL 파라미터로 온 경우
+System.out.println("[RecommendMovieServlet2] Servlet 시작");
+        
+        String ids = request.getParameter("id");
         if (ids == null) {
-            ids = (String) request.getAttribute("movieIds");  // forward로 온 경우
+            ids = (String) request.getAttribute("id");
+        }
+        
+        System.out.println("[RecommendMovieServlet2] ids: " + ids);
+        
+        List<JSONObject> recommendedMovies = new ArrayList<>();
+        
+        if (ids == null || ids.trim().isEmpty()) {
+            System.out.println("[RecommendMovieServlet2] ids가 없거나 비어 있음");
+            request.setAttribute("recommendedMovies", recommendedMovies);
+            request.getRequestDispatcher("recommendMovieMember.jsp").forward(request, response);
+            return;
         }
         
         String[] recommendedMovieIds = ids.split(",");
-        List<JSONObject> recommendedMovies = new ArrayList<>();
-        
         for (String id : recommendedMovieIds) {
+            if (id.trim().isEmpty()) continue;
+            
             String apiUrl = "https://api.themoviedb.org/3/movie/" + id.trim() + 
                           "?api_key=" + TMDB_API_KEY + "&language=ko-KR";
             
-            URL url = new URL(apiUrl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            
-            BufferedReader reader = new BufferedReader(
-                new InputStreamReader(conn.getInputStream(), "UTF-8"));
-            StringBuilder result = new StringBuilder();
-            String line;
-            
-            while ((line = reader.readLine()) != null) {
-                result.append(line);
+            try {
+                URL url = new URL(apiUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                
+                BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                StringBuilder result = new StringBuilder();
+                String line;
+                
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
+                }
+                reader.close();
+                conn.disconnect();
+                
+                JSONObject movieData = new JSONObject(result.toString());
+                recommendedMovies.add(movieData);
+                System.out.println("[RecommendMovieServlet2] Movie added: " + id);
+            } catch (Exception e) {
+                System.out.println("[RecommendMovieServlet2] Error fetching movie " + id + ": " + e.getMessage());
+                e.printStackTrace();
             }
-            
-            reader.close();
-            conn.disconnect();
-            
-            JSONObject movieData = null;
-			try {
-				movieData = new JSONObject(result.toString());
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            recommendedMovies.add(movieData);
         }
         
+        System.out.println("[RecommendMovieServlet2] recommendedMovies size: " + recommendedMovies.size());
         request.setAttribute("recommendedMovies", recommendedMovies);
         request.getRequestDispatcher("recommendMovieMember.jsp").forward(request, response);
+        System.out.println("[RecommendMovieServlet2] JSP로 포워딩 완료");
     }
 }

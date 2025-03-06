@@ -94,23 +94,34 @@
     	<i class="fa-solid fa-play" style="color: #66afe9"></i>&nbsp추천 영화 목록
    	</h1>
    	
-    <div class="recommend-container">
-    	
-        <c:forEach var="movie" items="${recommendedMovies}">
-	        <div class="recommend-card">
-	        	<a href="MovieDetail?id=${movie.getInt('id')}">
-		            <img class="recommend-poster" 
-		                 src="https://image.tmdb.org/t/p/w500${movie.getString('poster_path')}" 
-		                 alt="${movie.getString('title')}">
-		            <div class="recommend-info">
-		                <div class="recommend-title">${movie.getString('title')}</div>
-		                <div class="recommend-rating"><i class="fa-solid fa-star"></i> ${movie.getDouble('vote_average')}</div>
-		                <div class="recommend-date">개봉일: ${movie.getString('release_date')}</div>
+        <div class="recommend-container">
+		    <!-- 데이터가 없는 경우 메시지 표시 -->
+		    <c:if test="${empty recommendedMovies}">
+		        <div style="text-align: center; width: 100%; padding: 50px; color: #666;">
+		            <i class="fa-solid fa-exclamation-circle" style="color: #ff6b6b;"></i>
+		            <p style="font-size: 1.2em; margin-top: 10px;">추천 영화가 없습니다.</p>
+		            <p>추천 영화를 등록해보세요!</p>
+		        </div>
+		    </c:if>
+		
+		    <!-- 데이터가 있는 경우 영화 목록 표시 -->
+		    <c:if test="${not empty recommendedMovies}">
+		        <c:forEach var="movie" items="${recommendedMovies}">
+		            <div class="recommend-card">
+		                <a href="MovieDetail?id=${movie.getInt('id')}">
+		                    <img class="recommend-poster" 
+		                         src="https://image.tmdb.org/t/p/w500${movie.getString('poster_path')}" 
+		                         alt="${movie.getString('title')}">
+		                    <div class="recommend-info">
+		                        <div class="recommend-title">${movie.getString('title')}</div>
+		                        <div class="recommend-rating"><i class="fa-solid fa-star"></i> ${movie.getDouble('vote_average')}</div>
+		                        <div class="recommend-date">개봉일: ${movie.getString('release_date')}</div>
+		                    </div>
+		                </a>   
 		            </div>
-		         </a>   
-	         </div>
-        </c:forEach>
-    </div>
+		        </c:forEach>
+		    </c:if>
+		</div>
     <footer class="footer">
         <%@ include file="../common/common_footer.jsp" %>
     </footer>

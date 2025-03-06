@@ -265,6 +265,7 @@ public class Index extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.print(msg);
 			return; // 중요: 더 이상 처리하지 않도록 여기서 종료
+		//최다 리뷰 목록	
 		}else if(gubun.equals("goManyReview")) {
 		    try {
 		    	request.setCharacterEncoding("UTF-8");

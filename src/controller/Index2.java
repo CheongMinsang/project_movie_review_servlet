@@ -194,15 +194,23 @@ public class Index2 extends HttpServlet {
 		        
 		        String idString = (String) request.getAttribute("id");
 		        
+		        // 디버깅 로그 추가
+		        System.out.println("[Index2] idString: " + idString);
+		        
 		        // 응답을 커밋하기 전에 리다이렉트
 		        if (idString != null && !idString.isEmpty()) {
 		            response.setStatus(HttpServletResponse.SC_FOUND); // 302 상태 코드 설정
 		            response.setHeader("Location", "recommend-movie-member?id=" + idString);
-		            return; // 중요: 여기서 메소드 실행을 종료
+		            return; // 여기서 종료
+		        } else {
+		            // idString이 null이거나 빈 경우 처리
+		            System.out.println("[Index2] idString is null or empty, forwarding to JSP");
+		            request.getRequestDispatcher("recommendMovieMember.jsp").forward(request, response);
+		            return;
 		        }
 		    } catch (Exception e) {
 		        e.printStackTrace();
-		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "서버 오류 발생");
 		    }
 		// 작성한 리뷰 목록 가져오기     
 		}else if(gubun.equals("goSaveRatingList")) {
