@@ -1,10 +1,23 @@
 package dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MovieDto {
 	private String id, password, name, reg_date, exit_date, last_login_date,
 					nickname, gender, birthdate, phone, writeid, content, rating_date,
 					moviename;
 	private int movieid, rating, no;
+	
+	private ArrayList<MovieDto> recommendList; // ArrayList로 변경
+	
+	public ArrayList<MovieDto> getRecommendList() {
+        return recommendList;
+    }
+
+    public void setRecommendList(ArrayList<MovieDto> recommendList) {
+        this.recommendList = recommendList;
+    }
 	
 	//리뷰많은순 영화 목록
 	public MovieDto(String moviename, int movieid) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page buffer="64kb" autoFlush="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,9 +41,11 @@
             padding: 10px;
             text-align: left;
         }
+        /*
         tr:hover {
             background-color: #f5f5f5;
         }
+        */
         /* 탈퇴회원(탈퇴일이 있는 회원)은 빨간색으로 표시 */
         .withdrawn {
             color: red;
@@ -62,6 +65,40 @@
         }
         .back-btn:hover {
             background-color: black;
+        }
+        /* 찜한 영화 목록 스타일 */
+        .recommend-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0; /* 상단 여백 10px 추가 */
+        }
+        .recommend-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .recommend-item:last-child {
+            border-bottom: none; /* 마지막 항목은 밑줄 제거 */
+        }
+        .recommend-link {
+            color: #333; /* 기본 텍스트 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+            font-size: 14px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: block; /* 클릭 영역 확장 */
+            padding: 5px 10px; /* 내부 여백 추가 */
+        }
+        .recommend-link:hover {
+            background-color: #f5f5f5 !important;
+    		color: black !important;
+        /*
+            color: #ffffff; 
+            background-color: #292A31; 
+            border-radius: 5px;
+        */
+        }
+        .recommend-date {
+            color: #777; /* 등록일 색상 */
+            font-size: 12px;
         }
     </style>
 </head>
@@ -112,6 +149,30 @@
                 <th>최종로그인시각</th>
                 <td>${dto.last_login_date}</td>
             </tr>
+            <!-- 찜한 영화 목록 추가 -->
+			<tr>
+                <th>찜한 영화 목록</th>
+                <td>
+                    <c:out value=" 찜한 영화 개수: ${fn:length(dto.recommendList)}" /><br/>
+                    <c:choose>
+                        <c:when test="${empty dto.recommendList}">
+                            찜한 영화가 없습니다.
+                        </c:when>
+                        <c:otherwise>
+                            <ul class="recommend-list">
+                                <c:forEach var="recommend" items="${dto.recommendList}">
+                                    <li class="recommend-item">
+                                        <a href="MovieDetail?id=${recommend.movieid}" class="recommend-link">
+                                            ${recommend.moviename} 
+                                            <span class="recommend-date">(등록일: ${recommend.reg_date})</span>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+            </tr>
             <c:if test="${dto.exit_date != null and dto.exit_date != ''}">
                 <tr class="withdrawn">
                     <th>탈퇴일</th>
@@ -122,7 +183,9 @@
         <!-- 목록으로 돌아가기 버튼 -->
         <div style="text-align: center; margin-top: 20px;">
             <a href="Index2?t_gubun=goMemberList" class="back-btn">목록으로 돌아가기</a>
-            <a href="javascript:goExit()" class="back-btn">해당회원탈퇴</a>
+            <c:if test="${dto.exit_date == null or dto.exit_date == ''}">
+                <a href="javascript:goExit()" class="back-btn">해당회원탈퇴</a>
+            </c:if>
         </div>
     </div>
     </form>

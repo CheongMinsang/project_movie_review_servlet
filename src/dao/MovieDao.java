@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import common.DBConnection;
 import dto.MovieDto;
@@ -262,8 +263,100 @@ public class MovieDao {
 		return dtos;
 	}	
 	
+	public MovieDto getMemberInfo2(String id) {
+	    MovieDto dto = null;
+	    Connection con = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+
+	    String query = "SELECT m.id, m.password, m.name, m.reg_date, m.last_login_date, " +
+	                   "m.nickname, m.gender, " +
+	                   "SUBSTR(m.birthdate,1,4)||'년'||SUBSTR(m.birthdate,5,2)||'월'||SUBSTR(m.birthdate,7)||'일' AS birthdate, " +
+	                   "SUBSTR(m.phone,1,3)||'-'||SUBSTR(m.phone,4,4)||'-'||SUBSTR(m.phone,8,8) AS phone, " +
+	                   "m.exit_date, r.movieid, r.moviename, r.reg_date AS recommend_reg_date, r.no " +
+	                   "FROM pjt_정민상_member m " +
+	                   "LEFT JOIN pjt_정민상_recommend r ON m.id = r.writeid " +
+	                   "WHERE m.id = ?";
+
+	    try {
+	        con = DBConnection.getConnection();
+	        ps = con.prepareStatement(query);
+	        ps.setString(1, id);
+	        rs = ps.executeQuery();
+
+	        ArrayList<MovieDto> recommendList = new ArrayList<>();
+	        boolean firstRow = true;
+
+	        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+	        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy년MM월dd일 HH시mm분");
+
+	        while (rs.next()) {
+	            if (firstRow) {
+	                dto = new MovieDto();
+	                dto.setId(rs.getString("id"));
+	                dto.setPassword(rs.getString("password"));
+	                dto.setName(rs.getString("name"));
+	                dto.setNickname(rs.getString("nickname"));
+	                dto.setGender(rs.getString("gender"));
+	                dto.setBirthdate(rs.getString("birthdate"));
+	                dto.setPhone(rs.getString("phone"));
+
+	                String regDate = rs.getString("reg_date");
+	                String lastLoginDate = rs.getString("last_login_date");
+	                String exitDate = rs.getString("exit_date");
+
+	                if (regDate != null) {
+	                    Date date = originalFormat.parse(regDate);
+	                    dto.setReg_date(newFormat.format(date));
+	                }
+	                if (lastLoginDate != null) {
+	                    Date date2 = originalFormat.parse(lastLoginDate);
+	                    dto.setLast_login_date(newFormat.format(date2));
+	                }
+	                if (exitDate != null && !exitDate.trim().isEmpty()) {
+	                    Date date3 = originalFormat.parse(exitDate);
+	                    dto.setExit_date(newFormat.format(date3));
+	                } else {
+	                    dto.setExit_date(null);
+	                }
+	                firstRow = false;
+	            }
+
+	            // 찜한 영화 정보 추가
+	            String movieid = rs.getString("movieid");
+	            if (movieid != null) {
+	                MovieDto recommendDto = new MovieDto();
+	                recommendDto.setMovieid(Integer.parseInt(movieid)); // VARCHAR2를 int로 변환
+	                recommendDto.setMoviename(rs.getString("moviename"));
+	                String recommendRegDate = rs.getString("recommend_reg_date");
+	                if (recommendRegDate != null) {
+	                    Date date = originalFormat.parse(recommendRegDate);
+	                    recommendDto.setReg_date(newFormat.format(date));
+	                }
+	                recommendList.add(recommendDto);
+	                System.out.println("Added to recommendList: " + recommendDto.getMoviename() + " (" + recommendDto.getMovieid() + ")");
+	            }
+	        }
+
+	        if (dto != null) {
+	            dto.setRecommendList(recommendList);
+	            System.out.println("Total recommendList size: " + recommendList.size());
+	        } else {
+	            System.out.println("No data found in result set for id: " + id);
+	        }
+
+	    } catch (Exception e) {
+	        System.out.println("getMemberInfo2() 오류: " + query);
+	        System.out.println("Exception message: " + e.getMessage());
+	        e.printStackTrace();
+	    } finally {
+	        DBConnection.closeDB(con, ps, rs);
+	    }
+	    return dto;
+	}
+	
 	//회원 정보 가져오기
-		public MovieDto getMemberInfo2(String id) {
+		public MovieDto getMemberInfo3(String id) {
 			MovieDto dto = null;
 			String query = "select id,password,name,reg_date,last_login_date,\r\n" + 
 					"nickname,gender,substr(birthdate,1,4)||'년'||substr(birthdate,5,2)||'월'||substr(birthdate,7)||'일' as birthdate,\r\n" + 
