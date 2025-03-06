@@ -31,31 +31,25 @@ public class goReviewManage implements CommonExecute {
 	    MovieDao dao = new MovieDao();
 	    ArrayList<MovieDto> dtos = null;
 	    
-        if(searchType != null && searchValue != null && !searchValue.trim().equals("")) {
-            // 검색 유형에 따라 다른 검색 메소드 호출
-            if(searchType.equals("moviename")) {
-                dtos = dao.searchReviewsByMovieName(searchValue);
-                if(dtos == null) {
-                    dtos = new ArrayList<MovieDto>();
-                }
-            } else if(searchType.equals("name")) {
-                dtos = dao.searchReviewsByUserName(searchValue);
-                if(dtos == null) {
-                    dtos = new ArrayList<MovieDto>();
-                }
-            } else if(searchType.equals("writeid")) {
-                dtos = dao.searchReviewsByWriteId(searchValue);
-                if(dtos == null) {
-                    dtos = new ArrayList<MovieDto>();
-                }
-            }
-        } else {
-            // 검색 파라미터가 없으면 전체 리뷰 조회
-        	dtos = dao.getAllReviews();
-        	if(dtos == null) {
-        	    dtos = new ArrayList<MovieDto>();
-        	}
-        }
+	    if(searchType != null && searchValue != null && !searchValue.trim().equals("")) {
+	        if(searchType.equals("moviename")) {
+	            dtos = dao.searchReviewsByMovieName(searchValue);
+	        } else if(searchType.equals("name")) {
+	            dtos = dao.searchReviewsByUserName(searchValue);
+	        } else if(searchType.equals("writeid")) {
+	            dtos = dao.searchReviewsByWriteId(searchValue);
+	        } else if(searchType.equals("content")) {
+	            dtos = dao.searchReviewsByContent(searchValue);
+	        }
+	        if(dtos == null) {
+	            dtos = new ArrayList<MovieDto>();
+	        }
+	    } else {
+	        dtos = dao.getAllReviews();
+	        if(dtos == null) {
+	            dtos = new ArrayList<MovieDto>();
+	        }
+	    }
 	    
 	    // 결과를 request에 저장
 	    request.setAttribute("dtos", dtos);

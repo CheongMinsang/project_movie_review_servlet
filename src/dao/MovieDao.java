@@ -162,7 +162,42 @@ public class MovieDao {
         
         return (dtos.isEmpty()) ? new ArrayList<>() : dtos;
     }
-
+    
+    // 리뷰 내용으로 리뷰 검색
+    public ArrayList<MovieDto> searchReviewsByContent(String content) {
+        ArrayList<MovieDto> dtos = new ArrayList<>();
+        String query = "SELECT movieid, moviename, rating, content, writeid, name, rating_date, no " +
+                      "FROM pjt_정민상_rating " +
+                      "WHERE UPPER(content) LIKE UPPER(?) " +
+                      "ORDER BY rating_date DESC";
+        
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, "%" + content + "%");
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                MovieDto dto = new MovieDto();
+                dto.setMovieid(rs.getInt("movieid"));
+                dto.setMoviename(rs.getString("moviename"));
+                dto.setRating(rs.getInt("rating"));
+                dto.setContent(rs.getString("content"));
+                dto.setWriteid(rs.getString("writeid"));
+                dto.setName(rs.getString("name"));
+                dto.setRating_date(rs.getString("rating_date"));
+                dto.setNo(rs.getInt("no"));
+                
+                dtos.add(dto);
+            }
+        } catch(Exception e) {
+            System.out.println("searchReviewsByContent() 오류: " + e.getMessage());
+        } finally {
+            DBConnection.closeDB(conn, pstmt, rs);
+        }
+        
+        return (dtos.isEmpty()) ? new ArrayList<>() : dtos;
+    }
 	
 	// 추천영화목록에 들어가있는지 확인
 		public int getRecommendList(String id, String writeid) {

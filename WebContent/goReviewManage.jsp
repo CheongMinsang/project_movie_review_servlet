@@ -18,16 +18,17 @@
     <div class="review-container">
         <h2>작성한 리뷰 목록</h2>
         <div class="search-container1">
-		  <div class="search-box1">
-		    <select id="searchType">
-		      <option value="moviename">영화명</option>
-		      <option value="name">작성자명</option>
-		      <option value="writeid">작성자ID</option>
-		    </select>
-		    <input type="text" id="searchValue" placeholder="검색어를 입력하세요">
-		    <button type="button" onclick="doSearch()">검색</button>
-		    <button type="button" onclick="resetSearch()">초기화</button>
-		  </div>
+			<div class="search-box1">
+			    <select id="searchType">
+				    <option value="moviename" <%= "moviename".equals(request.getParameter("searchType")) ? "selected" : "" %>>영화명</option>
+				    <option value="name" <%= "name".equals(request.getParameter("searchType")) ? "selected" : "" %>>작성자명</option>
+				    <option value="writeid" <%= "writeid".equals(request.getParameter("searchType")) ? "selected" : "" %>>작성자ID</option>
+				    <option value="content" <%= "content".equals(request.getParameter("searchType")) ? "selected" : "" %>>리뷰 내용</option>
+				</select>
+			    <input type="text" id="searchValue" placeholder="검색어를 입력하세요" value="<%= request.getParameter("searchValue") != null ? request.getParameter("searchValue") : "" %>">
+			    <button type="button" onclick="doSearch()">검색</button>
+			    <button type="button" onclick="resetSearch()">초기화</button>
+			</div>
 		</div>
         <div id="reviewsContent">
             <%
@@ -91,29 +92,36 @@
                 
                 // 페이지네이션 링크 생성
                 %>
-                <ul class="pagination">
-                    <% if(currentPage > 1) { %>
-                        <li><a href="?t_gubun=goReviewManage&page=<%= currentPage - 1 %>"><i class="fa-solid fa-angle-left"></i></a></li>
-                    <% } else { %>
-                        <li class="disabled"><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
-                    <% } %>
-                    
-                    <% 
-                    int startPage = Math.max(1, currentPage - 2);
-                    int endPage = Math.min(totalPages, startPage + 4);
-                    startPage = Math.max(1, endPage - 4);
-                    
-                    for(int i = startPage; i <= endPage; i++) { 
-                    %>
-                        <li<%= i == currentPage ? " class=\"active\"" : "" %>><a href="?t_gubun=goReviewManage&page=<%= i %>"><%= i %></a></li>
-                    <% } %>
-                    
-                    <% if(currentPage < totalPages) { %>
-                        <li><a href="?t_gubun=goReviewManage&page=<%= currentPage + 1 %>"><i class="fa-solid fa-angle-right"></i></a></li>
-                    <% } else { %>
-                        <li class="disabled"><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-                    <% } %>
-                </ul>
+                <%
+				String searchParams = "";
+				if(request.getParameter("searchType") != null && request.getParameter("searchValue") != null) {
+				    searchParams = "&searchType=" + request.getParameter("searchType") + "&searchValue=" + java.net.URLEncoder.encode(request.getParameter("searchValue"), "UTF-8");
+				}
+				%>
+				
+				<ul class="pagination">
+				    <% if(currentPage > 1) { %>
+				        <li><a href="?t_gubun=goReviewManage&page=<%= currentPage - 1 %><%= searchParams %>"><i class="fa-solid fa-angle-left"></i></a></li>
+				    <% } else { %>
+				        <li class="disabled"><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
+				    <% } %>
+				    
+				    <% 
+				    int startPage = Math.max(1, currentPage - 2);
+				    int endPage = Math.min(totalPages, startPage + 4);
+				    startPage = Math.max(1, endPage - 4);
+				    
+				    for(int i = startPage; i <= endPage; i++) { 
+				    %>
+				        <li<%= i == currentPage ? " class=\"active\"" : "" %>><a href="?t_gubun=goReviewManage&page=<%= i %><%= searchParams %>"><%= i %></a></li>
+				    <% } %>
+				    
+				    <% if(currentPage < totalPages) { %>
+				        <li><a href="?t_gubun=goReviewManage&page=<%= currentPage + 1 %><%= searchParams %>"><i class="fa-solid fa-angle-right"></i></a></li>
+				    <% } else { %>
+				        <li class="disabled"><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+				    <% } %>
+				</ul>
             <%
             } else {
             %>
@@ -179,9 +187,9 @@
             var searchType = document.getElementById("searchType").value;
             if(searchValue.trim() === ""){
                 // 입력값이 없으면 전체검색(검색 파라미터 없이 이동)
-                window.location.href = "Index?t_gubun=goReviewManage";
+                window.location.href = "Index2?t_gubun=goReviewManage";
             } else {
-                window.location.href = "Index?t_gubun=goReviewManage&searchType=" 
+                window.location.href = "Index2?t_gubun=goReviewManage&searchType=" 
                                    + searchType + "&searchValue=" + encodeURIComponent(searchValue);
             }
         }
@@ -190,7 +198,7 @@
         function resetSearch() {
             document.getElementById("searchValue").value = "";
             document.getElementById("searchType").selectedIndex = 0;
-            window.location.href = "Index?t_gubun=goReviewManage";
+            window.location.href = "Index2?t_gubun=goReviewManage";
         }
 
         // 엔터키 이벤트: 검색 입력창에서 엔터를 누르면 doSearch() 호출
