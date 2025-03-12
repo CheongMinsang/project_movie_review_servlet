@@ -32,7 +32,7 @@
             border-radius: 20px;
         }
         input[type="text"], input[type="password"] {
-            width: calc(100%); /* input 요소의 너비 조정 */
+            width: calc(92.5%); /* input 요소의 너비 조정 */
             padding: 10px 15px;
             margin: 10px 0;
             border: 1px solid #e0e0e0;
